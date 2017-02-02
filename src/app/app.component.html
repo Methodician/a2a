@@ -1,3 +1,9 @@
-<h1>
-  {{title}}
-</h1>
+<div id="app-wrapper" class="container">
+  <top-nav></top-nav>
+
+  <router-outlet></router-outlet>
+
+  <pre class="panel panel-default">
+    {{ allData | async | json }}
+  </pre>
+</div>
