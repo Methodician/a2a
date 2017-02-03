@@ -1,10 +1,11 @@
+import { AuthService } from './shared/security/auth.service';
 import { CollapseModule } from 'ng2-bootstrap/collapse';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { RouterModule } from '@angular/router';
 //import { HttpModule } from '@angular/http';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -12,6 +13,8 @@ import { NeedsComponent } from './needs/needs.component';
 //import { AppModuleComponent } from './app-module/app-module.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TopNavComponent } from './top-nav/top-nav.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBymDlc5x-NzBC-xL5RZ1GtroML8KeV56g",
@@ -21,24 +24,32 @@ export const firebaseConfig = {
   messagingSenderId: "732112620096"
 };
 
+export const firebaseAuthConfig = {
+  provider: AuthProviders.Password,
+  method: AuthMethods.Password
+};
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NeedsComponent,
     TopNavComponent,
+    LoginComponent,
+    RegisterComponent,
     //AppModuleComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     //HttpModule,
     //RouterModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     CollapseModule.forRoot()
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
