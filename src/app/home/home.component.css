@@ -1,0 +1,28 @@
+#home-top {
+    text-align: center;
+}
+
+.intro-bubble {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#about {
+    background-color: gray;
+}
+.video-placeholder {
+    height: 120px;
+    width: 240px;
+    background-color: white;
+}
+#needs {
+    background-color: deeppink;
+}
+.image-placeholder {
+    height: 120px;
+    width: 140px;
+    background-color: white;
+}
+#spotlight {
+    background-color: lightpink;
+}
