@@ -2,17 +2,56 @@
 
   <fieldset>
     <legend>Register</legend>
+    <h2>Representative:</h2>
     <div class="form-field">
-      <label>Email:</label>
-      <input name="email" formControlName="email">
+      <label>*Email</label>
+      <input name="repEmail" formControlName="repEmail" type="email">
     </div>
     <div class="form-field">
-      <label>Password:</label>
+      <label>*Password</label>
       <input name="password" formControlName="password" type="password">
     </div>
     <div class="form-field">
-      <label>Confirm Password:</label>
+      <label>*Confirm Password:</label>
       <input name="confirm" formControlName="confirm" type="password">
+    </div>
+
+    <div class="form-field">
+      <label>*First Name</label>
+      <input name="fName" formControlName="fName" type="text">
+    </div>
+    <div class="form-field">
+      <label>*Last Name</label>
+      <input name="lName" formControlName="lName" type="text">
+    </div>
+    <div class="form-field">
+      <label>*Phone</label>
+      <input name="repPhone" formControlName="repPhone" type="tel">
+    </div>
+    <h3>Organization:</h3>
+    <div class="form-field">
+      <label>*Name</label>
+      <input name="orgName" formControlName="orgName" type="text">
+    </div>
+    <div class="form-field">
+      <label>Phone</label>
+      <input name="orgPhone" formControlName="orgPhone" type="tel">
+    </div>
+    <div class="form-field">
+      <label>Website URL</label>
+      <input name="orgWebsite" formControlName="orgWebsite" type="url">
+    </div>
+    <div class="form-field">
+      <label>*City</label>
+      <input name="orgCity" formControlName="orgCity" type="text">
+    </div>
+    <div class="form-field">
+      <label>*State</label>
+      <input name="orgState" formControlName="orgState" type="text">
+    </div>
+    <div class="form-field">
+      <label>*Zip</label>
+      <input name="orgZip" formControlName="orgZip" type="text">
     </div>
   </fieldset>
 

@@ -1,3 +1,4 @@
+import { UserService } from './../shared/data-services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './../shared/security/auth.service';
@@ -15,6 +16,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authSvc: AuthService,
+    private userSvc: UserService,
     private router: Router
   ) {
     this.form = this.fb.group({
@@ -27,9 +29,9 @@ export class RegisterComponent implements OnInit {
       orgName: ['', Validators.required],
       orgPhone: '',
       orgWebsite: '',
-      City: '',
-      State: '',
-      Zip: '',
+      orgCity: ['', Validators.required],
+      orgState: ['', Validators.required],
+      orgZip: ['', Validators.required],
     });
   }
 
@@ -44,15 +46,18 @@ export class RegisterComponent implements OnInit {
   signUp() {
     const val = this.form.value;
 
-    this.authSvc.signUp(val.email, val.password)
+    this.authSvc.signUp(val.repEmail, val.password)
       .subscribe(
       res => {
         console.log('Signup result from RegisterComp', res);
+        delete val.password;
+        delete val.confirm;
+        this.userSvc.updateUserInfo(val, res.auth.uid);
         alert('Ueser created successfully!');
         this.router.navigateByUrl('/home');
       },
       err => alert(err)
-      )
+      );
   }
 
 }
