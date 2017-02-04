@@ -1,3 +1,4 @@
+import { UserInfo } from './shared/models/user-info';
 import { AuthService } from './shared/security/auth.service';
 import { UserService } from './shared/data-services/user.service';
 import { Component } from '@angular/core';
@@ -14,6 +15,7 @@ export class AppComponent {
 
   allData: FirebaseObjectObservable<any>;
   userData: FirebaseObjectObservable<any>;
+  userInfo: UserInfo;
 
   constructor(
     private db: AngularFireDatabase,
@@ -24,15 +26,18 @@ export class AppComponent {
 
   ngOnInit() {
     this.allData = this.db.object('/');
-    this.authSvc.authInfo$.subscribe(() => {
-      this.refreshUserInfo();
-    });
+    /*    this.authSvc.authInfo$.subscribe(() => {
+          this.refreshUserInfo();
+        });*/
+    this.userSvc.userInfo$.subscribe(info =>
+      this.userInfo = info
+    );
     /*this.userSvc.userInfo$.subscribe(info =>
       this.userData = info
     );*/
   }
-
-  refreshUserInfo() {
-    this.userData = this.userSvc.getUserInfo();
-  }
+  /*
+    refreshUserInfo() {
+      this.userData = this.userSvc.getUserInfo();
+    }*/
 }

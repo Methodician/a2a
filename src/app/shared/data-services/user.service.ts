@@ -1,12 +1,13 @@
+import { UserInfo } from './../models/user-info';
 import { AuthService } from './../security/auth.service';
 import { Injectable, OnInit, Inject, forwardRef } from '@angular/core';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2';
-//import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
+import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
 
 @Injectable()
 export class UserService implements OnInit {
 
-  //userInfo$: FirebaseObjectObservable<any> = new FirebaseObjectObservable<any>(null);
+  userInfo$: BehaviorSubject<UserInfo> = new BehaviorSubject<UserInfo>(null);
   uid = null;
 
   constructor(
@@ -17,7 +18,10 @@ export class UserService implements OnInit {
     //  this subscribe needs to be in the constructor, not ngOnInit()...
     this.authSvc.authInfo$.subscribe(info => {
       console.log('UserService auth info:', info);
-      this.uid = info.$uid;      
+      this.uid = info.$uid;
+      this.db.object(`userInfo/${info.$uid}`).subscribe(info => {
+        this.userInfo$.next(info);
+      });
       /*this.userInfo$ = this.db.object(`userInfo/${info.$uid}`);*/
     });
   }
@@ -26,16 +30,17 @@ export class UserService implements OnInit {
 
   }
   updateUserInfo(userInfo, uid?) {
-    var id;
-    if (!uid)
-      id = this.uid;
-    else id = uid;
+    let id = uid || this.uid;
+    /*    if (!uid)
+          id = this.uid;
+        else id = uid;*/
     return this.db.object(`userInfo/${id}`).update(userInfo);
   }
 
-  getUserInfo() {
+  getUserInfo(uid?) {
+    let id = uid || this.uid;
     console.log('Uid in UserService.getUserInfo:', this.uid);
-    return this.db.object(`userInfo/${this.uid}`);
+    return this.db.object(`userInfo/${id}`);
   }
 
 }
