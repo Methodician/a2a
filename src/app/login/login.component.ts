@@ -23,6 +23,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authSvc.authInfo$.subscribe(info => {
+      console.log('Auth Info from Login:', info);
+    });
   }
 
   login() {
@@ -32,7 +35,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
       () => this.router.navigate(['/home']),
       alert
-
+        
       );
   }
 }

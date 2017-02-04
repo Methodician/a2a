@@ -1,3 +1,4 @@
+import { TesterComponent } from './tester/tester.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { NeedsComponent } from './needs/needs.component';
@@ -10,6 +11,7 @@ const routes: Routes = [
     { path: 'needs', component: NeedsComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'tester', component: TesterComponent },
     {
         path: '',
         redirectTo: '/home',

@@ -4,6 +4,12 @@
   <router-outlet></router-outlet>
 
   <pre class="panel panel-default">
+    <h3>All Data:</h3>
     {{ allData | async | json }}
+  </pre>
+  <pre>
+    <h3>User Data:</h3>
+    <button (click)="refreshUserInfo()" class="btn btn-success">Refresh</button>
+    {{ userData | async | json }}
   </pre>
 </div>

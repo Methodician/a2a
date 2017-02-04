@@ -12,10 +12,13 @@ export class AuthService {
 
   authInfo$: BehaviorSubject<AuthInfo> = new BehaviorSubject<AuthInfo>(AuthService.UNKNOWN_USER);
 
-  constructor(private auth: FirebaseAuth) {
+  constructor(
+    private auth: FirebaseAuth
+    /*private db: AngularFireDatabase*/
+  ) {
     this.auth.subscribe(info => {
-      console.log(info);
       if (info) {
+        console.log('Auth info from AuthSvc:', info);
         const authInfo = new AuthInfo(info.uid);
         this.authInfo$.next(authInfo);
       }

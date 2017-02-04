@@ -18,11 +18,20 @@ export class RegisterComponent implements OnInit {
     private router: Router
   ) {
     this.form = this.fb.group({
-      email: ['', Validators.required],
+      repEmail: ['', Validators.required],
       password: ['', Validators.required],
-      confirm: ['', Validators.required]
-    })
-   }
+      confirm: ['', Validators.required],
+      fName: ['', Validators.required],
+      lName: ['', Validators.required],
+      repPhone: ['', Validators.required],
+      orgName: ['', Validators.required],
+      orgPhone: '',
+      orgWebsite: '',
+      City: '',
+      State: '',
+      Zip: '',
+    });
+  }
 
   ngOnInit() {
   }
@@ -34,15 +43,16 @@ export class RegisterComponent implements OnInit {
 
   signUp() {
     const val = this.form.value;
-    
+
     this.authSvc.signUp(val.email, val.password)
-    .subscribe(
-      () => {
+      .subscribe(
+      res => {
+        console.log('Signup result from RegisterComp', res);
         alert('Ueser created successfully!');
         this.router.navigateByUrl('/home');
       },
       err => alert(err)
-    )
+      )
   }
-  
+
 }

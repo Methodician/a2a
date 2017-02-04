@@ -1,3 +1,4 @@
+import { UserService } from './shared/data-services/user.service';
 import { AuthService } from './shared/security/auth.service';
 import { CollapseModule } from 'ng2-bootstrap/collapse';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { TesterComponent } from './tester/tester.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBymDlc5x-NzBC-xL5RZ1GtroML8KeV56g",
@@ -37,6 +39,7 @@ export const firebaseAuthConfig = {
     TopNavComponent,
     LoginComponent,
     RegisterComponent,
+    TesterComponent,
     //AppModuleComponent,
   ],
   imports: [
@@ -49,7 +52,10 @@ export const firebaseAuthConfig = {
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     CollapseModule.forRoot()
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
