@@ -1,0 +1,86 @@
+<form autocomplete="off" novalidate class="login-form" [formGroup]="form">
+
+  <fieldset class="form-group">
+    <legend>New Need</legend>
+    <div class="form-field">
+      <label>Title</label>
+      <input name="title" formControlName="title" type="text" class="form-control">
+    </div>
+    <div class="form-field">
+      <label>Title</label>
+      <textarea name="body" formControlName="body" id="body" cols="30" rows="5" class="form-control"></textarea>
+    </div>
+    <div class="form-field">
+      <label for="perpetual">Ongoing?</label>
+      <input id="perpetual" name="perpetual" formControlName="perpetual" type="checkbox" class="form-control">
+    </div>
+    <div *ngIf="!form.value.perpetual" class="form-field">
+      <label>Start Date</label>
+      <input name="startDate" formControlName="startDate" type="date" class="form-control">
+    </div>
+    <div *ngIf="!form.value.perpetual" class="form-field">
+      <label>End Date</label>
+      <input name="endDate" formControlName="endDate" type="date" class="form-control">
+    </div>
+    <div *ngIf="!form.value.perpetual" class="form-field">
+      <label>Finance Goal</label>
+      <input name="needTotal" formControlName="needTotal" type="number" class="form-control">
+    </div>
+    <!--<h2>Representative:</h2>
+    <div class="form-field">
+      <label>*Email</label>
+      <input name="repEmail" formControlName="repEmail" type="email">
+    </div>
+    <div class="form-field">
+      <label>*Password</label>
+      <input name="password" formControlName="password" type="password">
+    </div>
+    <div class="form-field">
+      <label>*Confirm Password:</label>
+      <input name="confirm" formControlName="confirm" type="password">
+    </div>
+
+    <div class="form-field">
+      <label>*First Name</label>
+      <input name="fName" formControlName="fName" type="text">
+    </div>
+    <div class="form-field">
+      <label>*Last Name</label>
+      <input name="lName" formControlName="lName" type="text">
+    </div>
+    <div class="form-field">
+      <label>*Phone</label>
+      <input name="repPhone" formControlName="repPhone" type="tel">
+    </div>
+    <h3>Organization:</h3>
+    <div class="form-field">
+      <label>*Name</label>
+      <input name="orgName" formControlName="orgName" type="text">
+    </div>
+    <div class="form-field">
+      <label>Phone</label>
+      <input name="orgPhone" formControlName="orgPhone" type="tel">
+    </div>
+    <div class="form-field">
+      <label>Website URL</label>
+      <input name="orgWebsite" formControlName="orgWebsite" type="url">
+    </div>
+    <div class="form-field">
+      <label>*City</label>
+      <input name="orgCity" formControlName="orgCity" type="text">
+    </div>
+    <div class="form-field">
+      <label>*State</label>
+      <input name="orgState" formControlName="orgState" type="text">
+    </div>
+    <div class="form-field">
+      <label>*Zip</label>
+      <input name="orgZip" formControlName="orgZip" type="text">
+    </div>-->
+  </fieldset>
+
+  <!--<button (click)="signUp()" [disabled]="!isPasswordMatch()">Create User</button>-->
+</form>
+<pre>
+  {{ form.value | json }}
+</pre>

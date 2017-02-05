@@ -1,3 +1,5 @@
+import { DatePipe } from '@angular/common';
+import { AuthGuard } from './shared/security/auth.guard';
 import { UserService } from './shared/data-services/user.service';
 import { AuthService } from './shared/security/auth.service';
 import { CollapseModule } from 'ng2-bootstrap/collapse';
@@ -17,6 +19,7 @@ import { TopNavComponent } from './top-nav/top-nav.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { TesterComponent } from './tester/tester.component';
+import { PostNeedComponent } from './post-need/post-need.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBymDlc5x-NzBC-xL5RZ1GtroML8KeV56g",
@@ -40,6 +43,7 @@ export const firebaseAuthConfig = {
     LoginComponent,
     RegisterComponent,
     TesterComponent,
+    PostNeedComponent,
     //AppModuleComponent,
   ],
   imports: [
@@ -54,7 +58,9 @@ export const firebaseAuthConfig = {
   ],
   providers: [
     AuthService,
-    UserService
+    UserService,
+    AuthGuard,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
