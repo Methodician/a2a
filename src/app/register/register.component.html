@@ -1,59 +1,59 @@
-<form autocomplete="off" novalidate class="login-form" [formGroup]="form">
+<form autocomplete="off" novalidate class="login-form" [formGroup]="form" class="form-group">
 
   <fieldset>
     <legend>Register</legend>
     <h2>Representative:</h2>
     <div class="form-field">
       <label>*Email</label>
-      <input name="repEmail" formControlName="repEmail" type="email">
+      <input name="repEmail" formControlName="repEmail" type="email" class="form-control">
     </div>
     <div class="form-field">
       <label>*Password</label>
-      <input name="password" formControlName="password" type="password">
+      <input name="password" formControlName="password" type="password" class="form-control">
     </div>
     <div class="form-field">
       <label>*Confirm Password:</label>
-      <input name="confirm" formControlName="confirm" type="password">
+      <input name="confirm" formControlName="confirm" type="password" class="form-control">
     </div>
 
     <div class="form-field">
       <label>*First Name</label>
-      <input name="fName" formControlName="fName" type="text">
+      <input name="fName" formControlName="fName" type="text" class="form-control">
     </div>
     <div class="form-field">
       <label>*Last Name</label>
-      <input name="lName" formControlName="lName" type="text">
+      <input name="lName" formControlName="lName" type="text" class="form-control">
     </div>
     <div class="form-field">
       <label>*Phone</label>
-      <input name="repPhone" formControlName="repPhone" type="tel">
+      <input name="repPhone" formControlName="repPhone" type="tel" class="form-control">
     </div>
     <h3>Organization:</h3>
     <div class="form-field">
       <label>*Name</label>
-      <input name="orgName" formControlName="orgName" type="text">
+      <input name="orgName" formControlName="orgName" type="text" class="form-control">
     </div>
     <div class="form-field">
       <label>Phone</label>
-      <input name="orgPhone" formControlName="orgPhone" type="tel">
+      <input name="orgPhone" formControlName="orgPhone" type="tel" class="form-control">
     </div>
     <div class="form-field">
       <label>Website URL</label>
-      <input name="orgWebsite" formControlName="orgWebsite" type="url">
+      <input name="orgWebsite" formControlName="orgWebsite" type="url" class="form-control">
     </div>
     <div class="form-field">
       <label>*City</label>
-      <input name="orgCity" formControlName="orgCity" type="text">
+      <input name="orgCity" formControlName="orgCity" type="text" class="form-control">
     </div>
     <div class="form-field">
       <label>*State</label>
-      <input name="orgState" formControlName="orgState" type="text">
+      <input name="orgState" formControlName="orgState" type="text" class="form-control">
     </div>
     <div class="form-field">
       <label>*Zip</label>
-      <input name="orgZip" formControlName="orgZip" type="text">
+      <input name="orgZip" formControlName="orgZip" type="text" class="form-control">
     </div>
   </fieldset>
 
-  <button (click)="signUp()" [disabled]="!isPasswordMatch()">Create User</button>
+  <button (click)="signUp()" [disabled]="!isPasswordMatch()" class="btn btn-default">Create User</button>
 </form>

@@ -1,18 +1,18 @@
-<form autocomplete="off" novalidate class="login-form" [formGroup]="form">
+<form autocomplete="off" novalidate class="login-form" [formGroup]="form" class="form-group">
 
   <fieldset>
     <legend>Login</legend>
     <div class="form-field">
       <label>Email:</label>
-      <input name="email" formControlName="email">
+      <input name="email" formControlName="email" class="form-control">
     </div>
     <div class="form-field">
       <label>Password:</label>
-      <input name="password" formControlName="password" type="password">
+      <input name="password" formControlName="password" type="password" class="form-control">
     </div>
   </fieldset>
 
-  <button (click)="login()">Login</button>
+  <button (click)="login()" class="btn btn-default">Login</button>
 </form>
 <p>
   or: <a routerLink="../register">Register Now</a>
