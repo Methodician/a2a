@@ -1,5 +1,10 @@
 #home-top {
     text-align: center;
+    margin-top: 65px;
+}
+
+p {
+    margin: 0 0 50px;
 }
 
 .intro-bubble {
