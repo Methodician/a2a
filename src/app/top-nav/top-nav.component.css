@@ -1,0 +1,35 @@
+.navbar-inverse {
+    background-color: #fff;
+    border-color: #fff;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: #fff;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #CDDC39;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+    background-color: #F8BBD0;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.navbar-brand {
+    font-size: 2em;
+}
+
+.container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse {
+    margin-right: -15px;
+    margin-left: -15px;
+    -webkit-box-shadow: 1px 7px 37px -20px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 7px 37px -20px rgba(0,0,0,0.75);
+    box-shadow: 1px 7px 37px -20px rgba(0,0,0,0.75);
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: transparent;
+}
