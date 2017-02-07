@@ -1,10 +1,12 @@
 #home-top {
     text-align: center;
     margin-top: 65px;
+    padding-bottom: 11px;
 }
 
 p {
     margin: 0 0 50px;
+    font-weight: 300;
 }
 
 .intro-bubble {
@@ -12,22 +14,58 @@ p {
     margin-right: 30px;
 }
 
+#about,
+#needs,
+#spotlight,
+#contact {
+    padding: 35px 30px;
+}
+
 #about {
-    background-color: gray;
+    background-color: #212121;
+    color: #fff;
+    padding-bottom: 20px;
 }
 .video-placeholder {
     height: 120px;
     width: 240px;
     background-color: white;
+    margin: 30px 0;
 }
 #needs {
-    background-color: deeppink;
+    background-color: #CDDC39;
+    color: #757575;
+    padding-bottom: 25px;
+}
+.col-xs-5 {
+    padding-left: 0;
+    padding-right: 1px;
+}
+.col-xs-7 {
+    padding-left: 0;
 }
 .image-placeholder {
     height: 120px;
     width: 140px;
     background-color: white;
+    margin: 10px;
+    margin-top: 0;
+}
+#needs .fa {
+    margin-left: 9px;
 }
 #spotlight {
-    background-color: lightpink;
+    background-color: #F2A1BC;
+    color: #fff;
+    padding-bottom: 50px;
+}
+.img-circle {
+    margin-bottom: 20px;
+}
+#contact {
+
+}
+.btn-success {
+    background-color: #CDDC39;
+    border-color: #CDDC39;
 }
