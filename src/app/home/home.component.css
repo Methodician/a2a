@@ -14,6 +14,7 @@ p {
 
 #about {
     background-color: gray;
+    color: white;
 }
 .video-placeholder {
     height: 120px;
@@ -22,6 +23,7 @@ p {
 }
 #needs {
     background-color: deeppink;
+    color: white;
 }
 .image-placeholder {
     height: 120px;
@@ -29,5 +31,6 @@ p {
     background-color: white;
 }
 #spotlight {
-    background-color: lightpink;
+    background-color: #F8BBD0;
+    color: white;
 }

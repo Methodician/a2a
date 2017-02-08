@@ -1,3 +1,4 @@
+import { NeedDetailComponent } from './need-detail/need-detail.component';
 import { AuthGuard } from './shared/security/auth.guard';
 import { PostNeedComponent } from './post-need/post-need.component';
 import { TesterComponent } from './tester/tester.component';
@@ -10,7 +11,19 @@ import { Routes, RouterModule, CanActivate } from '@angular/router';
 
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
-    { path: 'needs', component: NeedsComponent },
+    {
+        path: 'needs',
+        children: [
+            {
+                path: ':id',
+                component: NeedDetailComponent
+            },
+            {
+                path: '',
+                component: NeedsComponent
+            }
+        ]
+    },
     { path: 'postaneed', component: PostNeedComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },

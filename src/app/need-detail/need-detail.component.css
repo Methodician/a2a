@@ -1,0 +1,39 @@
+#details {
+    padding: 20px;
+}
+
+#details > b {
+    display: block;
+}
+
+#other-images > img {
+    border-radius: unset;
+}
+
+#social-share {
+    display: flex;
+    justify-content: space-around;
+}
+#social-share > .fa {
+    display: flex;
+}
+
+.fa-facebook-square {
+    color: dodgerblue;
+}
+
+.fa-twitter-square {
+    color: lightskyblue;
+}
+
+#email-share {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    background-color: hotpink;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+}

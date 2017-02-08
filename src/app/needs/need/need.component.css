@@ -1,7 +1,13 @@
 
-#wrapper {
+/*#wrapper {
     margin: 20px;
+}*/
+
+section {
+    width: 286px;
+    margin: auto;
 }
+
 
 #days-remaining {
     color: gray;

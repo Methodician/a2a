@@ -21,6 +21,7 @@ import { RegisterComponent } from './register/register.component';
 import { TesterComponent } from './tester/tester.component';
 import { PostNeedComponent } from './post-need/post-need.component';
 import { NeedComponent } from './needs/need/need.component';
+import { NeedDetailComponent } from './need-detail/need-detail.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBymDlc5x-NzBC-xL5RZ1GtroML8KeV56g",
@@ -46,6 +47,7 @@ export const firebaseAuthConfig = {
     TesterComponent,
     PostNeedComponent,
     NeedComponent,
+    NeedDetailComponent,
     //AppModuleComponent,
   ],
   imports: [
