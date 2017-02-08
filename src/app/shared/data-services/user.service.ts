@@ -1,7 +1,7 @@
 import { UserInfo } from './../models/user-info';
 import { AuthService } from './../security/auth.service';
-import { Injectable, OnInit, Inject, forwardRef } from '@angular/core';
-import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2';
+import { Injectable, OnInit } from '@angular/core';
+import { AngularFireDatabase } from 'angularfire2';
 import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
 
 @Injectable()

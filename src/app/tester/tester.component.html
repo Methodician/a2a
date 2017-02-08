@@ -3,10 +3,19 @@
 </p>
 
 <input type="file" id="fileInput">
-<button class="btn btn-primary" (click)="uplaodAFile()">Upload Test</button>
+<button class="btn btn-primary" (click)="uplaodAFile()">Upload Cover</button>
 
-<button class="btn btn-primary" (click)="getAllFiles()">Download Test</button>
+<input type="file" id="filesInput" multiple>
+<button class="btn btn-primary" (click)="uploadFiles()">Upload Files</button>
+
+<button class="btn btn-primary" (click)="getAllFiles()">Get Cover</button>
 <img src="" alt="" id="imageDisplay">
+
+<img *ngFor="let path of (filePaths | async)" [src]="path.$value">
+
+<pre>
+  {{ filePaths | async | json }}
+</pre>
 <!--
 name:
 <input type="text" #name> value:
