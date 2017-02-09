@@ -44,7 +44,7 @@ export class PostNeedComponent implements OnInit {
   }
 
   save(form) {
-    this.needSvc.createNewNeed(this.orgId, form.value) /*, this.coverImage, this.bodyImages*/
+    this.needSvc.createNewNeed(this.orgId, form.value, this.coverImage, this.bodyImages) /*, this.coverImage, this.bodyImages*/
       .subscribe(
       () => {
         alert('Need successfully posted!');

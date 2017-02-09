@@ -18,18 +18,40 @@ export class NeedService {
     this.fsRef = app.storage().ref();
   }
 
-  createNewNeed(orgId: string, need: any): Observable<any> { /* , coverImage: any, bodyImages?: any[]) */
+  createNewNeed(orgId: string, need: any, coverImage: any, bodyImages?: any[]): Observable<any> {
 
-    const needToSave = Object.assign({}, need, { orgId });
+    let needToSave = Object.assign({}, need, { orgId });
+
+    if (coverImage.type !== 'image/jpeg') {
+      alert('The file type you used for cover image doesn\'t look like an image...');
+      return;
+    }
+    if (bodyImages) {
+      for (let i = 0; i < bodyImages.length; i++) {
+        if (bodyImages[i].type !== 'image/jpeg') {
+          alert('The file type you used for one of your body images doesn\'t look like an image...')
+        }
+      }
+    }
 
     const newNeedKey = this.dbRef.child('needs').push().key;
 
+    this.updateCoverImage(newNeedKey, coverImage);
+
+    if (bodyImages) {
+      for (let i = 0; i < bodyImages.length; i++) {
+        this.addBodyImage(newNeedKey, bodyImages[i]);
+      }
+    }
+
+    //let needToSave = Object.assign({}, needToSave, )
     let dataToSave = {};
 
     dataToSave[`needs/${newNeedKey}`] = needToSave;
     dataToSave[`needsPerOrg/${orgId}/${newNeedKey}`] = true;
 
     return this.firebaseUpdate(dataToSave);
+
   }
 
   firebaseUpdate(dataToSave) {
@@ -48,6 +70,26 @@ export class NeedService {
       );
 
     return subject.asObservable();
+  }
+
+  updateCoverImage(needKey: string, coverImage: any) {
+    let fileName = coverImage.name;
+    let filePath = `images/${needKey}/${fileName}`;
+    let fileRef = this.fsRef.child(filePath);
+    fileRef.put(coverImage).then(snapshot => {
+      console.log('uploaded a cover image:', snapshot);
+      return this.db.object(`needs/${needKey}`).update({ coverImageUrl: snapshot.metadata.downloadURLs[0] });
+    });
+  }
+
+  addBodyImage(needKey: string, bodyImage: any) {
+    let fileName = bodyImage.name;
+    let filepath = `images/${needKey}/bodyImages/${fileName}`;
+    let fileRef = this.fsRef.child(filepath);
+    fileRef.put(bodyImage).then(snapshot => {
+      console.log('uplaoded a vody image:', snapshot);
+      return this.db.list(`needs/${needKey}/bodyImageUrls`).push(snapshot.metadata.downloadURLs[0]);
+    });
   }
 
 }

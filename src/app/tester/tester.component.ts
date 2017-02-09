@@ -116,7 +116,7 @@ export class TesterComponent implements OnInit {
     let fileName = selectedFile.name;
 
     //  Create a root ref
-    var storageRef = this.app.storage().ref();
+    var storageRef = this.storage().ref();
 
     //  Create ref to 'electric bolt.jpg'
     //var boltRef = storageRef.child('electric bolt.jpg');
