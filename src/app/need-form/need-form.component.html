@@ -1,0 +1,35 @@
+<form autocomplete="off" novalidate class="login-form" [formGroup]="form">
+  <fieldset class="form-group">
+    <legend>New Need</legend>
+    <div class="form-field">
+      <label>Title*</label>
+      <input name="title" formControlName="title" type="text" class="form-control">
+      <div class="field-error-message" *ngIf="isErrorVisible('title','required')">field is mandatory</div>
+    </div>
+    <div class="form-field">
+      <label>Body*</label>
+      <textarea name="body" formControlName="body" id="body" cols="30" rows="5" class="form-control"></textarea>
+      <div class="field-error-message" *ngIf="isErrorVisible('body','required')">field is mandatory</div>
+    </div>
+    <div class="form-field">
+      <label>YouTube Video URL</label>
+      <input name="videoUrl" formControlName="videoUrl" id="videoUrl" class="form-control">
+    </div>
+    <div class="form-field">
+      <label for="perpetual">Ongoing?</label>
+      <input id="perpetual" name="perpetual" formControlName="perpetual" type="checkbox">
+    </div>
+    <div *ngIf="!form.value.perpetual" class="form-field">
+      <label>Start Date</label>
+      <input name="startDate" formControlName="startDate" type="date" class="form-control">
+    </div>
+    <div *ngIf="!form.value.perpetual" class="form-field">
+      <label>End Date</label>
+      <input name="endDate" formControlName="endDate" type="date" class="form-control">
+    </div>
+    <div *ngIf="!form.value.perpetual" class="form-field">
+      <label>Finance Goal</label>
+      <input name="needTotal" formControlName="needTotal" type="number" class="form-control">
+    </div>
+  </fieldset>
+</form>

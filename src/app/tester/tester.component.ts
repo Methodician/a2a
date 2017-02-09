@@ -21,7 +21,7 @@ export class TesterComponent implements OnInit {
   storageUrl: string;
   //storageRef;
   constructor(
-    @Inject(FirebaseApp) private app: any,
+    @Inject(FirebaseApp) app,
     private auth: AuthService,
     private userSvc: UserService,
     private db: AngularFireDatabase
@@ -29,6 +29,7 @@ export class TesterComponent implements OnInit {
     this.auth.authInfo$.subscribe(info => {
       this.uid = info.$uid;
     });
+    this.storage = app.storage();
     //this.storage = app.storage();
     //const storageRef = app.storage().ref().child('images');
   }
@@ -36,7 +37,7 @@ export class TesterComponent implements OnInit {
   ngOnInit() {
     this.filePaths = this.db.list('allImagePaths');
 
-    this.storage = this.app.storage();
+
     var storageRef = this.storage.ref();
     console.log('Storage Ref:', storageRef);
 
@@ -79,7 +80,7 @@ export class TesterComponent implements OnInit {
   uploadFiles() {
     let input: any = document.getElementById('filesInput');
     var selectedFiles = input.files;
-    var storageRef = this.app.storage().ref();
+    var storageRef = this.storage().ref();
 
     //console.log('File Count:', selectedFiles.length);
     //console.log('All files selected:', selectedFiles);

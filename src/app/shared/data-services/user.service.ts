@@ -1,14 +1,14 @@
 import { UserInfo } from './../models/user-info';
 import { AuthService } from './../security/auth.service';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2';
 import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
 
 @Injectable()
-export class UserService implements OnInit {
+export class UserService {
 
   userInfo$: BehaviorSubject<UserInfo> = new BehaviorSubject<UserInfo>(null);
-  uid = null;
+  uid: string = null;
 
   constructor(
     private authSvc: AuthService,
@@ -24,10 +24,6 @@ export class UserService implements OnInit {
       });
       /*this.userInfo$ = this.db.object(`userInfo/${info.$uid}`);*/
     });
-  }
-
-  ngOnInit() {
-
   }
   updateUserInfo(userInfo, uid?) {
     let id = uid || this.uid;
