@@ -22,6 +22,7 @@ p {
 }
 
 #about {
+    background-color: gray;
     background-color: #212121;
     color: #fff;
     padding-bottom: 20px;
@@ -33,6 +34,8 @@ p {
     margin: 30px 0;
 }
 #needs {
+
+    background-color: deeppink;
     background-color: #CDDC39;
     color: #757575;
     padding-bottom: 25px;
@@ -55,6 +58,7 @@ p {
     margin-left: 9px;
 }
 #spotlight {
+    background-color: #F8BBD0;
     background-color: #F2A1BC;
     color: #fff;
     padding-bottom: 50px;

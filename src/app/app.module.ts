@@ -1,3 +1,4 @@
+import { NeedService } from './shared/data-services/need.service';
 import { DatePipe } from '@angular/common';
 import { AuthGuard } from './shared/security/auth.guard';
 import { UserService } from './shared/data-services/user.service';
@@ -21,6 +22,8 @@ import { RegisterComponent } from './register/register.component';
 import { TesterComponent } from './tester/tester.component';
 import { PostNeedComponent } from './post-need/post-need.component';
 import { NeedComponent } from './needs/need/need.component';
+import { NeedDetailComponent } from './need-detail/need-detail.component';
+import { NeedFormComponent } from './need-form/need-form.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBymDlc5x-NzBC-xL5RZ1GtroML8KeV56g",
@@ -46,6 +49,8 @@ export const firebaseAuthConfig = {
     TesterComponent,
     PostNeedComponent,
     NeedComponent,
+    NeedDetailComponent,
+    NeedFormComponent,
     //AppModuleComponent,
   ],
   imports: [
@@ -61,6 +66,7 @@ export const firebaseAuthConfig = {
   providers: [
     AuthService,
     UserService,
+    NeedService,
     AuthGuard,
     DatePipe
   ],
