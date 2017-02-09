@@ -69,3 +69,18 @@ p {
     background-color: #CDDC39;
     border-color: #CDDC39;
 }
+
+/*most phones landscape mode*/
+@media sreen and (min-width: 500px){
+
+}
+
+/*iPad Portrait mode*/
+@media screen and (min-width: 760px){
+
+}
+
+/*iPad Landscape mode*/
+@media screen and (min-width: 1020px){
+    
+}

@@ -37,3 +37,18 @@
 .navbar-inverse .navbar-nav > li > a {
     text-align: center;
 }
+
+/*most phones landscape mode*/
+@media screen and (min-width: 500px){
+
+}
+
+/*iPad portrait mode*/
+@media screen and (min-width: 760px){
+
+}
+
+/*iPad landscape mode*/
+@media screen and (min-width: 1020px){
+
+}
