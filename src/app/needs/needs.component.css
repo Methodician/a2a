@@ -4,3 +4,33 @@
     color: white;
     text-align: center;
 }
+
+/*most phones landscape mode*/
+@media screen and (min-width: 500px){
+
+}
+
+/*Nexus 6P and iPhone6 Plus landscape*/
+@media screen and (min-width: 732px){
+
+}
+
+/*iPad Portrait mode*/
+@media screen and (min-width: 760px){
+
+}
+
+/*iPad landscape mode*/
+@media screen and (min-width: 1020px){
+
+}
+
+/*iPad Pro landscape*/
+@media screen and (min-width: 1366px) and (min-height: 1024px){
+
+}
+
+/*Desktop view*/
+@media screen and (min-width: 1200px){
+    
+}
