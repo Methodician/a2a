@@ -24,6 +24,7 @@ import { PostNeedComponent } from './post-need/post-need.component';
 import { NeedComponent } from './needs/need/need.component';
 import { NeedDetailComponent } from './need-detail/need-detail.component';
 import { NeedFormComponent } from './need-form/need-form.component';
+import { ReversePipe } from './shared/pipes/reverse.pipe';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBymDlc5x-NzBC-xL5RZ1GtroML8KeV56g",
@@ -51,6 +52,7 @@ export const firebaseAuthConfig = {
     NeedComponent,
     NeedDetailComponent,
     NeedFormComponent,
+    ReversePipe,
     //AppModuleComponent,
   ],
   imports: [
@@ -68,7 +70,8 @@ export const firebaseAuthConfig = {
     UserService,
     NeedService,
     AuthGuard,
-    DatePipe
+    DatePipe,
+    ReversePipe
   ],
   bootstrap: [AppComponent]
 })

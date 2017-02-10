@@ -16,18 +16,18 @@
       <input name="videoUrl" formControlName="videoUrl" id="videoUrl" class="form-control">
     </div>
     <div class="form-field">
-      <label for="perpetual">Ongoing?</label>
-      <input id="perpetual" name="perpetual" formControlName="perpetual" type="checkbox">
+      <label>Ongoing?</label>
+      <input id="ongoing" name="ongoing" formControlName="ongoing" type="checkbox">
     </div>
-    <div *ngIf="!form.value.perpetual" class="form-field">
+    <div *ngIf="!form.value.ongoing" class="form-field">
       <label>Start Date</label>
       <input name="startDate" formControlName="startDate" type="date" class="form-control">
     </div>
-    <div *ngIf="!form.value.perpetual" class="form-field">
+    <div *ngIf="!form.value.ongoing" class="form-field">
       <label>End Date</label>
       <input name="endDate" formControlName="endDate" type="date" class="form-control">
     </div>
-    <div *ngIf="!form.value.perpetual" class="form-field">
+    <div *ngIf="!form.value.ongoing" class="form-field">
       <label>Finance Goal</label>
       <input name="needTotal" formControlName="needTotal" type="number" class="form-control">
     </div>
