@@ -101,7 +101,7 @@ p {
         font-size: 3.5em;
     }
     #home-top {
-        height: 100vh;
+        height: calc(100vh - 115px);
     }
     .welcome{
         padding: 50px 100px 70px;
@@ -138,12 +138,13 @@ p {
 
 /*iPad Landscape mode*/
 @media screen and (min-width: 1020px){
-    .welcome {
-        padding: 10px 100px 30px;
-    }
     #home-top {
-        padding-left: 100px;
-        padding-right: 100px;
+        padding-left: 80px;
+        padding-right: 80px;
+        margin-bottom: 100px;
+    }
+    .welcome {
+        padding: 10px 100px 25px;
     }
     #about,
     #needs,
@@ -154,12 +155,24 @@ p {
     }
 }
 
-/*iPad Pro landscape*/
-@media screen and (min-width: 1366px) and (min-height:1024px){
-
+/*iPad Pro Portrait*/
+@media screen and (min-width: 1024px) and (min-height: 1366px){
+    .welcome {
+        padding: 200px 100px 100px;
+    }
 }
 
 /*Desktop view*/
 @media screen and (min-width: 1200px){
-
+    #home-top {
+        padding-left: 200px;
+        padding-right: 200px;
+    }
+    #about,
+    #needs,
+    #spotlight,
+    #contact {
+        padding-left: 350px;
+        padding-right: 350px;
+    }
 }

@@ -10,6 +10,17 @@
 .navbar-inverse .navbar-toggle .icon-bar {
     background-color: #CDDC39;
 }
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: #5d5d5d;
+}
+.navbar-inverse .navbar-nav > li > a:focus {
+    color: #808080;
+    border-bottom: 5px solid #C2185B;
+}
+
+.navbar-nav > li > a {
+    padding-bottom: 10px;
+}
 
 .navbar-inverse .navbar-brand {
     color: #fff;
@@ -40,7 +51,9 @@
 
 /*most phones landscape mode*/
 @media screen and (min-width: 500px){
-
+    .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
+        max-height: 340px;
+    }
 }
 
 /*Nexus 6P and iPhone6 Plus landscape*/
@@ -54,7 +67,7 @@
         margin-left: 0px;
     }
     .nav {
-        padding-left: 20px;
+        padding-left: 33px;
     }
     .navbar-right {
         margin-right: 10px;
@@ -66,8 +79,8 @@
 
 }
 
-/*iPad Pro landscape*/
-@media screen and (min-width:1366px) and (min-height: 1024px){
+/*iPad Pro Portrait*/
+@media screen and (min-width: 1024px) and (min-height: 1366px){
 
 }
 
