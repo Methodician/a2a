@@ -1,30 +1,35 @@
 <section>
-  <b>Electrify Portland Transportation</b>
-  <img src="../../assets/images/electric_arc.jpg" alt="">
+  <b>{{ need.title }}</b>
+  <img [src]="need.coverImageUrl" alt="Cover Image">
   <div id="body">
     <div id="info">
-      <div id="goal">
-        <div id="goal">
+      <div>
+        <div id="donated">
           $1,000
         </div>
-        <p>desired</p>
+        <p>donated</p>
       </div>
-      <div id="days-remaining">
-        <div id="days">15 </div>
+      <div id="days-remaining" *ngIf="!need.ongoing">
+        <div id="days">{{ daysLeft() }}</div>
         <p>days remaining</p>
       </div>
-      <div id="pending">
-        85%
+      <div *ngIf="!need.ongoing" id="pending">
+        {{ pendingPercent() }}%
         <p>pending</p>
       </div>
+      <div *ngIf="need.ongoing" id="pending">
+        <i class="fa fa-heart"></i>
+        <p>anything helps</p>
+      </div>
     </div>
+
     <div id="buttons">
       <div id="littlebtns">
         <button>DONATE</button>
         <button>SHARE</button>
       </div>
       <div id="bigbtn">
-        <button routerLink="some-need-id">ABOUT</button>
+        <button [routerLink]="need.$key">ABOUT</button>
       </div>
     </div>
   </div>

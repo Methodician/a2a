@@ -1,3 +1,6 @@
+import { NeedService } from './../shared/data-services/need.service';
+import { Need } from './../shared/models/need';
+import { FirebaseListObservable } from 'angularfire2';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NeedsComponent implements OnInit {
 
-  constructor() { }
+  needs: FirebaseListObservable<Need[]> = new FirebaseListObservable<Need[]>(null);
+  constructor(
+    private needSvc: NeedService
+  ) { }
 
   ngOnInit() {
+    this.needs = this.needSvc.getAllNeeds();
   }
 
 }

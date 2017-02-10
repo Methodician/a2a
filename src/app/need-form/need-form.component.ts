@@ -20,7 +20,7 @@ export class NeedFormComponent implements OnInit {
       title: ['', Validators.required],
       body: ['', Validators.required],
       videoUrl: '',
-      perpetual: false,
+      ongoing: false,
       needTotal: 0,
       endDate: datePipe.transform(new Date(), 'y-MM-dd'),
       startDate: datePipe.transform(new Date(), 'y-MM-dd')

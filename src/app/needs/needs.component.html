@@ -9,22 +9,11 @@
   </p>
 </section>
 <section id="needs" class="row">
-  <div class="col-xs-12">
-    <need></need>
-  </div>
-  <div class="col-xs-12">
-    <need></need>
-  </div>
-  <div class="col-xs-12">
-    <need></need>
-  </div>
-  <div class="col-xs-12">
-    <need></need>
-  </div>
-  <div class="col-xs-12">
-    <need></need>
-  </div>
-  <div class="col-xs-12">
-    <need></need>
+  <div *ngFor="let need of needs | async | reverse" class="col-xs-12">
+    <need [need]="need"></need>
   </div>
 </section>
+
+<pre>
+  {{ needs | async | reverse | json }}
+</pre>

@@ -1,3 +1,4 @@
+import { Need } from './../models/need';
 import { Subject, Observable } from 'rxjs/Rx';
 import { AngularFireDatabase, FirebaseRef, FirebaseApp } from 'angularfire2';
 import { AuthService } from './../security/auth.service';
@@ -18,17 +19,27 @@ export class NeedService {
     this.fsRef = app.storage().ref();
   }
 
+  getAllNeeds() {
+    return this.db.list('needs');
+  }
+
   createNewNeed(orgId: string, need: any, coverImage: any, bodyImages?: any[]): Observable<any> {
+    
+    if (!need.ongoing) {
+      need.startDate = Date.parse(need.startDate);
+      need.endDate = Date.parse(need.endDate);
+    }
 
-    let needToSave = Object.assign({}, need, { orgId });
+    let needToSave = Object.assign({}, need, { orgId }, { approved: false }, { timeStamp: Date.now() });
 
-    if (coverImage.type !== 'image/jpeg') {
+
+    if (coverImage.type !== 'image/jpeg' && coverImage.type !== 'image/bmp' && coverImage.type !== 'image/png' && coverImage.type !== 'image/gif') {
       alert('The file type you used for cover image doesn\'t look like an image...');
       return;
     }
     if (bodyImages) {
       for (let i = 0; i < bodyImages.length; i++) {
-        if (bodyImages[i].type !== 'image/jpeg') {
+        if (bodyImages[i].type !== 'image/jpeg' && bodyImages[i].type !== 'image/bmp' && bodyImages[i].type !== 'image/png' && bodyImages[i].type !== 'image/gif') {
           alert('The file type you used for one of your body images doesn\'t look like an image...')
         }
       }
