@@ -75,8 +75,16 @@ p {
 }
 
 /*most phones landscape mode*/
-@media sreen and (min-width: 500px){
+@media screen and (min-width: 500px){
+    .intro-bubble .img-circle {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
 
+    .video-placeholder {
+        height: 220px;
+        width: 340px;
+    }
 }
 
 /*Nexus 6P and iPhone6 Plus landscape*/
@@ -86,12 +94,64 @@ p {
 
 /*iPad Portrait mode*/
 @media screen and (min-width: 760px){
-
+    .container {
+        width: 100%;
+    }
+    h2 {
+        font-size: 3.5em;
+    }
+    #home-top {
+        height: 100vh;
+    }
+    .welcome{
+        padding: 50px 100px 70px;
+    }
+    .welcome h2 {
+        font-size: 4.5em;
+    }
+    .welcome p {
+        font-size: 1.5em;
+    }
+    .intro-bubble .img-circle {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .intro-bubble {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    #about,
+    #needs,
+    #spotlight,
+    #contact {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    #needs {
+        padding-bottom: 65px;
+    }
+    #spotlight,
+    #contact {
+        padding-bottom: 60px;
+    }
 }
 
 /*iPad Landscape mode*/
 @media screen and (min-width: 1020px){
-    
+    .welcome {
+        padding: 10px 100px 30px;
+    }
+    #home-top {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    #about,
+    #needs,
+    #spotlight,
+    #contact {
+        padding-left: 200px;
+        padding-right: 200px;
+    }
 }
 
 /*iPad Pro landscape*/
