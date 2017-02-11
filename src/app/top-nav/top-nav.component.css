@@ -11,15 +11,18 @@
     background-color: #CDDC39;
 }
 .navbar-inverse .navbar-nav > li > a:hover {
-    color: #5d5d5d;
+    color: #808080;
+
 }
 .navbar-inverse .navbar-nav > li > a:focus {
     color: #808080;
+    font-weight: 400;
     border-bottom: 5px solid #C2185B;
 }
 
 .navbar-nav > li > a {
     padding-bottom: 10px;
+    font-weight: 200;
 }
 
 .navbar-inverse .navbar-brand {
