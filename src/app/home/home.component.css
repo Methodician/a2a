@@ -101,10 +101,12 @@ p {
         font-size: 3.5em;
     }
     #home-top {
+        padding-left: 50px;
+        padding-right: 50px;
         height: calc(100vh - 115px);
     }
     .welcome{
-        padding: 50px 100px 70px;
+        padding: 50px 100px 40px;
     }
     .welcome h2 {
         font-size: 4.5em;
@@ -144,7 +146,7 @@ p {
         margin-bottom: 100px;
     }
     .welcome {
-        padding: 10px 100px 25px;
+        padding: 10px 100px 15px;
     }
     #about,
     #needs,
@@ -158,7 +160,29 @@ p {
 /*iPad Pro Portrait*/
 @media screen and (min-width: 1024px) and (min-height: 1366px){
     .welcome {
-        padding: 200px 100px 100px;
+        padding: 150px 100px 100px;
+    }
+    h2 {
+        font-size: 5.5em;
+    }
+    .welcome p {
+        font-size: 2em;
+    }
+    p {
+        font-size: 1.2em;
+    }
+}
+
+/*iPad Pro Landscape*/
+@media screen and (min-width: 1366px) and (min-height: 1024px){
+    h2 {
+        font-size: 5.5em;
+    }
+    .welcome p {
+        font-size: 2em;
+    }
+    p {
+        font-size: 1.2em;
     }
 }
 
@@ -167,12 +191,28 @@ p {
     #home-top {
         padding-left: 200px;
         padding-right: 200px;
+        margin-bottom: 170px;
     }
+    .welcome {
+        padding: 35px 100px 0px;
+    }
+   /* #howitworks {
+        margin-bottom: 200px;
+    }*/
     #about,
     #needs,
     #spotlight,
     #contact {
         padding-left: 350px;
         padding-right: 350px;
+    }
+    h2 {
+        font-size: 5em;
+    }
+    .welcome p {
+        font-size: 1.8em;
+    }
+    p {
+        font-size: 1.2em;
     }
 }
