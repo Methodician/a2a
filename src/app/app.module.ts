@@ -1,3 +1,4 @@
+import { SafeUrlPipe } from './shared/pipes/safe-url.pipe';
 import { NeedService } from './shared/data-services/need.service';
 import { DatePipe } from '@angular/common';
 import { AuthGuard } from './shared/security/auth.guard';
@@ -25,6 +26,8 @@ import { NeedComponent } from './needs/need/need.component';
 import { NeedDetailComponent } from './need-detail/need-detail.component';
 import { NeedFormComponent } from './need-form/need-form.component';
 import { ReversePipe } from './shared/pipes/reverse.pipe';
+import { SafeHtmlPipe } from './shared/pipes/safe-html.pipe';
+import { AdjustIframePipe } from './shared/pipes/adjust-iframe.pipe';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBymDlc5x-NzBC-xL5RZ1GtroML8KeV56g",
@@ -53,6 +56,9 @@ export const firebaseAuthConfig = {
     NeedDetailComponent,
     NeedFormComponent,
     ReversePipe,
+    SafeUrlPipe,
+    SafeHtmlPipe,
+    AdjustIframePipe,
     //AppModuleComponent,
   ],
   imports: [
@@ -70,8 +76,9 @@ export const firebaseAuthConfig = {
     UserService,
     NeedService,
     AuthGuard,
-    DatePipe,
-    ReversePipe
+    DatePipe
+    /*    ReversePipe,
+        SafeUrlPipe*/
   ],
   bootstrap: [AppComponent]
 })

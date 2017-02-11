@@ -1,5 +1,5 @@
 <section>
-  <b>{{ need.title }}</b>
+  <b *ngIf="!detail">{{ need.title }}</b>
   <img [src]="need.coverImageUrl" alt="Cover Image">
   <div id="body">
     <div id="info">
@@ -29,7 +29,20 @@
         <button>SHARE</button>
       </div>
       <div id="bigbtn">
-        <button [routerLink]="need.$key">ABOUT</button>
+        <button *ngIf="!detail" [routerLink]="need.$key">ABOUT</button>
+        <button *ngIf="detail" routerLink="../">BACK TO NEEDS</button>
+      </div>
+    </div>
+    <div *ngIf="need.videoIframe && detail" width="100%" [innerHTML]="need.videoIframe | adjustIframe | safeHtml"></div>
+    <div *ngIf="detail" id="details">
+      <b>{{ orgInfo?.fName }} {{ orgInfo?.lName }}</b>
+      <b>{{ orgInfo?.orgCity }}, {{ orgInfo?.orgState }}</b>
+      <h3>{{ need.title }}</h3>
+
+      <p>Started: {{ need.startDate | date }}</p>
+      <p>{{ need.body }}</p>
+      <div id="body-images">
+        <img *ngFor="let url of need.bodyImageUrls" [src]="url.$value" alt="Other Images">
       </div>
     </div>
   </div>

@@ -8,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class NeedComponent implements OnInit {
   @Input() need: Need;
+  @Input() detail = false;
+  @Input() orgInfo = null;
   constructor() { }
 
   ngOnInit() {

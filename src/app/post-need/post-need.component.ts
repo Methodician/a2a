@@ -1,6 +1,6 @@
 import { AuthService } from './../shared/security/auth.service';
 import { NeedService } from './../shared/data-services/need.service';
-//import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 //import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from "@angular/common";
@@ -20,6 +20,7 @@ export class PostNeedComponent implements OnInit {
   constructor(
     private datePipe: DatePipe,
     private needSvc: NeedService,
+    private router: Router,
     authSvc: AuthService
   ) {
     authSvc.authInfo$.subscribe(info =>
@@ -49,6 +50,7 @@ export class PostNeedComponent implements OnInit {
       () => {
         alert('Need successfully posted!');
         form.reset();
+        this.router.navigate(['../needs']);
       },
       err => alert(`Error creating posting need: ${err}`)
       );

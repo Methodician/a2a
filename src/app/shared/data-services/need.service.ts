@@ -23,8 +23,19 @@ export class NeedService {
     return this.db.list('needs');
   }
 
+  getNeedById(id: string) {
+    return this.db.object(`needs/${id}`);
+  }
+
+  getNeedImages(need: any) {
+    this.db.list(`needImageUrls/${need.$key}`)
+      .subscribe(images => {
+        need.bodyImageUrls = images;
+      });
+  }
+
   createNewNeed(orgId: string, need: any, coverImage: any, bodyImages?: any[]): Observable<any> {
-    
+
     if (!need.ongoing) {
       need.startDate = Date.parse(need.startDate);
       need.endDate = Date.parse(need.endDate);
@@ -99,8 +110,18 @@ export class NeedService {
     let fileRef = this.fsRef.child(filepath);
     fileRef.put(bodyImage).then(snapshot => {
       console.log('uplaoded a vody image:', snapshot);
-      return this.db.list(`needs/${needKey}/bodyImageUrls`).push(snapshot.metadata.downloadURLs[0]);
+      return this.db.list(`needImageUrls/${needKey}`).push(snapshot.metadata.downloadURLs[0]);
     });
+  }
+
+  pendingPercent(need) {
+    //return Math.round(((this.need.needTotal - this.need.collectedTotal) / this.need.needTotal));
+    return Math.round(1 - 100 * ((need.needTotal - 1000) / need.needTotal));
+  }
+
+  oneDay = 24 * 60 * 60 * 1000;
+  daysLeft(need) {
+    return Math.round(Math.abs(((new Date(need.endDate).getTime() - new Date(Date.now()).getTime()) / this.oneDay)));
   }
 
 }

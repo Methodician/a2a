@@ -12,8 +12,9 @@
       <div class="field-error-message" *ngIf="isErrorVisible('body','required')">field is mandatory</div>
     </div>
     <div class="form-field">
-      <label>YouTube Video URL</label>
-      <input name="videoUrl" formControlName="videoUrl" id="videoUrl" class="form-control">
+      <label>YouTube embed HTML</label>
+      <p>(on YouTube click "Share" then click "Embed" between "Share" and "Email" and just copy and paste below.)</p>
+      <input name="videoIframe" formControlName="videoIframe" id="videoIframe" class="form-control">
     </div>
     <div class="form-field">
       <label>Ongoing?</label>

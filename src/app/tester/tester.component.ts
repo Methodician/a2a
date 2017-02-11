@@ -11,9 +11,36 @@ const storageBaseURL = 'https://firebasestorage.googleapis.com/b/';
   templateUrl: './tester.component.html',
   styleUrls: ['./tester.component.css']
 })
-export class TesterComponent implements OnInit {
+export class TesterComponent {
 
-  uid = '';
+  constructor(
+    @Inject(FirebaseApp) app,
+    private auth: AuthService,
+    private userSvc: UserService,
+    private db: AngularFireDatabase
+  ) { }
+
+  moveNeedImagesToSubNode() {
+
+    this.db.list('needs')
+      .subscribe(needs => {
+        needs.forEach(need => {
+          if (need.bodyImageUrls) {
+            for (var key in need.bodyImageUrls) {
+              console.log('key:', key);
+              console.log('url:', need.bodyImageUrls[key]);
+              console.log('need key:', need.$key);
+              this.db.list(`needImageUrls/${need.$key}`).push(need.bodyImageUrls[key]);
+            }
+          }
+        });
+      });
+
+  }
+
+}
+
+ /*uid = '';
   storage;
   fileInput: any = { files: null };
   filePaths: FirebaseListObservable<string[]> = new FirebaseListObservable<string[]>(null);
@@ -130,12 +157,12 @@ export class TesterComponent implements OnInit {
     // THey have the same file name but different reference files
     //console.log('The names are the same:', boltRef.name === boltImagesRef.name);
     //console.log('The paths are the same:', boltRef.fullPath === boltImagesRef.fullPath);
-    /*var metadata = {
+    //var metadata = {
       //  Does not work I'm guessing since this isnt valid file metadata...
-      uid: this.uid,
-      declaration: 'Im the boss'
-    }*/
-    fileRef.put(selectedFile/*, metadata*/).then((snapshot) => {
+     // uid: this.uid,
+      //declaration: 'Im the boss'
+   // }
+    fileRef.put(selectedFile).then((snapshot) => {
       console.log('Uploaded a file');
       console.log(snapshot);
       this.db.list('allImagePaths').push(snapshot.metadata.downloadURLs[0]);
@@ -167,8 +194,8 @@ export class TesterComponent implements OnInit {
     });
   }
   getAllFiles() {
-    /*let pathRef = this.storage.ref(`images/${this.uid}/data-flow.jpg`);
-    console.log(pathRef);*/
+    //let pathRef = this.storage.ref(`images/${this.uid}/data-flow.jpg`);
+    //console.log(pathRef);
     let path = `images/${this.uid}/data-flow.jpg`;
     let imgDisplay: any = document.getElementById('imageDisplay');
     this.downloadUrlFromPath(path).then(url => {
@@ -208,6 +235,4 @@ export class TesterComponent implements OnInit {
     //console.log('Value:', value);
     let property = JSON.parse(`{ "${name}": "${value}" }`);
     this.userSvc.updateUserInfo(property);
-  }
-
-}
+  }*/

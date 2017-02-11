@@ -19,7 +19,7 @@ export class NeedFormComponent implements OnInit {
     this.form = fb.group({
       title: ['', Validators.required],
       body: ['', Validators.required],
-      videoUrl: '',
+      videoIframe: '',
       ongoing: false,
       needTotal: 0,
       endDate: datePipe.transform(new Date(), 'y-MM-dd'),
