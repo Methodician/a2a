@@ -19,6 +19,10 @@ export class NeedService {
     this.fsRef = app.storage().ref();
   }
 
+  donate(info) {
+    this.db.list('contributions').push(info);
+  }
+
   getAllNeeds() {
     return this.db.list('needs');
   }
