@@ -1,12 +1,14 @@
-<section id="needs-top">
-  <a routerLink="../postaneed" class="btn btn-circle btn-lg btn-primary">
-    <i class="fa fa-plus"></i>
-  </a>
-  <h2>NEEDS</h2>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus id accusantium perferendis, voluptatem placeat iusto sint
-    consequuntur mollitia. Repellat dolore suscipit veniam hic ipsa maiores tenetur blanditiis impedit aut minus.
-  </p>
+<section id="needs-top" class="row">
+  <div class="container">  
+    <a routerLink="../postaneed" class="btn btn-circle btn-lg btn-danger">
+      <i class="fa fa-plus"></i>
+    </a>
+    <h2>NEEDS</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus id accusantium perferendis, voluptatem placeat iusto sint
+      consequuntur mollitia. Repellat dolore suscipit veniam hic ipsa maiores tenetur blanditiis impedit aut minus.
+    </p>
+  </div>
 </section>
 <section id="needs" class="row">
   <div *ngFor="let need of needs | async | reverse" class="col-xs-12">
