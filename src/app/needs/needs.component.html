@@ -11,7 +11,7 @@
   </div>
 </section>
 <section id="needs" class="row">
-  <div *ngFor="let need of needs | async | reverse" class="col-xs-12">
+  <div *ngFor="let need of needs | async | reverse" class="col-xs-12 col-sm-6 col-md-4">
     <need [need]="need"></need>
   </div>
 </section>

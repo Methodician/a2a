@@ -10,7 +10,8 @@ p {
 section {
     width: 286px;
     margin: auto;
-    margin-bottom: 35px;
+    margin-top: 20px;
+    margin-bottom: 5px;
 }
 
 
@@ -82,7 +83,9 @@ img {
     font-weight: 500;
     width: 250px;
     border-radius: 20px;
-    margin-bottom: 20px;
+    margin-top: -9px;
+    padding: 5px 0px;
+    margin-bottom: 25px;
 }
 /*#remaining {
     line-height: 2em;
