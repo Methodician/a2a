@@ -3,16 +3,21 @@
     margin: 20px;
 }*/
 
+p {
+    font-weight: 300;
+}
+
 section {
     width: 286px;
     margin: auto;
+    margin-bottom: 35px;
 }
 
 
 #days-remaining {
     color: gray;
     text-align: center;
-    padding-right: 20px;
+    /*padding-right: 20px;*/
     /*display: inline-block;*/
     /*align-content: center;*/
     /*display: inherit;*/
@@ -31,11 +36,13 @@ img {
 }
 
 #body {
-    border:2px solid gray;
+    border: 2px solid #c7c7c7;
+    /*border-top-color: #ffffff;*/
     border-radius: 0 0 30px 30px;
 }
 
 #info {
+    margin-top: 11px;
     display: flex;
     justify-content: space-around;
 }
@@ -52,9 +59,15 @@ img {
 
 #littlebtns button {
     background-color: white;
-    border: 3px solid hotpink;
+    border: 4px solid #F8BBD0;
+    color: #888888;
+    font-weight: 400;
     width: 100px;
     border-radius: 20px;
+}
+
+.sharebtn {
+    margin-top: -5px;
 }
 
 #bigbtn {
@@ -63,7 +76,10 @@ img {
 }
 
 #bigbtn button {
-    background-color: hotpink;
+    background-color: #F8BBD0;
+    border: 4px solid #F8BBD0;
+    color: #5D4E4E;
+    font-weight: 500;
     width: 250px;
     border-radius: 20px;
     margin-bottom: 20px;
@@ -76,6 +92,10 @@ img {
 /*FOR NEED DETAILS*/
 #details {
     padding: 20px;
+}
+
+b {
+    font-size: 1.2em;
 }
 
 #details > b {
