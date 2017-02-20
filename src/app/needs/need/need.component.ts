@@ -21,9 +21,9 @@ export class NeedComponent implements OnInit {
   ngOnInit() {
   }
 
-  donate(btnId) {
+  donate() {
     let donationInfo = {
-      buttonId: btnId,
+     //buttonId: btnId,
       needId: this.need.$key,
       orgId: this.need.orgId,
       timeStamp: Date.now()
