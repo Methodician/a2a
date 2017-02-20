@@ -11,7 +11,12 @@ export class NeedComponent implements OnInit {
   @Input() need: Need;
   @Input() detail = false;
   @Input() orgInfo = null;
-  constructor(private needSvc: NeedService) { }
+
+  private contributionId: string;
+
+  constructor(private needSvc: NeedService) {
+    this.contributionId = this.needSvc.createContributionId();
+  }
 
   ngOnInit() {
   }
@@ -23,7 +28,8 @@ export class NeedComponent implements OnInit {
       orgId: this.need.orgId,
       timeStamp: Date.now()
     };
-    this.needSvc.donate(donationInfo);
+    this.needSvc.donate(donationInfo, this.contributionId);
+    this.contributionId = this.needSvc.createContributionId();
     /*console.log(donationInfo);*/
     /*console.log('Button ID:', btnId);
     console.log('Need:', this.need);

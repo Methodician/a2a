@@ -19,8 +19,23 @@ export class NeedService {
     this.fsRef = app.storage().ref();
   }
 
-  donate(info) {
-    this.db.list('contributions').push(info);
+  donate(info, id) {
+    console.log('orgId:', info.orgId);
+    console.log('needId:', info.needId);
+    console.log('contributionId:', id);
+
+    let dataToSave = {};
+
+    dataToSave[`contributions/${id}`] = info;
+    dataToSave[`contributionsPerNeed/${info.needId}/${id}`] = true;
+    dataToSave[`contributionsPerOrg/${info.orgId}/${id}`] = true;
+
+    return this.firebaseUpdate(dataToSave);
+    //this.db.list('contributions').push(info);
+  }
+
+  createContributionId() {
+    return this.dbRef.child('contributions').push().key;
   }
 
   getAllNeeds() {
