@@ -1,8 +1,18 @@
+p {
+    font-weight: 300;
+}
 
 #needs-top {
-    background-color: deeppink;
-    color: white;
+    background-color: #CDDC39;
+    color: #545454;
     text-align: center;
+    padding: 40px 20px 30px;
+    margin-bottom: 10px;
+}
+
+.btn-danger {
+    background-color: #EF5B8D;
+    border-color: #EF5B8D;
 }
 
 /*most phones landscape mode*/
