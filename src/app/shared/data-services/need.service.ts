@@ -34,39 +34,17 @@ export class NeedService {
     //this.db.list('contributions').push(info);
   }
 
-  createContributionId() {
-    return this.dbRef.child('contributions').push().key;
+
+  getContributionsByNeed(id: string) {
+    return this.db.list(`contributionsPerNeed/${id}`);
   }
 
-  //  DELETE ME!!!!!!!!!!!!
-  thing() {
-    let thing = {
-      mc_currency: 'USD',
-      business: 'methodician@gmail.com',
-      payment_type: 'instant',
-      protection_eligibility: 'Ineligible',
-      verify_sign: 'AVfSQ5PLCwiNa3zy.rOy.Na-EbloAuY16GSLP1p4JmwvBTW1P9OvjVGL',
-      payer_status: 'verified',
-      test_ipn: '1',
-      tax: '0.00',
-      payer_email: 'methodician-1@gmail.com',
-      txn_id: '9480781010830610E',
-      quantity: '0',
-      receiver_email: 'methodician@gmail.com',
-      first_name: 'Jacob',
-      payer_id: 'EDJRBNJ7AKSBN',
-      receiver_id: '4S3ZNLHAF9LKQ',
-      item_number: '',
-      payer_business_name: 'Jacob Johnston\'s Test Store',
-      payment_status: 'Completed',
-      payment_fee: '0.42',
-      mc_fee: '0.42',
-      mc_gross: '4.00',
-      custom: '{"contributionId":"-KdRoHmdimqxaBKwtapG","orgId":"7nysLU8UVcPfcnWpOHJWTMdzikB3","needId":"-KcexlmlgWbLQrpBAjwb"}',
-      charset: 'windows-1252',
-      notify_version: '3.8',
-      ipn_track_id: 'c8f59abd6e56e'
-    }
+  getContributionTotal(id: string) {
+    return this.db.object(`contributionTotalLog/${id}`);
+  }
+
+  getNeedContributionTotal(id: string){
+
   }
 
   getAllNeeds() {
@@ -162,6 +140,10 @@ export class NeedService {
       console.log('uplaoded a vody image:', snapshot);
       return this.db.list(`needImageUrls/${needKey}`).push(snapshot.metadata.downloadURLs[0]);
     });
+  }
+
+  createContributionId() {
+    return this.dbRef.child('contributions').push().key;
   }
 
   pendingPercent(need) {

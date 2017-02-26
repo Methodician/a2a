@@ -12,6 +12,9 @@ export class NeedComponent implements OnInit {
   @Input() detail = false;
   @Input() orgInfo = null;
 
+  //contributions = [];
+  donated = 0;
+
   private contributionId: string;
 
   constructor(private needSvc: NeedService) {
@@ -19,11 +22,45 @@ export class NeedComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.needSvc.getContributionsByNeed(this.need.$key)
+      .subscribe(contributions => {
+        //this.contributions = contributions;
+        for (let cont of contributions) {
+          this.needSvc.getContributionTotal(cont.$key)
+            .subscribe(total => {
+              if (total.$value)
+                this.donated += parseFloat(total.$value);
+            });
+        }
+      });
+    /*.subscribe(contributions => {
+      this.contributions = contributions;
+      console.log(this.contributions);
+      let i = 0;
+      let len = this.contributions.length;
+      if (len > 0) {
+        while (i < this.contributions.length) {
+          this.needSvc.getContributionTotal(this.contributions[i].$key)
+            .subscribe(total => {
+              console.log('contribution BEFORE:', this.contributions[i]);
+              console.log('total:', total);
+              if (total.$value) {
+                this.contributions[i] = total.$value;
+                i++;
+              }
+              else {
+                this.contributions.splice(i, 1);
+              }
+              console.log('contribution AFTER:', this.contributions[i]);
+              console.log(this.contributions);
+            });
+        }
+      }*/
   }
 
   donate() {
     let donationInfo = {
-     //buttonId: btnId,
+      //buttonId: btnId,
       needId: this.need.$key,
       orgId: this.need.orgId,
       timeStamp: Date.now()
@@ -38,7 +75,7 @@ export class NeedComponent implements OnInit {
 
   pendingPercent() {
     //return Math.round(((this.need.needTotal - this.need.collectedTotal) / this.need.needTotal));
-    return Math.round(1 - 100 * ((this.need.needTotal - 1000) / this.need.needTotal));
+    return Math.round(100 * ((this.need.needTotal - this.donated) / this.need.needTotal));
   }
 
   oneDay = 24 * 60 * 60 * 1000;
