@@ -1,5 +1,5 @@
 <section id="needs-top" class="row">
-  <div class="container">  
+  <div class="container">
     <a routerLink="../postaneed" class="btn btn-circle btn-lg btn-danger">
       <i class="fa fa-plus"></i>
     </a>
@@ -11,11 +11,11 @@
   </div>
 </section>
 <section id="needs" class="row">
-  <div *ngFor="let need of needs | async | reverse" class="col-xs-12 col-sm-6 col-md-4">
+  <div *ngFor="let need of needs | reverse" class="col-xs-12 col-sm-6 col-md-4">
     <need [need]="need"></need>
   </div>
 </section>
 
 <!--<pre>
-  {{ needs | async | reverse | json }}
+  {{ needs | reverse | json }}
 </pre>-->

@@ -1,17 +1,17 @@
 import { UserService } from './../shared/data-services/user.service';
+import { NeedService } from './../shared/data-services/need.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserInfo } from './../shared/models/user-info';
 import { Need } from './../shared/models/need';
-import { NeedService } from './../shared/data-services/need.service';
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: 'app-need-detail',
-  templateUrl: './need-detail.component.html',
-  styleUrls: ['./need-detail.component.css', '../needs/need/need.component.css']
+  selector: 'app-approve-detail',
+  templateUrl: './approve-detail.component.html',
+  styleUrls: ['./approve-detail.component.css']
 })
-export class NeedDetailComponent implements OnInit {
-  //need$: FirebaseObjectObservable<Need> = null;
+export class ApproveDetailComponent implements OnInit {
+
   needId: string;
   need: Need;
   orgInfo: UserInfo;
@@ -25,7 +25,6 @@ export class NeedDetailComponent implements OnInit {
 
   ngOnInit() {
     this.needId = this.route.snapshot.params['id'];
-    //this.need$ = this.needSvc.getNeedById(this.needId);
     this.needSvc.getNeedById(this.needId).subscribe(need => {
       this.needSvc.getNeedImages(need);
       this.need = need;

@@ -28,6 +28,8 @@ import { NeedFormComponent } from './need-form/need-form.component';
 import { ReversePipe } from './shared/pipes/reverse.pipe';
 import { SafeHtmlPipe } from './shared/pipes/safe-html.pipe';
 import { AdjustIframePipe } from './shared/pipes/adjust-iframe.pipe';
+import { ApproveNeedsComponent } from './approve-needs/approve-needs.component';
+import { ApproveDetailComponent } from './approve-detail/approve-detail.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBymDlc5x-NzBC-xL5RZ1GtroML8KeV56g",
@@ -59,6 +61,8 @@ export const firebaseAuthConfig = {
     SafeUrlPipe,
     SafeHtmlPipe,
     AdjustIframePipe,
+    ApproveNeedsComponent,
+    ApproveDetailComponent,
     //AppModuleComponent,
   ],
   imports: [

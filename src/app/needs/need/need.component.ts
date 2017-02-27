@@ -1,6 +1,6 @@
 import { NeedService } from './../../shared/data-services/need.service';
 import { Need } from './../../shared/models/need';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'need',
@@ -10,7 +10,10 @@ import { Component, OnInit, Input } from '@angular/core';
 export class NeedComponent implements OnInit {
   @Input() need: Need;
   @Input() detail = false;
+  @Input() approving = false;
   @Input() orgInfo = null;
+
+  //@Output() approvalChanged = new EventEmitter();
 
   //contributions = [];
   donated = 0;
@@ -56,6 +59,11 @@ export class NeedComponent implements OnInit {
             });
         }
       }*/
+  }
+
+  toggleApproval() {
+    //this.approvalChanged.emit(!this.need.approved);
+    this.needSvc.setNeedApproval(this.need.$key, !this.need.approved);
   }
 
   donate() {

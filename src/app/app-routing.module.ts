@@ -1,3 +1,5 @@
+import { ApproveDetailComponent } from './approve-detail/approve-detail.component';
+import { ApproveNeedsComponent } from './approve-needs/approve-needs.component';
 import { NeedDetailComponent } from './need-detail/need-detail.component';
 import { AuthGuard } from './shared/security/auth.guard';
 import { PostNeedComponent } from './post-need/post-need.component';
@@ -21,6 +23,19 @@ const routes: Routes = [
             {
                 path: '',
                 component: NeedsComponent
+            }
+        ]
+    },
+    {
+        path: 'approveneeds',
+        children: [
+            {
+                path: ':id',
+                component: ApproveDetailComponent
+            },
+            {
+                path: '',
+                component: ApproveNeedsComponent
             }
         ]
     },

@@ -24,7 +24,7 @@
     </div>
 
     <div id="buttons">
-      <div id="littlebtns">
+      <div id="littlebtns" *ngIf="!approving">
         <!--<form #form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" (ngSubmit)="donate(btnId.value)">
         <input type="hidden" name="cmd" value="_s-xclick">
         <input type="hidden" name="custom" value="{&#34;contributionId&#34;:&#34;{{contributionId}}&#34;,&#34;orgId&#34;:&#34;{{need.orgId}}&#34;,&#34;needId&#34;:&#34;{{need.$key}}&#34;}">
@@ -44,6 +44,12 @@
         <!--<button>DONATE</button>-->
         <button class="sharebtn">SHARE</button>
       </div>
+      <div id="littlebtns" *ngIf="approving && detail">
+        <button class="sharebtn" (click)="toggleApproval()">{{ need.approved ? 'Unapprove' : 'Approve' }}</button>
+        <p>
+          Currently: {{ need.approved ? 'approved' : 'not approved' }}
+        </p>
+      </div>
       <div id="bigbtn">
         <button *ngIf="!detail" [routerLink]="need.$key">ABOUT</button>
         <button *ngIf="detail" routerLink="../">BACK TO NEEDS</button>
@@ -62,7 +68,4 @@
       </div>
     </div>
   </div>
-  <pre>
-    DONATED: {{ donated }}
-  </pre>
 </section>

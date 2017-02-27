@@ -43,12 +43,24 @@ export class NeedService {
     return this.db.object(`contributionTotalLog/${id}`);
   }
 
-  getNeedContributionTotal(id: string){
-
-  }
+  /*  getNeedContributionTotal(id: string) {
+  
+    }*/
 
   getAllNeeds() {
     return this.db.list('needs');
+  }
+
+  getNeedsByApproval(isApproved: boolean): Observable<Need[]> {
+    return this.db.list('needs', {
+      query: {
+        orderByChild: 'approved',
+        equalTo: isApproved
+      }
+    })
+      .filter(res => res && res.length > 0)
+      .do(console.log);
+    //return this.dbRef.child('needs').orderByChild('approved').equalTo(isApproved);
   }
 
   getNeedById(id: string) {
@@ -140,6 +152,10 @@ export class NeedService {
       console.log('uplaoded a vody image:', snapshot);
       return this.db.list(`needImageUrls/${needKey}`).push(snapshot.metadata.downloadURLs[0]);
     });
+  }
+
+  setNeedApproval(id: string, isApproved: boolean) {
+    this.db.object(`needs/${id}`).update({ approved: isApproved });
   }
 
   createContributionId() {

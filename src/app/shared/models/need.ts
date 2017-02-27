@@ -1,6 +1,7 @@
 export class Need {
     constructor(
         public $key: string,
+        public approved: boolean,
         public orgId: string,
         public coverImagePath: string,
         public title: string,
@@ -22,6 +23,7 @@ export class Need {
 
     static fromJson({
         $key,
+        approved,
         orgId,
         coverImagePath,
         title,
@@ -37,6 +39,7 @@ export class Need {
     }): Need {
         return new Need(
             $key,
+            approved,
             orgId,
             coverImagePath,
             title,

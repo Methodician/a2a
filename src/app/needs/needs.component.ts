@@ -1,8 +1,8 @@
 import { NeedService } from './../shared/data-services/need.service';
 import { Need } from './../shared/models/need';
-import { FirebaseListObservable } from 'angularfire2';
+//import { FirebaseListObservable } from 'angularfire2';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from "rxjs/observable";
+import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'app-needs',
@@ -11,14 +11,18 @@ import { Observable } from "rxjs/observable";
 })
 export class NeedsComponent implements OnInit {
 
-  needs: FirebaseListObservable<Need[]> = new FirebaseListObservable<Need[]>(null);
+  needs: Need[] = [];
   //needs: Observable<Need[]> = new Observable<Need[]>(null);
   constructor(
     private needSvc: NeedService
   ) { }
 
   ngOnInit() {
-    this.needs = this.needSvc.getAllNeeds();
+    //this.needs = this.needSvc.getAllNeeds();
+    this.needSvc.getNeedsByApproval(true)
+      .subscribe(needs => {
+        this.needs = needs;
+      });
   }
 
 }
