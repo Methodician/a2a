@@ -2,6 +2,8 @@ import { NeedService } from './../../shared/data-services/need.service';
 import { Need } from './../../shared/models/need';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+
+
 @Component({
   selector: 'need',
   templateUrl: './need.component.html',
@@ -12,6 +14,9 @@ export class NeedComponent implements OnInit {
   @Input() detail = false;
   @Input() approving = false;
   @Input() orgInfo = null;
+  @Input() preview = false;
+
+  previewImageUrl = '../../assets/images/electric_arc.jpg'
 
   //@Output() approvalChanged = new EventEmitter();
 
@@ -36,29 +41,6 @@ export class NeedComponent implements OnInit {
             });
         }
       });
-    /*.subscribe(contributions => {
-      this.contributions = contributions;
-      console.log(this.contributions);
-      let i = 0;
-      let len = this.contributions.length;
-      if (len > 0) {
-        while (i < this.contributions.length) {
-          this.needSvc.getContributionTotal(this.contributions[i].$key)
-            .subscribe(total => {
-              console.log('contribution BEFORE:', this.contributions[i]);
-              console.log('total:', total);
-              if (total.$value) {
-                this.contributions[i] = total.$value;
-                i++;
-              }
-              else {
-                this.contributions.splice(i, 1);
-              }
-              console.log('contribution AFTER:', this.contributions[i]);
-              console.log(this.contributions);
-            });
-        }
-      }*/
   }
 
   toggleApproval() {

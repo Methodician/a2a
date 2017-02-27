@@ -1,3 +1,5 @@
+import { UserService } from './../shared/data-services/user.service';
+import { UserInfo } from './../shared/models/user-info';
 import { AuthService } from './../shared/security/auth.service';
 import { NeedService } from './../shared/data-services/need.service';
 import { Router } from '@angular/router';
@@ -13,6 +15,7 @@ import { DatePipe } from "@angular/common";
 export class PostNeedComponent implements OnInit {
 
   orgId: string;
+  orgInfo: UserInfo;
 
   coverImage: any;
   bodyImages: any;
@@ -21,6 +24,7 @@ export class PostNeedComponent implements OnInit {
     private datePipe: DatePipe,
     private needSvc: NeedService,
     private router: Router,
+    private userSvc: UserService,
     authSvc: AuthService
   ) {
     authSvc.authInfo$.subscribe(info =>
@@ -29,11 +33,12 @@ export class PostNeedComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Organization ID in post-need.comp:', this.orgId);
+    //console.log('Organization ID in post-need.comp:', this.orgId);
+    this.userSvc.getUserInfo(this.orgId).subscribe(info => this.orgInfo = info);
   }
 
   coverImageChange(event) {
-    console.log('cover image changed');
+    //console.log('cover image changed');
     this.coverImage = event.srcElement.files[0];
     console.log(this.coverImage);
   }

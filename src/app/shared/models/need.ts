@@ -3,7 +3,7 @@ export class Need {
         public $key: string,
         public approved: boolean,
         public orgId: string,
-        public coverImagePath: string,
+        public coverImageUrl: string,
         public title: string,
         public body: string,
         public ongoing: boolean,
@@ -13,7 +13,7 @@ export class Need {
         public endDate?: number,
         public needTotal?: number,
         public videoUrl?: string,
-        public otherImagePaths?: string[]
+        public bodyImageUrls?: string[]
     ) { }
 
     static fromJsonList(array): Need[] {
@@ -25,7 +25,7 @@ export class Need {
         $key,
         approved,
         orgId,
-        coverImagePath,
+        coverImageUrl,
         title,
         body,
         ongoing,
@@ -35,13 +35,13 @@ export class Need {
         endDate,
         needTotal,
         videoUrl,
-        otherImagePaths,
+        bodyImageUrls,
     }): Need {
         return new Need(
             $key,
             approved,
             orgId,
-            coverImagePath,
+            coverImageUrl,
             title,
             body,
             ongoing,
@@ -51,7 +51,7 @@ export class Need {
             endDate,
             needTotal,
             videoUrl,
-            otherImagePaths,
+            bodyImageUrls,
         );
     }
 }

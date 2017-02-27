@@ -1,6 +1,7 @@
 <section>
   <b *ngIf="!detail">{{ need.title }}</b>
-  <img [src]="need.coverImageUrl" alt="Cover Image">
+  <img [src]="preview ? previewImageUrl : need.coverImageUrl" alt="Cover Image">
+  <!--<img *ngIf="preview" [src]="previewImageUrl" alt="Cover Image">-->
   <div id="body">
     <div id="info">
       <div>
