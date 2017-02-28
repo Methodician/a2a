@@ -3,17 +3,18 @@
   I can also access functions inside the need-form component with that reference in this component.
 -->
 <need-form #form></need-form>
+<div class="form-group">
+  <label>Cover Image*</label>
+  <input type="file" class="form-control" (change)="coverImageChange($event)">
+  <label>Body Images (optional)</label>
+  <input type="file" multiple class="form-control" (change)="bodyImagesChange($event)">
 
-<label>Cover Image*</label>
-<input type="file" class="form-control" (change)="coverImageChange($event)">
-<label>Body Images (optional)</label>
-<input type="file" multiple class="form-control" (change)="bodyImagesChange($event)">
-
-<button (click)="save(form)">Post New Need</button>
+  <button (click)="save(form)">Post New Need</button>
 
 
-<need [need]="form.value" [detail]="1" [preview]="1" [orgInfo]="orgInfo"></need>
-<need [need]="form.value" [preview]="1" [orgInfo]="orgInfo"></need>
+  <need [need]="form.value" [detail]="1" [preview]="1" [orgInfo]="orgInfo"></need>
+  <need [need]="form.value" [preview]="1" [orgInfo]="orgInfo"></need>
+</div>
 <!--<button [disabled]="!form.valid" (click)="save(form)">Save New Lesson</button>-->
 
 <!--<pre>
