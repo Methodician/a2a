@@ -1,3 +1,6 @@
+<!--<pre *ngIf="needs">
+  {{ setsOfThree() | json }}
+</pre>-->
 <section id="needs-top" class="row">
   <div class="container">
     <a routerLink="../postaneed" class="btn btn-circle btn-lg btn-danger">
@@ -10,10 +13,17 @@
     </p>
   </div>
 </section>
-<section id="needs" class="row">
-  <div *ngFor="let need of needs | reverse" class="col-xs-12 col-sm-6 col-md-4">
-    <need [need]="need"></need>
+<section *ngIf="setsOf3" id="needs" class="row">
+  <div class="col-xs-12">
+    <div class="row" *ngFor="let row of setsOf3">
+      <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let need of row">
+        <need [need]="need"></need>
+      </div>
+    </div>
   </div>
+  <!--<div *ngFor="let need of needs | reverse" class="col-xs-12 col-sm-6 col-md-4">
+    <need [need]="need"></need>
+  </div>-->
 </section>
 
 <!--<pre>
