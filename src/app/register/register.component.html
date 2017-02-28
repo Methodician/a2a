@@ -2,7 +2,7 @@
 
   <fieldset>
     <legend>Register</legend>
-    <h2>Representative:</h2>
+    <h3>Representative:</h3>
     <div class="form-field">
       <label>*Email</label>
       <input name="repEmail" formControlName="repEmail" type="email" class="form-control">
@@ -55,5 +55,5 @@
     </div>
   </fieldset>
 
-  <button (click)="signUp()" [disabled]="!isPasswordMatch()" class="btn btn-default">Create User</button>
+  <button (click)="signUp()" [disabled]="!isPasswordMatch()" class="btn btn-default">Register User</button>
 </form>
