@@ -27,7 +27,9 @@ p {
 
 /*iPad Portrait mode*/
 @media screen and (min-width: 760px){
-
+    #needs-top {
+        padding: 40px 60px 30px;
+    }
 }
 
 /*iPad landscape mode*/

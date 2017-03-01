@@ -35,10 +35,10 @@ p {
 }
 
 .btn-default {
-    color: #fff;
-    background-color: #EF5B8D;
-    border-color: #EF5B8D;
-    padding: 10px 30px;
+  color: #fff;
+  background-color: #EF5B8D;
+  border-color: #EF5B8D;
+  padding: 10px 30px;
 }
 
 /*most phones landscape mode*/
@@ -53,24 +53,25 @@ p {
 
 /*iPad Portrait mode*/
 @media screen and (min-width: 760px){
-  .form-group {
-    margin: 70px 200px 0;
-  } 
+  .form-bg {
+    background: #f5f5f5;
+    padding: 10px 30px 40px;
+    border-radius: 10px;
+  }
 
-  button {
-    margin-top: 0px;
-    margin-bottom: 50px;
+  .form-group {
+    margin: 70px 150px 0;
   }
 }
 
 /*iPad landscape mode*/
 @media screen and (min-width: 1020px){
-  .form-group {
-    margin: 70px 250px 0;
+  .form-bg {
+    padding: 15px 40px 50px;
   }
 
-  button {
-    margin-top: 0px;
+  .form-group {
+    margin: 70px 200px 0;
   }
 }
 
@@ -83,9 +84,5 @@ p {
 @media screen and (min-width: 1200px){
   .form-group {
     margin: 70px 300px 0;
-  } 
-
-  button {
-    margin-top: 0px;
   }
 }

@@ -9,7 +9,7 @@
   <label>Body Images (optional)</label>
   <input type="file" multiple class="form-control" (change)="bodyImagesChange($event)">
 
-  <button (click)="save(form)">Post New Need</button>
+  <button (click)="save(form)" class="btn btn-default">Post New Need</button>
 
 
   <need [need]="form.value" [detail]="1" [preview]="1" [orgInfo]="orgInfo"></need>
