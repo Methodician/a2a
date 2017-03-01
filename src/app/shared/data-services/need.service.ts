@@ -134,6 +134,24 @@ export class NeedService {
     return subject.asObservable();
   }
 
+  storeTempCoverImage(image: any) {
+    // ToDo: Delete temporary image upon submit or cancel...
+    const subject = new Subject();
+    let filePath = `images/temp/${image.name}`;
+    let fileRef = this.fsRef.child(filePath);
+    fileRef.put(image).then(snapshot => {
+      //console.log(snapshot.metadata);
+      let imageAccessors = {
+        url: snapshot.metadata.downloadURLs[0],
+        path: snapshot.metadata.fullPath
+      }
+      //console.log(imageAccessors);
+      subject.next(imageAccessors);
+      subject.complete();
+    });
+    return subject.asObservable();
+  }
+
   updateCoverImage(needKey: string, coverImage: any) {
     let fileName = coverImage.name;
     let filePath = `images/${needKey}/${fileName}`;

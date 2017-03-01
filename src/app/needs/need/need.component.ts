@@ -15,8 +15,7 @@ export class NeedComponent implements OnInit {
   @Input() approving = false;
   @Input() orgInfo = null;
   @Input() preview = false;
-
-  previewImageUrl = '../../assets/images/electric_arc.jpg'
+  @Input() previewImageUrl = '../../assets/images/electric_arc.jpg';
 
   //@Output() approvalChanged = new EventEmitter();
 

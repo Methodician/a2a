@@ -19,6 +19,7 @@ export class PostNeedComponent implements OnInit {
 
   coverImage: any;
   bodyImages: any;
+  previewImageUrl: any = '../../assets/images/vision2.png';
 
   constructor(
     private datePipe: DatePipe,
@@ -38,9 +39,16 @@ export class PostNeedComponent implements OnInit {
   }
 
   coverImageChange(event) {
-    //console.log('cover image changed');
+    console.log('cover image changed');
+    console.log(event);
     this.coverImage = event.srcElement.files[0];
-    console.log(this.coverImage);
+    this.needSvc.storeTempCoverImage(this.coverImage)
+      .subscribe((imageAccessors: any) => {
+        console.log(imageAccessors);
+        this.previewImageUrl = imageAccessors.url;
+      });
+    //console.log(this.previewImageUrl);
+    //console.log(this.coverImage);
   }
 
   bodyImagesChange(event) {
