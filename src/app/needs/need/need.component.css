@@ -52,6 +52,7 @@ img {
 
 #info {
     margin-top: 11px;
+    height: 56px;
     display: flex;
     justify-content: space-around;
 }
