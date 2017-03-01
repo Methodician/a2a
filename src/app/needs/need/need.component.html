@@ -1,6 +1,6 @@
 <section>
   <!--ToDo: Create Truncate Pipe with Elipses-->
-  <b *ngIf="!detail">{{ need.title | truncateTitle }}</b>
+  <b *ngIf="!detail">{{ need.title | truncateTitle:25 }}</b>
   <div id="imgwrapper">
     <img [src]="preview ? previewImageUrl : need.coverImageUrl" alt="Cover Image">
     <!--<img *ngIf="preview" [src]="previewImageUrl" alt="Cover Image">-->
