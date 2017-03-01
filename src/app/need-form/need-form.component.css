@@ -53,12 +53,25 @@ p {
 
 /*iPad Portrait mode*/
 @media screen and (min-width: 760px){
+  .form-group {
+    margin: 70px 200px 0;
+  } 
 
+  button {
+    margin-top: 0px;
+    margin-bottom: 50px;
+  }
 }
 
 /*iPad landscape mode*/
 @media screen and (min-width: 1020px){
+  .form-group {
+    margin: 70px 250px 0;
+  }
 
+  button {
+    margin-top: 0px;
+  }
 }
 
 /*iPad Pro landscape*/
@@ -68,5 +81,11 @@ p {
 
 /*Desktop view*/
 @media screen and (min-width: 1200px){
+  .form-group {
+    margin: 70px 300px 0;
+  } 
 
+  button {
+    margin-top: 0px;
+  }
 }

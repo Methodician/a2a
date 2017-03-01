@@ -1,7 +1,10 @@
 <section>
+  <!--ToDo: Create Truncate Pipe with Elipses-->
   <b *ngIf="!detail">{{ need.title }}</b>
-  <img [src]="preview ? previewImageUrl : need.coverImageUrl" alt="Cover Image">
-  <!--<img *ngIf="preview" [src]="previewImageUrl" alt="Cover Image">-->
+  <div id="imgwrapper">
+    <img [src]="preview ? previewImageUrl : need.coverImageUrl" alt="Cover Image">
+    <!--<img *ngIf="preview" [src]="previewImageUrl" alt="Cover Image">-->
+  </div>
   <div id="body">
     <div id="info">
       <div>
@@ -21,10 +24,10 @@
       <div *ngIf="need.ongoing" id="pending">
         <i class="fa fa-heart"></i>
         <p>anything helps</p>
-      </div>`
+      </div>
     </div>
 
-    <div id="buttons">`
+    <div id="buttons">
       <div id="littlebtns" *ngIf="!approving">
         <form #form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" (ngSubmit)="donate(btnId.value)">
         <input type="hidden" name="cmd" value="_s-xclick">
