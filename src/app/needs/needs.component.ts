@@ -44,9 +44,6 @@ export class NeedsComponent implements OnInit {
       }
       arrOfArr.push(tempArr);
       tempArr = [];
-      /*if(i+1 % 3 === 0 || i === 0){
-        arrOfArr.push
-      }*/
     }
     this.setsOf3 = arrOfArr;
   }
