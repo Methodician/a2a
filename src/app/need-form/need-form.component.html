@@ -1,36 +1,38 @@
 <form autocomplete="off" novalidate class="login-form" [formGroup]="form">
   <fieldset class="form-group">
     <legend>New Need</legend>
-    <div class="form-field">
-      <label>Title*</label>
-      <input name="title" formControlName="title" type="text" class="form-control">
-      <div class="field-error-message" *ngIf="isErrorVisible('title','required')">field is mandatory</div>
-    </div>
-    <div class="form-field">
-      <label>Body*</label>
-      <textarea name="body" formControlName="body" id="body" cols="30" rows="5" class="form-control"></textarea>
-      <div class="field-error-message" *ngIf="isErrorVisible('body','required')">field is mandatory</div>
-    </div>
-    <div class="form-field">
-      <label>YouTube embed HTML</label>
-      <p>(on YouTube click "Share" then click "Embed" between "Share" and "Email" and just copy and paste below.)</p>
-      <input name="videoIframe" formControlName="videoIframe" id="videoIframe" class="form-control">
-    </div>
-    <div class="form-field">
-      <label>Ongoing?</label>
-      <input id="ongoing" name="ongoing" formControlName="ongoing" type="checkbox">
-    </div>
-    <div *ngIf="!form.value.ongoing" class="form-field">
-      <label>Start Date</label>
-      <input name="startDate" formControlName="startDate" type="date" class="form-control">
-    </div>
-    <div *ngIf="!form.value.ongoing" class="form-field">
-      <label>End Date</label>
-      <input name="endDate" formControlName="endDate" type="date" class="form-control">
-    </div>
-    <div *ngIf="!form.value.ongoing" class="form-field">
-      <label>Finance Goal</label>
-      <input name="needTotal" formControlName="needTotal" type="number" class="form-control">
+    <div class="form-bg">
+      <div class="form-field">
+        <label>Title*</label>
+        <input name="title" formControlName="title" type="text" class="form-control">
+        <div class="field-error-message" *ngIf="isErrorVisible('title','required')">field is mandatory</div>
+      </div>
+      <div class="form-field">
+        <label>Body*</label>
+        <textarea name="body" formControlName="body" id="body" cols="30" rows="5" class="form-control"></textarea>
+        <div class="field-error-message" *ngIf="isErrorVisible('body','required')">field is mandatory</div>
+      </div>
+      <div class="form-field">
+        <label>YouTube embed HTML</label>
+        <p>(on YouTube click "Share" then click "Embed" between "Share" and "Email" and just copy and paste below.)</p>
+        <input name="videoIframe" formControlName="videoIframe" id="videoIframe" class="form-control">
+      </div>
+      <div class="form-field">
+        <label>Ongoing?</label>
+        <input id="ongoing" name="ongoing" formControlName="ongoing" type="checkbox">
+      </div>
+      <div *ngIf="!form.value.ongoing" class="form-field">
+        <label>Start Date</label>
+        <input name="startDate" formControlName="startDate" type="date" class="form-control">
+      </div>
+      <div *ngIf="!form.value.ongoing" class="form-field">
+        <label>End Date</label>
+        <input name="endDate" formControlName="endDate" type="date" class="form-control">
+      </div>
+      <div *ngIf="!form.value.ongoing" class="form-field">
+        <label>Finance Goal</label>
+        <input name="needTotal" formControlName="needTotal" type="number" class="form-control">
+      </div>
     </div>
   </fieldset>
 </form>

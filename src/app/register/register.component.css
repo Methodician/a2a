@@ -43,8 +43,17 @@ label {
 
 /*iPad Portrait mode*/
 @media screen and (min-width: 760px){
+  .form-bg {
+    background: #f5f5f5;
+    padding: 10px 30px 40px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+  }
   .form-group {
-    margin: 70px 200px 10px;
+    margin: 70px 150px 0;
+  }
+  fieldset {
+    margin-bottom: 0;
   } 
 
   button {
@@ -55,8 +64,12 @@ label {
 
 /*iPad landscape mode*/
 @media screen and (min-width: 1020px){
+  .form-bg {
+    padding: 15px 40px 50px;
+  }
+
   .form-group {
-    margin: 70px 350px 20px;
+    margin: 70px 200px 0;
   } 
 
   button {
@@ -72,7 +85,7 @@ label {
 /*Desktop view*/
 @media screen and (min-width: 1200px){
   .form-group {
-    margin: 70px 500px 20px;
+    margin: 70px 300px 0;
   } 
 
   button {
