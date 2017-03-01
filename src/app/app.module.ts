@@ -30,6 +30,7 @@ import { SafeHtmlPipe } from './shared/pipes/safe-html.pipe';
 import { AdjustIframePipe } from './shared/pipes/adjust-iframe.pipe';
 import { ApproveNeedsComponent } from './approve-needs/approve-needs.component';
 import { ApproveDetailComponent } from './approve-detail/approve-detail.component';
+import { TruncateTitlePipe } from './shared/pipes/truncate-title.pipe';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBymDlc5x-NzBC-xL5RZ1GtroML8KeV56g",
@@ -63,6 +64,7 @@ export const firebaseAuthConfig = {
     AdjustIframePipe,
     ApproveNeedsComponent,
     ApproveDetailComponent,
+    TruncateTitlePipe,
     //AppModuleComponent,
   ],
   imports: [
