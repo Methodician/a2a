@@ -96,7 +96,8 @@ export class NeedService {
       }
     }
 
-    const newNeedKey = this.dbRef.child('needs').push().key;
+    //const newNeedKey = needKey ? needKey : this.dbRef.child('needs').push().key;
+    const newNeedKey = this.createNeedKey();
 
     this.updateCoverImage(newNeedKey, coverImage);
 
@@ -116,40 +117,40 @@ export class NeedService {
 
   }
 
-  firebaseUpdate(dataToSave) {
-    const subject = new Subject();
-
-    this.dbRef.update(dataToSave)
-      .then(
-      val => {
-        subject.next(val);
-        subject.complete();
-      },
-      err => {
-        subject.error(err);
-        subject.complete();
-      }
-      );
-
-    return subject.asObservable();
-  }
-
   storeTempCoverImage(image: any) {
     // ToDo: Delete temporary image upon submit or cancel...
     const subject = new Subject();
-    let filePath = `images/temp/${image.name}`;
+    let key = this.dbRef.child('imagePaths/temp').push().key;
+    let filePath = `images/temp/${key}`;
     let fileRef = this.fsRef.child(filePath);
     fileRef.put(image).then(snapshot => {
       //console.log(snapshot.metadata);
       let imageAccessors = {
         url: snapshot.metadata.downloadURLs[0],
-        path: snapshot.metadata.fullPath
+        path: snapshot.metadata.fullPath,
+        key: key
       }
+      this.dbRef.child(`imagePaths/temp/${key}`).set(imageAccessors.path);
       //console.log(imageAccessors);
       subject.next(imageAccessors);
       subject.complete();
     });
     return subject.asObservable();
+  }
+
+  /*  storeTempBodyImages(images: any[]){
+      for(let image of images){
+        this.storeTempCoverImage(image)
+        .subscribe()
+      }
+    }*/
+
+  deleteTempImages(accessors: any[]) {
+    //this.fsRef.child(`images/temp/${needKey}/`).delete();
+    for (let accessor of accessors) {
+      this.fsRef.child(accessor.path).delete();
+      this.dbRef.child(`imagePaths/temp/${accessor.key}`).remove();
+    }
   }
 
   updateCoverImage(needKey: string, coverImage: any) {
@@ -180,6 +181,10 @@ export class NeedService {
     return this.dbRef.child('contributions').push().key;
   }
 
+  createNeedKey() {
+    return this.dbRef.child('needs').push().key;
+  }
+
   pendingPercent(need) {
     //return Math.round(((this.need.needTotal - this.need.collectedTotal) / this.need.needTotal));
     return Math.round(1 - 100 * ((need.needTotal - 1000) / need.needTotal));
@@ -188,6 +193,24 @@ export class NeedService {
   oneDay = 24 * 60 * 60 * 1000;
   daysLeft(need) {
     return Math.round(Math.abs(((new Date(need.endDate).getTime() - new Date(Date.now()).getTime()) / this.oneDay)));
+  }
+
+  firebaseUpdate(dataToSave) {
+    const subject = new Subject();
+
+    this.dbRef.update(dataToSave)
+      .then(
+      val => {
+        subject.next(val);
+        subject.complete();
+      },
+      err => {
+        subject.error(err);
+        subject.complete();
+      }
+      );
+
+    return subject.asObservable();
   }
 
 }

@@ -4,7 +4,7 @@ import { AuthService } from './../shared/security/auth.service';
 import { NeedService } from './../shared/data-services/need.service';
 import { Router } from '@angular/router';
 //import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DatePipe } from "@angular/common";
 
 @Component({
@@ -12,14 +12,17 @@ import { DatePipe } from "@angular/common";
   templateUrl: './post-need.component.html',
   styleUrls: ['./post-need.component.css']
 })
-export class PostNeedComponent implements OnInit {
+export class PostNeedComponent implements OnInit, OnDestroy {
 
   orgId: string;
   orgInfo: UserInfo;
+  //needKey: string;
+  tempAccessors: any[] = [];
 
   coverImage: any;
   bodyImages: any;
   previewImageUrl: any = '../../assets/images/vision2.png';
+  previewBodyImageUrls: string[];
 
   constructor(
     private datePipe: DatePipe,
@@ -36,6 +39,11 @@ export class PostNeedComponent implements OnInit {
   ngOnInit() {
     //console.log('Organization ID in post-need.comp:', this.orgId);
     this.userSvc.getUserInfo(this.orgId).subscribe(info => this.orgInfo = info);
+    //this.needKey = this.needSvc.createNeedId();
+  }
+
+  ngOnDestroy() {
+    this.needSvc.deleteTempImages(this.tempAccessors);
   }
 
   coverImageChange(event) {
@@ -46,6 +54,7 @@ export class PostNeedComponent implements OnInit {
       .subscribe((imageAccessors: any) => {
         console.log(imageAccessors);
         this.previewImageUrl = imageAccessors.url;
+        this.tempAccessors.push(imageAccessors);
       });
     //console.log(this.previewImageUrl);
     //console.log(this.coverImage);
@@ -54,11 +63,19 @@ export class PostNeedComponent implements OnInit {
   bodyImagesChange(event) {
     console.log('body images changed');
     this.bodyImages = event.srcElement.files;
+    this.previewBodyImageUrls = [];
+    for (let image of this.bodyImages) {
+      this.needSvc.storeTempCoverImage(image)
+        .subscribe((imageAccessors: any) => {
+          this.previewBodyImageUrls.push(imageAccessors.url);
+          this.tempAccessors.push(imageAccessors);
+        });
+    }
     console.log(this.bodyImages);
   }
 
   save(form) {
-    this.needSvc.createNewNeed(this.orgId, form.value, this.coverImage, this.bodyImages) /*, this.coverImage, this.bodyImages*/
+    this.needSvc.createNewNeed(this.orgId, form.value, this.coverImage, this.bodyImages)
       .subscribe(
       () => {
         alert('Need successfully posted!');

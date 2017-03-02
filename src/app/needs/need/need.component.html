@@ -2,7 +2,7 @@
   <!--ToDo: Create Truncate Pipe with Elipses-->
   <b *ngIf="!detail">{{ need.title | truncateTitle:25 }}</b>
   <div id="imgwrapper">
-    <img [src]="preview ? previewImageUrl : need.coverImageUrl" alt="Cover Image">
+    <img id="cover-image" [src]="preview ? previewImageUrl : need.coverImageUrl" alt="Cover Image">
     <!--<img *ngIf="preview" [src]="previewImageUrl" alt="Cover Image">-->
   </div>
   <div id="body">
@@ -68,7 +68,12 @@
       <p>Started: {{ need.startDate | date }}</p>
       <p>{{ need.body }}</p>
       <div id="body-images">
-        <img *ngFor="let url of need.bodyImageUrls" [src]="url.$value" alt="Other Images">
+        <div *ngIf="!preview">
+          <img *ngFor="let url of need.bodyImageUrls" [src]="url.$value" alt="Other Images">
+        </div>
+        <div *ngIf="preview && previewBodyImageUrls && previewBodyImageUrls.length > 0">
+          <img *ngFor="let url of previewBodyImageUrls" [src]="url" alt="Other Images">
+        </div>
       </div>
     </div>
   </div>
