@@ -12,11 +12,13 @@
   <button (click)="save(form)" class="btn btn-default">Post New Need</button>
 
 
-  <need [need]="form.value" [detail]="1" [preview]="1" [orgInfo]="orgInfo" [previewImageUrl]="previewImageUrl"></need>
+  <need [need]="form.value" [detail]="1" [preview]="1" [orgInfo]="orgInfo" [previewImageUrl]="previewImageUrl" [previewBodyImageUrls]="previewBodyImageUrls"></need>
   <need [need]="form.value" [preview]="1" [orgInfo]="orgInfo" [previewImageUrl]="previewImageUrl"></need>
 </div>
 <!--<button [disabled]="!form.valid" (click)="save(form)">Save New Lesson</button>-->
-
+<pre>
+  {{ this.previewBodyImageUrls | json }}
+</pre>
 <!--<pre>
   Form:
   {{ form.value | json }}

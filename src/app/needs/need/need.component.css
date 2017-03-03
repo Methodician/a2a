@@ -30,11 +30,17 @@ section {
 
 img {
     width: 100%;
-    /*max-height: 100%;*/
-    /*background-color: black;*/
-    border-radius: 30px 30px 0 0;
-    /*margin-top: 10px;*/
 }
+#cover-image{
+    /*border-radius: 30px 30px 0 0;*/
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#body-images img {
+    margin-top: 10px;
+}
+
 #imgwrapper {
     width: 100%;
     height: 200px;
