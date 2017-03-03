@@ -23,8 +23,12 @@ p {
 
 #about {
     background-color: #212121;
-    color: #fff;
+    color: #ccc;
     padding-bottom: 20px;
+}
+#about h2,
+#about h4 {
+    color: #f7f7f7;
 }
 .video-placeholder {
     height: 120px;
