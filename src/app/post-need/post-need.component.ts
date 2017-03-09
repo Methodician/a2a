@@ -50,7 +50,7 @@ export class PostNeedComponent implements OnInit, OnDestroy {
     console.log('cover image changed');
     console.log(event);
     this.coverImage = event.srcElement.files[0];
-    this.needSvc.storeTempCoverImage(this.coverImage)
+    this.needSvc.storeTempImage(this.coverImage)
       .subscribe((imageAccessors: any) => {
         console.log(imageAccessors);
         this.previewImageUrl = imageAccessors.url;
@@ -65,7 +65,7 @@ export class PostNeedComponent implements OnInit, OnDestroy {
     this.bodyImages = event.srcElement.files;
     this.previewBodyImageUrls = [];
     for (let image of this.bodyImages) {
-      this.needSvc.storeTempCoverImage(image)
+      this.needSvc.storeTempImage(image)
         .subscribe((imageAccessors: any) => {
           this.previewBodyImageUrls.push(imageAccessors.url);
           this.tempAccessors.push(imageAccessors);

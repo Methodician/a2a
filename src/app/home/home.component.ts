@@ -1,3 +1,5 @@
+import { Need } from './../shared/models/need';
+import { NeedService } from './../shared/data-services/need.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  lastNeeds: Need[];
+  constructor(private needSvc: NeedService) { }
 
   ngOnInit() {
+    this.needSvc.getLastNeeds(true)
+      .subscribe(needs => {
+        this.lastNeeds = needs;
+      });
   }
 
 }

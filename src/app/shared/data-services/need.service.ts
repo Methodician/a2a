@@ -51,6 +51,19 @@ export class NeedService {
     return this.db.list('needs');
   }
 
+  getLastNeeds(isApproved: boolean, howMany?: number){
+    let count = howMany? howMany : 4;
+    return this.db.list('needs', {
+      query: {
+        orderByChild: 'approved',
+        equalTo: isApproved,
+        limitToLast: count
+      }
+    })
+    .filter(res => res && res.length > 0)
+    .do(console.log);
+  }
+
   getNeedsByApproval(isApproved: boolean): Observable<Need[]> {
     return this.db.list('needs', {
       query: {
@@ -117,7 +130,7 @@ export class NeedService {
 
   }
 
-  storeTempCoverImage(image: any) {
+  storeTempImage(image: any) {
     // ToDo: Delete temporary image upon submit or cancel...
     const subject = new Subject();
     let key = this.dbRef.child('imagePaths/temp').push().key;
