@@ -8,7 +8,7 @@
 }
 
 .navbar-inverse .navbar-toggle .icon-bar {
-    background-color: #CDDC39;
+    background-color: #34495e;
 }
 .navbar-inverse .navbar-nav > li > a:hover {
     color: #808080;
@@ -17,7 +17,7 @@
 .navbar-inverse .navbar-nav > li > a:focus {
     color: #808080;
     font-weight: 400;
-    border-bottom: 5px solid #C2185B;
+    border-bottom: 5px solid #FF8C7C;
 }
 
 .navbar-nav > li > a {
@@ -27,7 +27,7 @@
 
 .navbar-inverse .navbar-brand {
     color: #fff;
-    background-color: #F8BBD0;
+    background-color: #FF8C7C;
     padding-right: 30px;
     padding-left: 30px;
 }
