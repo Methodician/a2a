@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit {
     this.authSvc.login(formValue.email, formValue.password)
       .subscribe(
       () => this.router.navigate(['/home']),
-      alert
-        
-      );
+      (err) => {
+        alert(err);
+      });
   }
 }

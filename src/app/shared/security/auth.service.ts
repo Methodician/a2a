@@ -1,7 +1,7 @@
 import { AuthInfo } from './auth-info';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
-import { FirebaseAuthState, FirebaseAuth } from 'angularfire2';
+import { FirebaseAuthState, FirebaseAuth, FirebaseRef } from 'angularfire2';
 
 
 
@@ -11,9 +11,11 @@ export class AuthService {
   static UNKNOWN_USER = new AuthInfo(null);
 
   authInfo$: BehaviorSubject<AuthInfo> = new BehaviorSubject<AuthInfo>(AuthService.UNKNOWN_USER);
+  fbRef: any;
 
   constructor(
-    private auth: FirebaseAuth
+    private auth: FirebaseAuth,
+    @Inject(FirebaseRef) fbRef
     /*private db: AngularFireDatabase*/
   ) {
     this.auth.subscribe(info => {
@@ -23,6 +25,7 @@ export class AuthService {
         this.authInfo$.next(authInfo);
       }
     });
+    this.fbRef = fbRef;
   }
 
   login(email, password): Observable<FirebaseAuthState> {
@@ -41,17 +44,32 @@ export class AuthService {
 
     promise
       .then(res => {
-        const authInfo = new AuthInfo(this.auth.getAuth().uid);
-        this.authInfo$.next(authInfo);
-        subject.next(res);
-        subject.complete();
+        if (res.auth.emailVerified) {
+          const authInfo = new AuthInfo(this.auth.getAuth().uid);
+          this.authInfo$.next(authInfo);
+          subject.next(res);
+          subject.complete();
+        }
+        else {
+          this.authInfo$.next(AuthService.UNKNOWN_USER);
+          subject.error('Please respond to the verification email before logging in');
+        }
       },
       err => {
         this.authInfo$.error(err);
         subject.error(err);
         subject.complete();
       });
-
     return subject.asObservable();
+  }
+
+  sendVerificationEmail() {
+    let user = this.fbRef.auth().currentUser;
+
+    user.sendEmailVerification().then(() => {
+      console.log('Verification email sent')
+    }, (error) => {
+      alert('It looks like your verification email was not sent. Please try again or contact support.');
+    });
   }
 }
