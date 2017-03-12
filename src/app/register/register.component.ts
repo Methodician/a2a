@@ -1,3 +1,4 @@
+import { AuthInfo } from './../shared/security/auth-info';
 import { UserService } from './../shared/data-services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,6 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
 
   form: FormGroup;
+  authInfo: AuthInfo;
 
   constructor(
     private fb: FormBuilder,
@@ -32,6 +34,7 @@ export class RegisterComponent implements OnInit {
       orgCity: ['', Validators.required],
       orgState: ['', Validators.required],
       orgZip: ['', Validators.required],
+      agreedToTnC: false
     });
   }
 
@@ -53,11 +56,14 @@ export class RegisterComponent implements OnInit {
         delete val.password;
         delete val.confirm;
         this.userSvc.updateUserInfo(val, res.auth.uid);
-        alert('Ueser created successfully!');
+        this.authSvc.sendVerificationEmail();
+        alert('Thanks for creating an account! You must respond to the verification email to complete the process.');
         this.router.navigateByUrl('/home');
       },
       err => alert(err)
       );
+
+
   }
 
 }
