@@ -1,11 +1,11 @@
 #home-top {
     text-align: center;
     margin-top: 65px;
-    padding-bottom: 11px;
+    padding-bottom: 40px;
 }
 
 p {
-    margin: 0 0 50px;
+    margin: 0 0 25px;
     font-weight: 300;
 }
 
@@ -23,7 +23,7 @@ p {
 #about {
     background-color: #2c3e50;
     color: #ccc;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
 }
 #about h2,
 #about h4 {
@@ -39,7 +39,8 @@ p {
     background-color: #e7e7e7;
     color: #2c3e50;
     /*padding: 35px 20px;*/
-    height: 700px;
+    height: 500px;
+    padding: 35px 45px;
 }
 #needs-wrapper{
     overflow-x: scroll;
@@ -50,8 +51,8 @@ p {
 }
 need {
     /*display: inline-block;*/
-    text-align: center;
-    margin-right: 30px; 
+    /*text-align: center;
+    margin-right: 30px;*/ 
 }
 #imgwrapper {
     width: 100%;
@@ -68,6 +69,14 @@ need {
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
+}
+
+#contact p {
+    margin-bottom: 0px;
+}
+.btn-success {
+    background-color: #CDDC39;
+    border-color: #CDDC39;
 }
 
 /*TESTING*/
@@ -142,13 +151,6 @@ img {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
-#contact {
-
-}
-.btn-success {
-    background-color: #CDDC39;
-    border-color: #CDDC39;
-}
 
 /*most phones landscape mode*/
 @media screen and (min-width: 500px){
@@ -199,19 +201,14 @@ img {
         margin-right: 0;
     }
     #about,
-   /* #needs,*/
+    #needs,
     #spotlight,
     #contact {
-        padding-left: 100px;
-        padding-right: 100px;
+        padding: 40px 100px 60px;
     }
 /*    #needs {
         padding-bottom: 65px;
     }*/
-    #spotlight,
-    #contact {
-        padding-bottom: 60px;
-    }
 }
 
 /*iPad Landscape mode*/
@@ -225,7 +222,7 @@ img {
         padding: 10px 100px 15px;
     }
     #about,
-/*    #needs,*/
+    #needs,
     #spotlight,
     #contact {
         padding-left: 200px;
@@ -247,6 +244,15 @@ img {
     p {
         font-size: 1.2em;
     }
+    #about,
+    #needs,
+    #spotlight,
+    #contact {
+        padding: 50px 200px 90px;
+    }
+    #needs {
+        height: 550px;
+    }
 }
 
 /*iPad Pro Landscape*/
@@ -259,6 +265,9 @@ img {
     }
     p {
         font-size: 1.2em;
+    }
+    #needs {
+        height: 550px;
     }
 }
 
@@ -279,8 +288,12 @@ img {
 /*    #needs,*/
     #spotlight,
     #contact {
-        padding-left: 350px;
-        padding-right: 350px;
+        padding: 50px 350px 90px;
+    }
+    #needs {
+        padding-left: 250px;
+        padding-right: 250px;
+        height: 550px;
     }
     h2 {
         font-size: 5em;
