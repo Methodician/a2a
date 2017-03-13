@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class TopNavComponent implements OnInit {
   isCollapsed: boolean = true;
 
-  authInfo: AuthInfo = new AuthInfo(null);
+  authInfo: AuthInfo = new AuthInfo(null, false);
   firstName: string = '';
   constructor(
     private authSvc: AuthService,

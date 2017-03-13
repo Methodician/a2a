@@ -56,7 +56,10 @@
         <input name="orgZip" formControlName="orgZip" type="text" class="form-control">
       </div>
     </div>
+    <div class="form-bg">
+      Please read and agree to our terms and conditions <input name="agreedToCnC" formControlName="agreedToTnC" type="checkbox"
+        class="checkbox">
+    </div>
   </fieldset>
-
   <button (click)="signUp()" [disabled]="!isPasswordMatch()" class="btn btn-default">Register User</button>
 </form>
