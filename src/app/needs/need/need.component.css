@@ -78,8 +78,8 @@ img {
 
 #littlebtns button {
     background-color: white;
-    border: 4px solid #F8BBD0;
-    color: #888888;
+    border: 4px solid #FF8C7C;
+    color: #2c3e50;
     font-weight: 400;
     width: 100px;
     border-radius: 20px;
@@ -95,9 +95,9 @@ img {
 }
 
 #bigbtn button {
-    background-color: #F8BBD0;
-    border: 4px solid #F8BBD0;
-    color: #5D4E4E;
+    background-color: #2c3e50;
+    border: 4px solid #2c3e50;
+    color: #fff;
     font-weight: 500;
     width: 250px;
     border-radius: 20px;
