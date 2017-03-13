@@ -1,3 +1,4 @@
+import { EmailVerifiedGuard } from './shared/security/emailVerified.guard';
 import { ApproveDetailComponent } from './approve-detail/approve-detail.component';
 import { ApproveNeedsComponent } from './approve-needs/approve-needs.component';
 import { NeedDetailComponent } from './need-detail/need-detail.component';
@@ -39,7 +40,7 @@ const routes: Routes = [
             }
         ]
     },
-    { path: 'postaneed', component: PostNeedComponent, canActivate: [AuthGuard] },
+    { path: 'postaneed', component: PostNeedComponent, canActivate: [AuthGuard, EmailVerifiedGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'tester', component: TesterComponent },

@@ -7,17 +7,19 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angul
 
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class EmailVerifiedGuard implements CanActivate {
 
     constructor(private authSvc: AuthService, private router: Router) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
         return this.authSvc.authInfo$
-            .map(authInfo  =>  authInfo.isLoggedIn())
+            .map(authInfo => authInfo.isEmailVerified())
             .take(1)
             .do(allowed => {
-                if(!allowed) {
-                    this.router.navigate(['/login']);
+                if (!allowed) {
+                    let shouldResend = confirm('You need to verify your email. Do you need us to resend the link?');
+                    if (shouldResend)
+                        this.authSvc.sendVerificationEmail();
                 }
             });
     }
