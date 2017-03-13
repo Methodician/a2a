@@ -1,3 +1,4 @@
+import { EmailVerifiedGuard } from './shared/security/emailVerified.guard';
 import { SafeUrlPipe } from './shared/pipes/safe-url.pipe';
 import { NeedService } from './shared/data-services/need.service';
 import { DatePipe } from '@angular/common';
@@ -82,6 +83,7 @@ export const firebaseAuthConfig = {
     UserService,
     NeedService,
     AuthGuard,
+    EmailVerifiedGuard,
     DatePipe
     /*    ReversePipe,
         SafeUrlPipe*/

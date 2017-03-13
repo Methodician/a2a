@@ -13,7 +13,9 @@ export class EmailVerifiedGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
         return this.authSvc.authInfo$
-            .map(authInfo => authInfo.isEmailVerified())
+            .map(authInfo =>
+                authInfo.isEmailVerified()
+            )
             .take(1)
             .do(allowed => {
                 if (!allowed) {
