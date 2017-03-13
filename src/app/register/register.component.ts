@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
       orgCity: ['', Validators.required],
       orgState: ['', Validators.required],
       orgZip: ['', Validators.required],
-      agreedToTnC: false
+      agreedToTnC: [false, Validators.requiredTrue]
     });
   }
 

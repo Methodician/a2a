@@ -21,7 +21,7 @@ export class AuthService {
     this.auth.subscribe(info => {
       if (info) {
         console.log('Auth info from AuthSvc:', info);
-        const authInfo = new AuthInfo(info.uid);
+        const authInfo = new AuthInfo(info.uid, info.auth.emailVerified);
         this.authInfo$.next(authInfo);
       }
     });
@@ -44,16 +44,10 @@ export class AuthService {
 
     promise
       .then(res => {
-        if (res.auth.emailVerified) {
-          const authInfo = new AuthInfo(this.auth.getAuth().uid);
-          this.authInfo$.next(authInfo);
-          subject.next(res);
-          subject.complete();
-        }
-        else {
-          this.authInfo$.next(AuthService.UNKNOWN_USER);
-          subject.error('Please respond to the verification email before logging in');
-        }
+        const authInfo = new AuthInfo(this.auth.getAuth().uid, res.auth.emailVerified);
+        this.authInfo$.next(authInfo);
+        subject.next(res);
+        subject.complete();
       },
       err => {
         this.authInfo$.error(err);
