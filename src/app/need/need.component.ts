@@ -1,5 +1,5 @@
-import { NeedService } from './../../shared/data-services/need.service';
-import { Need } from './../../shared/models/need';
+import { NeedService } from './../shared/data-services/need.service';
+import { Need } from './../shared/models/need';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 

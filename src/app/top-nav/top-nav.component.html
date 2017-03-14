@@ -16,10 +16,10 @@
         <!--<li class="nav-item"><a class="nav-link" routerLink="tester">Tester</a></li>-->
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="authInfo.$uid"><a><span class="fa fa-user"></span> Hello {{ firstName }}</a></li>
+        <li *ngIf="authInfo.$uid"><a routerLink="account"><span class="fa fa-user"></span> Hello {{ firstName }}</a></li>
         <li *ngIf="!authInfo.$uid"><a routerLink="register"><span class="fa fa-user-plus"></span> Sign Up</a></li>
         <li *ngIf="!authInfo.$uid"><a routerLink="login"><span class="fa fa-sign-in"></span> Login</a></li>
-        <li *ngIf="authInfo.$uid"><a (click)="logout()"><span class="fa fa-sign-out"></span> Logout</a></li>
+        <li *ngIf="authInfo.$uid"><a routerLink="login" (click)="logout()"><span class="fa fa-sign-out"></span> Logout</a></li>
       </ul>
     </div>
   </div>

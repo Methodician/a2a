@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
     this.authSvc.login(formValue.email, formValue.password)
       .subscribe(
-      () => this.router.navigate(['/home']),
+      () => this.router.navigate(['/account']),
       (err) => {
         alert(err);
       });

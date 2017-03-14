@@ -61,5 +61,5 @@
         class="checkbox">
     </div>
   </fieldset>
-  <button (click)="signUp()" [disabled]="!isPasswordMatch()" class="btn btn-default">Register User</button>
+  <button (click)="signUp()" [disabled]="!isPasswordMatch() || !formValid()" class="btn btn-default">Register User</button>
 </form>

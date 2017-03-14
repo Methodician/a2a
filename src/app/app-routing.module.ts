@@ -1,3 +1,5 @@
+import { OrgApprovedGuard } from './shared/security/orgApproved.guard';
+import { AccountComponent } from './account/account.component';
 import { EmailVerifiedGuard } from './shared/security/emailVerified.guard';
 import { ApproveDetailComponent } from './approve-detail/approve-detail.component';
 import { ApproveNeedsComponent } from './approve-needs/approve-needs.component';
@@ -9,7 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { NeedsComponent } from './needs/needs.component';
 import { HomeComponent } from './home/home.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
 
 const routes: Routes = [
@@ -31,6 +33,7 @@ const routes: Routes = [
         path: 'approveneeds',
         children: [
             {
+                // ToDo: add an isAdminGuard and apply it here (also Firebase Security Rules)
                 path: ':id',
                 component: ApproveDetailComponent
             },
@@ -40,7 +43,25 @@ const routes: Routes = [
             }
         ]
     },
-    { path: 'postaneed', component: PostNeedComponent, canActivate: [AuthGuard, EmailVerifiedGuard] },
+    {
+        path: 'account',
+        children: [
+            {
+                path: ':id',
+                component: NeedDetailComponent
+            },
+            {
+                path: '',
+                component: AccountComponent
+            }
+        ],
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'postaneed',
+        component: PostNeedComponent,
+        canActivate: [AuthGuard, EmailVerifiedGuard, OrgApprovedGuard]
+    },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'tester', component: TesterComponent },

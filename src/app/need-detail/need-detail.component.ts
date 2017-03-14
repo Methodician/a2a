@@ -8,7 +8,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 @Component({
   selector: 'app-need-detail',
   templateUrl: './need-detail.component.html',
-  styleUrls: ['./need-detail.component.css', '../needs/need/need.component.css']
+  styleUrls: ['./need-detail.component.css', '../need/need.component.css']
 })
 export class NeedDetailComponent implements OnInit {
   //need$: FirebaseObjectObservable<Need> = null;

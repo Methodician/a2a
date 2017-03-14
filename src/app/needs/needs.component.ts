@@ -1,6 +1,5 @@
 import { NeedService } from './../shared/data-services/need.service';
 import { Need } from './../shared/models/need';
-//import { FirebaseListObservable } from 'angularfire2';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from "rxjs/Observable";
 
@@ -13,13 +12,11 @@ export class NeedsComponent implements OnInit {
 
   needs: Need[] = null;
   setsOf3: any = null;
-  //needs: Observable<Need[]> = new Observable<Need[]>(null);
   constructor(
     private needSvc: NeedService
   ) { }
 
   ngOnInit() {
-    //this.needs = this.needSvc.getAllNeeds();
     this.needSvc.getNeedsByApproval(true)
       .subscribe(needs => {
         this.needs = needs;

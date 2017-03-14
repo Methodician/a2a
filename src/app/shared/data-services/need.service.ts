@@ -51,8 +51,8 @@ export class NeedService {
     return this.db.list('needs');
   }
 
-  getLastNeeds(isApproved: boolean, howMany?: number){
-    let count = howMany? howMany : 4;
+  getLastNeeds(isApproved: boolean, howMany?: number) {
+    let count = howMany ? howMany : 4;
     return this.db.list('needs', {
       query: {
         orderByChild: 'approved',
@@ -60,8 +60,8 @@ export class NeedService {
         limitToLast: count
       }
     })
-    .filter(res => res && res.length > 0)
-    .do(console.log);
+      .filter(res => res && res.length > 0)
+      .do(console.log);
   }
 
   getNeedsByApproval(isApproved: boolean): Observable<Need[]> {
@@ -74,6 +74,17 @@ export class NeedService {
       .filter(res => res && res.length > 0)
       .do(console.log);
     //return this.dbRef.child('needs').orderByChild('approved').equalTo(isApproved);
+  }
+
+  getNeedsByOrg(orgId: string): Observable<Need[]> {
+    return this.db.list('needs', {
+      query: {
+        orderByChild: 'orgId',
+        equalTo: orgId
+      }
+    })
+      .filter(res => res && res.length > 0)
+      .do(console.log);
   }
 
   getNeedById(id: string) {
@@ -94,7 +105,7 @@ export class NeedService {
       need.endDate = Date.parse(need.endDate);
     }
 
-    let needToSave = Object.assign({}, need, { orgId }, { approved: false }, { timeStamp: Date.now() });
+    let needToSave = Object.assign({}, need, { orgId }, { approved: false }/*, { activeFlag: true }*/, { timeStamp: Date.now() });
 
 
     if (coverImage.type !== 'image/jpeg' && coverImage.type !== 'image/bmp' && coverImage.type !== 'image/png' && coverImage.type !== 'image/gif') {

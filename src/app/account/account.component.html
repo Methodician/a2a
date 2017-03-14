@@ -1,0 +1,134 @@
+<div class="container">
+  <div *ngIf="userInfo" class="panel panel-primary">
+    <div class="panel-heading">
+      <h3>Your account info:</h3>
+    </div>
+    <div class="panel-content">
+      <div class="row">
+        <div class="col-sm-6">
+          <h4>Representative:</h4>
+          <div class="row infoline">
+            <div class="col-sm-4">
+              First Name:
+            </div>
+            <div class="col-sm-8">
+              {{ userInfo.fName }}
+            </div>
+          </div>
+          <div class="row infoline">
+            <div class="col-sm-4">
+              Last Name:
+            </div>
+            <div class="col-sm-8">
+              {{ userInfo.lName }}
+            </div>
+          </div>
+          <div class="row infoline">
+            <div class="col-sm-4">
+              Email:
+            </div>
+            <div class="col-sm-8">
+              {{ userInfo.repEmail }}
+            </div>
+          </div>
+          <div class="row infoline">
+            <div class="col-sm-4">
+              Phone:
+            </div>
+            <div class="col-sm-8">
+              {{ userInfo.repPhone }}
+            </div>
+          </div>
+          <div class="row infoline">
+            <div class="col-sm-4">
+              Email Verified:
+            </div>
+            <div class="col-sm-8">
+              {{ authInfo.emailVerified ? 'Yes' : 'No' }}
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <h4>Organization</h4>
+          <div class="row infoline">
+            <div class="col-sm-4">
+              Name:
+            </div>
+            <div class="col-sm-8">
+              {{ userInfo.orgName }}
+            </div>
+          </div>
+          <div class="row infoline">
+            <div class="col-sm-4">
+              City:
+            </div>
+            <div class="col-sm-8">
+              {{ userInfo.orgCity }}
+            </div>
+          </div>
+          <div class="row infoline">
+            <div class="col-sm-4">
+              State:
+            </div>
+            <div class="col-sm-8">
+              {{ userInfo.orgState }}
+            </div>
+          </div>
+          <div class="row infoline">
+            <div class="col-sm-4">
+              Zip:
+            </div>
+            <div class="col-sm-8">
+              {{ userInfo.orgZip }}
+            </div>
+          </div>
+          <div class="row infoline">
+            <div class="col-sm-4">
+              Website:
+            </div>
+            <div class="col-sm-8">
+              {{ userInfo.orgWebsite }}
+            </div>
+          </div>
+          <div class="row infoline">
+            <div class="col-sm-4">
+              Approved:
+            </div>
+            <div class="col-sm-8">
+              {{ userInfo.orgApproved ? 'Yes' : 'No' }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <pre>
+      {{ userInfo | json }}
+    </pre>
+    <pre>
+      {{ authInfo | json }}
+    </pre>
+  </div>
+</div>
+
+
+<section id="needs-top" class="row">
+  <div class="container">
+    <a routerLink="../postaneed" class="btn btn-circle btn-lg btn-danger">
+      <i class="fa fa-plus"></i>
+    </a>
+    <h2>YOUR NEEDS</h2>
+    <p>
+      A participant is a school, agency, or community needs. All participants must register and be verified before being allowed
+      to post needs. Participation is free.
+    </p>
+    <p>
+      To create a new Need, you must first register for an account.
+    </p>
+  </div>
+</section>
+<section id="needs" class="row">
+  <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let need of needs">
+
+    <need [need]="need"></need>
+  </div>
+</section>

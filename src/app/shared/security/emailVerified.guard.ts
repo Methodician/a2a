@@ -19,7 +19,7 @@ export class EmailVerifiedGuard implements CanActivate {
             .take(1)
             .do(allowed => {
                 if (!allowed) {
-                    let shouldResend = confirm('You need to verify your email. Do you need us to resend the link?');
+                    let shouldResend = confirm('You need to verify your email. Do you need us to resend the link? (press "OK" to resend or "Cancel" if you already go it.)');
                     if (shouldResend)
                         this.authSvc.sendVerificationEmail();
                 }

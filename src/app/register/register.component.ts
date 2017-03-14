@@ -34,7 +34,8 @@ export class RegisterComponent implements OnInit {
       orgCity: ['', Validators.required],
       orgState: ['', Validators.required],
       orgZip: ['', Validators.required],
-      agreedToTnC: [false, Validators.requiredTrue]
+      agreedToTnC: [false, Validators.requiredTrue],
+      orgApproved: false
     });
   }
 
@@ -58,12 +59,16 @@ export class RegisterComponent implements OnInit {
         this.userSvc.updateUserInfo(val, res.auth.uid);
         this.authSvc.sendVerificationEmail();
         alert('Thanks for creating an account! You must respond to the verification email to complete the process.');
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/account');
       },
       err => alert(err)
       );
 
 
+  }
+
+  formValid() {
+    return this.form.valid;
   }
 
 }

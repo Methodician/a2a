@@ -27,15 +27,12 @@ export class UserService {
   }
   updateUserInfo(userInfo, uid?) {
     let id = uid || this.uid;
-    /*    if (!uid)
-          id = this.uid;
-        else id = uid;*/
     return this.db.object(`userInfo/${id}`).update(userInfo);
   }
 
   getUserInfo(uid?) {
     let id = uid || this.uid;
-    console.log('Uid in UserService.getUserInfo:', this.uid);
+    console.log('Uid in UserService.getUserInfo:', id);
     return this.db.object(`userInfo/${id}`);
   }
 
