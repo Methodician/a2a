@@ -9,13 +9,13 @@
   <label>Body Images (optional)</label>
   <input type="file" multiple class="form-control" (change)="bodyImagesChange($event)">
 
-  <button (click)="save(form)" class="btn btn-default">Post New Need</button>
+  <button (click)="save(form)" [disabled]="!formValid(form.valid)" class="btn btn-default">Post New Need</button>
 
-
+</div>
+<section id="previews" class="container">
   <need [need]="form.value" [detail]="1" [preview]="1" [orgInfo]="orgInfo" [previewImageUrl]="previewImageUrl" [previewBodyImageUrls]="previewBodyImageUrls"></need>
   <need [need]="form.value" [preview]="1" [orgInfo]="orgInfo" [previewImageUrl]="previewImageUrl"></need>
-</div>
-<!--<button [disabled]="!form.valid" (click)="save(form)">Save New Lesson</button>-->
+</section>
 <pre>
   {{ this.previewBodyImageUrls | json }}
 </pre>

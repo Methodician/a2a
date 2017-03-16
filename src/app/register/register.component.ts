@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
         delete val.confirm;
         this.userSvc.updateUserInfo(val, res.auth.uid);
         this.authSvc.sendVerificationEmail();
-        alert('Thanks for creating an account! You must respond to the verification email to complete the process.');
+        alert('Thanks for creating an account! You must respond to the verification email to complete the process. Your organization must also be approved by an administrator.');
         this.router.navigateByUrl('/account');
       },
       err => alert(err)

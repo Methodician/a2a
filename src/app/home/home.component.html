@@ -45,11 +45,12 @@
 <section id="needs" class="row">
   <h2>Needs</h2>
   <p>
-    A participant is a school, agency, or community needs. All participants must register and be verified before being allowed to post needs. Participation is free.
+    A participant is a school, agency, or community needs. All participants must register and be verified before being allowed
+    to post needs. Participation is free.
   </p>
   <div *ngIf="lastNeeds" id="needs-wrapper">
-    <!--<need *ngFor="let need of lastNeeds" [need]="need"></need>-->
-    <div class="test-need">
+    <need *ngFor="let need of lastNeeds | reverse" [need]="need"></need>
+    <!--   <div class="test-need">
       <section class="needSecTest">
         <div class="imgwrapper">
           <img class="cover-image" src="assets/images/donate.jpg" alt="Cover Image">
@@ -69,7 +70,7 @@
           <img class="cover-image" src="assets/images/electric_arc.jpg" alt="Cover Image">
         </div>
       </section>
-    </div>
+    </div>-->
   </div>
 </section>
 <!--<section id="spotlight" class="row">
@@ -149,9 +150,15 @@
 <section id="contact" class="row">
   <div class="container">
     <h2>Contact Info</h2>
-    <div><p>Organizer - Jack Lanehome</p></div>
-    <div><p>Location - Portland, OR</p></div>
-    <div><p>Email - jack@aid2assist.com</p></div>
+    <div>
+      <p>Organizer - Jack Lanehome</p>
+    </div>
+    <div>
+      <p>Location - Portland, OR</p>
+    </div>
+    <div>
+      <p>Email - jack@aid2assist.com</p>
+    </div>
     <!--<div class="form-group">
       <div class="col-xs-6">
         <input type="text" class="form-control">

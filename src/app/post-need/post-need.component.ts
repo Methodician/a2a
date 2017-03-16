@@ -78,12 +78,18 @@ export class PostNeedComponent implements OnInit, OnDestroy {
     this.needSvc.createNewNeed(this.orgId, form.value, this.coverImage, this.bodyImages)
       .subscribe(
       () => {
-        alert('Need successfully posted!');
+        alert('Need successfully posted! It must be approved by an administrator before appearing in the main feed.');
         form.reset();
         this.router.navigate(['../needs']);
       },
-      err => alert(`Error creating posting need: ${err}`)
+      err => alert(`Error creating or posting need: ${err}`)
       );
+  }
+
+  formValid(needFormValid) {
+    
+    let hasCoverImage = !!this.coverImage;
+    return needFormValid && hasCoverImage;
   }
 
 }
