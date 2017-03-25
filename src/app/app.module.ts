@@ -34,6 +34,7 @@ import { ApproveNeedsComponent } from './approve-needs/approve-needs.component';
 import { ApproveDetailComponent } from './approve-detail/approve-detail.component';
 import { TruncateTitlePipe } from './shared/pipes/truncate-title.pipe';
 import { AccountComponent } from './account/account.component';
+import { TestComponentComponent } from './test-component/test-component.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBymDlc5x-NzBC-xL5RZ1GtroML8KeV56g",
@@ -69,6 +70,7 @@ export const firebaseAuthConfig = {
     ApproveDetailComponent,
     TruncateTitlePipe,
     AccountComponent,
+    TestComponentComponent,
     //AppModuleComponent,
   ],
   imports: [

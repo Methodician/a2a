@@ -29,25 +29,56 @@
 
     <div id="buttons">
       <div id="littlebtns" *ngIf="!approving">
-        <form #form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" (ngSubmit)="donate(btnId.value)">
+        <button (click)="formShown == 'donate' ? formShown = 'none' : formShown = 'donate'">Donate</button>
+        <button (click)="formShown == 'subscribe' ? formShown = 'none' : formShown = 'subscribe'">Subscribe</button>
+
+      </div>
+      <section class="container">
+        <!--<form #form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" (ngSubmit)="donate(btnId.value)">
           <input type="hidden" name="cmd" value="_s-xclick">
           <input type="hidden" name="custom" value="{&#34;contributionId&#34;:&#34;{{contributionId}}&#34;,&#34;orgId&#34;:&#34;{{need.orgId}}&#34;,&#34;needId&#34;:&#34;{{need.$key}}&#34;}">
           <input #btnId type="hidden" name="hosted_button_id" value="C3HSEYXMSHQHN">
           <input (click)="form.submit()" type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0"
             name="submit" alt="PayPal - The safer, easier way to pay online!">
-        </form>
+        </form>-->
         <!--SANDBOX BTN-->
-        <!--<form #form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" (ngSubmit)="donate()">
+        <form *ngIf="formShown == 'donate'" #form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+          <!--(ngSubmit)="donate()"-->
           <input type="hidden" name="cmd" value="_s-xclick">
-          <input type="hidden" name="hosted_button_id" value="Q9EX75ZGPCQBN">
+          <input type="hidden" name="hosted_button_id" value="PBTNCVWQFCNVJ">
           <input type="hidden" name="custom" value="{&#34;contributionId&#34;:&#34;{{contributionId}}&#34;,&#34;orgId&#34;:&#34;{{need.orgId}}&#34;,&#34;needId&#34;:&#34;{{need.$key}}&#34;}">
           <input (click)="form.submit()" type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0"
             name="submit" alt="PayPal - The safer, easier way to pay online!">
-        </form>-->
-
+        </form>
         <!--<button>DONATE</button>-->
-        <button class="sharebtn">SHARE</button>
-      </div>
+        <!--SANDBOX SUBSCRIPTION-->
+        <form *ngIf="formShown == 'subscribe'" #form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+          <!--(ngSubmit)="donate(true)"-->
+          <input type="hidden" name="cmd" value="_s-xclick">
+          <input type="hidden" name="hosted_button_id" value="SNE6F7ESTPN96">
+          <input type="hidden" name="custom" value="{&#34;contributionId&#34;:&#34;{{contributionId}}&#34;,&#34;orgId&#34;:&#34;{{need.orgId}}&#34;,&#34;needId&#34;:&#34;{{need.$key}}&#34;,&#34;donorId&#34;:&#34;{{donorId}}&#34;}">
+          <table>
+            <tr>
+              <td><input type="hidden" name="on0" value=""></td>
+            </tr>
+            <tr>
+              <td>
+                <select class="form-control" name="os0">
+                  <option value="Daily Doer">Daily Doer : $2.00 USD - daily</option>
+                  <option value="Weekly Walker">Weekly Walker : $10.00 USD - weekly</option>
+                  <option value="Monthly Maven">Monthly Maven : $100.00 USD - monthly</option>
+                  <option value="Yearly Yacht">Yearly Yacht : $2,000.00 USD - yearly</option>
+                </select>
+              </td>
+            </tr>
+          </table>
+          <input type="hidden" name="currency_code" value="USD">
+          <input (click)="form.submit()" type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribe_SM.gif" border="0"
+            name="submit" alt="PayPal - The safer, easier way to pay online!">
+        </form>
+        <br>
+        <!--<button class="sharebtn">SHARE</button>-->
+      </section>
       <div id="littlebtns" *ngIf="approving && detail">
         <button class="sharebtn" (click)="toggleApproval()">{{ need.approved ? 'Unapprove' : 'Approve' }}</button>
         <p>

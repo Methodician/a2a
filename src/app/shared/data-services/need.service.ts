@@ -19,18 +19,34 @@ export class NeedService {
     this.fsRef = app.storage().ref();
   }
 
-  donate(info, id) {
+  donate(info, id, subscription) {
     console.log('orgId:', info.orgId);
     console.log('needId:', info.needId);
     console.log('contributionId:', id);
 
     let dataToSave = {};
 
-    dataToSave[`contributions/${id}`] = info;
-    dataToSave[`contributionsPerNeed/${info.needId}/${id}`] = true;
-    dataToSave[`contributionsPerOrg/${info.orgId}/${id}`] = true;
+    this.authSvc.authInfo$.subscribe(authInfo => {
+      let uid = authInfo.$uid;
+      let contributionInfo = Object.assign(info, { contributorId: uid });
+      let rootWord = subscription ? 'subscriptions' : 'contributions'
+      dataToSave[`${rootWord}/${id}`] = info;
+      dataToSave[`${rootWord}PerNeed/${info.needId}/${id}`] = true;
+      dataToSave[`${rootWord}PerOrg/${info.orgId}/${id}`] = true;
+      /*if (subscription) {
+        dataToSave[`subscriptions/${id}`] = info;
+        dataToSave[`subscriptionsPerNeed/${info.needId}/${id}`] = true;
+        dataToSave[`subscriptionsPerOrg/${info.orgId}/${id}`] = true;
+      }
+      else {
+        dataToSave[`contributions/${id}`] = info;
+        dataToSave[`contributionsPerNeed/${info.needId}/${id}`] = true;
+        dataToSave[`contributionsPerOrg/${info.orgId}/${id}`] = true;
+      }*/
+      return this.firebaseUpdate(dataToSave);
+    })
 
-    return this.firebaseUpdate(dataToSave);
+
     //this.db.list('contributions').push(info);
   }
 
@@ -105,7 +121,7 @@ export class NeedService {
       need.endDate = Date.parse(need.endDate);
     }
 
-    let needToSave = Object.assign({}, need, { orgId }, { approved: false }/*, { activeFlag: true }*/, { timeStamp: Date.now() });
+    let needToSave = Object.assign({}, need, { orgId }, { approved: false }, { activeFlag: true }, { timeStamp: Date.now() });
 
 
     if (coverImage.type !== 'image/jpeg' && coverImage.type !== 'image/bmp' && coverImage.type !== 'image/png' && coverImage.type !== 'image/gif') {

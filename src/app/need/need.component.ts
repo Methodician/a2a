@@ -1,3 +1,4 @@
+import { AuthService } from './../shared/security/auth.service';
 import { NeedService } from './../shared/data-services/need.service';
 import { Need } from './../shared/models/need';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
@@ -17,22 +18,26 @@ export class NeedComponent implements OnInit {
   @Input() preview = false;
   @Input() previewImageUrl = '../../assets/images/electric_arc.jpg';
   @Input() previewBodyImageUrls = [];
-
+  @Input() formShown = 'none';
   //@Output() approvalChanged = new EventEmitter();
 
   //contributions = [];
   donated = 0;
 
   private contributionId: string;
+  private donorId: string
 
-  constructor(private needSvc: NeedService) {
+  constructor(private needSvc: NeedService, authSvc: AuthService) {
     this.contributionId = this.needSvc.createContributionId();
+    authSvc.authInfo$.subscribe(info => {
+      this.donorId = info.$uid;
+    });
   }
 
   ngOnInit() {
     this.needSvc.getContributionsByNeed(this.need.$key)
       .subscribe(contributions => {
-        //this.contributions = contributions;
+        this.donated = 0;
         for (let cont of contributions) {
           this.needSvc.getContributionTotal(cont.$key)
             .subscribe(total => {
@@ -48,20 +53,26 @@ export class NeedComponent implements OnInit {
     this.needSvc.setNeedApproval(this.need.$key, !this.need.approved);
   }
 
-  donate() {
-    let donationInfo = {
-      //buttonId: btnId,
-      needId: this.need.$key,
-      orgId: this.need.orgId,
-      timeStamp: Date.now()
-    };
-    this.needSvc.donate(donationInfo, this.contributionId);
-    this.contributionId = this.needSvc.createContributionId();
-    /*console.log(donationInfo);*/
-    /*console.log('Button ID:', btnId);
-    console.log('Need:', this.need);
-    console.log('Organization:', this.orgInfo);*/
-  }
+  /*  showDonateForm() {
+      this.formShown = 'donate';
+    }
+    showSubscribeForm() {
+      this.formShown = 'subscribe';
+    }
+    hideForms() {
+      this.formShown = 'none';
+    }*/
+
+  /*  donate(subscription = false) {
+      let donationInfo = {
+        //buttonId: btnId,
+        needId: this.need.$key,
+        orgId: this.need.orgId,
+        timeStamp: Date.now()
+      };
+      this.needSvc.donate(donationInfo, this.contributionId, subscription);
+      this.contributionId = this.needSvc.createContributionId();
+    }*/
 
   pendingPercent() {
     //return Math.round(((this.need.needTotal - this.need.collectedTotal) / this.need.needTotal));

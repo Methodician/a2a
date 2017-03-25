@@ -83,11 +83,11 @@ img {
     font-weight: 400;
     width: 100px;
     border-radius: 20px;
-}
-
-.sharebtn {
     margin-top: -5px;
 }
+
+/*.sharebtn {
+}*/
 
 #bigbtn {
     display: flex;

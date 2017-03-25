@@ -20,7 +20,7 @@ export class NeedsComponent implements OnInit {
     this.needSvc.getNeedsByApproval(true)
       .subscribe(needs => {
         this.needs = needs;
-        this.setsOfThree();
+        //this.setsOfThree();
       });
 
   }
