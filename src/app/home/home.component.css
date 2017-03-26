@@ -39,7 +39,7 @@ p {
     background-color: #e7e7e7;
     color: #2c3e50;
     /*padding: 35px 20px;*/
-    height: 500px;
+    height: 750px;
     padding: 35px 45px;
 }
 #needs-wrapper{
@@ -248,7 +248,7 @@ img {
         padding: 50px 200px 90px;
     }
     #needs {
-        height: 550px;
+        height: 800px;
     }
 }
 
@@ -264,7 +264,7 @@ img {
         font-size: 1.2em;
     }
     #needs {
-        height: 550px;
+        height: 800px;
     }
 }
 
@@ -290,7 +290,6 @@ img {
     #needs {
         padding-left: 250px;
         padding-right: 250px;
-        height: 550px;
     }
     h2 {
         font-size: 5em;
