@@ -1,6 +1,30 @@
 {
   "rules": {
-    ".read": "true",
-    ".write": "true"
+    "userInfo": {
+      "$uid": {
+        ".write": "$uid === auth.uid",
+        ".read": "true"
+      }
+    },
+    "needs": {
+      ".write": "auth != null",
+      ".read": "true",
+      ".indexOn": [
+        "approved",
+        "orgId"
+      ]
+    },
+    "needImageUrls": {
+      ".write": "auth != null",
+      ".read": "true"
+    },
+    "contributionTotalLog": {
+      ".write": "false",
+      ".read": "true"
+    },
+    "contributionsPerNeed": {
+      ".write": "false",
+      ".read": "true"
+    }
   }
 }

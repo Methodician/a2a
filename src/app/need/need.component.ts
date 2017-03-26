@@ -12,26 +12,23 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class NeedComponent implements OnInit {
   @Input() need: Need;
-  @Input() detail = false;
   @Input() approving = false;
   @Input() orgInfo = null;
-  @Input() preview = false;
   @Input() previewImageUrl = '../../assets/images/electric_arc.jpg';
-  @Input() previewBodyImageUrls = [];
-  @Input() formShown = 'none';
+  @Input() preview = false;
   //@Output() approvalChanged = new EventEmitter();
 
   //contributions = [];
   donated = 0;
 
-  private contributionId: string;
-  private donorId: string
+  /*  private contributionId: string;
+    private donorId: string*/
 
   constructor(private needSvc: NeedService, authSvc: AuthService) {
-    this.contributionId = this.needSvc.createContributionId();
-    authSvc.authInfo$.subscribe(info => {
-      this.donorId = info.$uid;
-    });
+    /*    this.contributionId = this.needSvc.createContributionId();
+        authSvc.authInfo$.subscribe(info => {
+          this.donorId = info.$uid;
+        });*/
   }
 
   ngOnInit() {
@@ -47,32 +44,6 @@ export class NeedComponent implements OnInit {
         }
       });
   }
-
-  toggleApproval() {
-    //this.approvalChanged.emit(!this.need.approved);
-    this.needSvc.setNeedApproval(this.need.$key, !this.need.approved);
-  }
-
-  /*  showDonateForm() {
-      this.formShown = 'donate';
-    }
-    showSubscribeForm() {
-      this.formShown = 'subscribe';
-    }
-    hideForms() {
-      this.formShown = 'none';
-    }*/
-
-  /*  donate(subscription = false) {
-      let donationInfo = {
-        //buttonId: btnId,
-        needId: this.need.$key,
-        orgId: this.need.orgId,
-        timeStamp: Date.now()
-      };
-      this.needSvc.donate(donationInfo, this.contributionId, subscription);
-      this.contributionId = this.needSvc.createContributionId();
-    }*/
 
   pendingPercent() {
     //return Math.round(((this.need.needTotal - this.need.collectedTotal) / this.need.needTotal));

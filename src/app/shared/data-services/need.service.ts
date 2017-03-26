@@ -117,8 +117,8 @@ export class NeedService {
   createNewNeed(orgId: string, need: any, coverImage: any, bodyImages?: any[]): Observable<any> {
 
     if (!need.ongoing) {
-      need.startDate = Date.parse(need.startDate);
-      need.endDate = Date.parse(need.endDate);
+      need.startDate = new Date(Date.parse(need.startDate)).getTime();
+      need.endDate = new Date(Date.parse(need.endDate)).getTime();
     }
 
     let needToSave = Object.assign({}, need, { orgId }, { approved: false }, { activeFlag: true }, { timeStamp: Date.now() });
