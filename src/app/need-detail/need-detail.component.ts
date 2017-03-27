@@ -10,7 +10,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'need-detail',
   templateUrl: './need-detail.component.html',
-  styleUrls: ['./need-detail.component.css', '../need/need.component.css']
+  styleUrls: ['../need/need.component.css', './need-detail.component.css']
 })
 export class NeedDetailComponent implements OnInit {
   @Input() need: Need;

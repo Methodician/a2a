@@ -213,6 +213,11 @@ img {
     #needs {
         height: 620px;
     }
+
+    .video-placeholder {
+        height: 320px;
+        width: 540px;
+    }
 }
 
 /*iPad Landscape mode*/

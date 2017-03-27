@@ -1,3 +1,10 @@
+/*section {
+    width: 500px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}*/
+
 #details {
     padding: 10px;
 }
@@ -50,22 +57,27 @@
 
 /*iPad Portrait mode*/
 @media screen and (min-width: 760px){
-    section {
-        width: 550px;
+    #need-detail {
+        width: 600px;
         margin-top: 50px;
     }
 
     #imgwrapper {
-        height: 350px;
+        height: 330px;
     }
 
     #body {
         padding: 10px 30px 30px;
     }
 
-    #info{
+    #info {
         padding-left: 70px;
         padding-right: 70px;
+    }
+
+    #littlebtns {
+        padding-left: 100px;
+        padding-right: 100px;
     }
 }
 
@@ -76,10 +88,24 @@
 
 /*iPad Pro landscape*/
 @media screen and (min-width: 1366) and (min-height: 1024px){
+    #need-detail {
+        width: 800px;
+    }
 
+    #body-images {
+        /*padding-left: 300px;
+        padding-right: 300px;*/
+        width: 40%;
+    }
 }
 
 /*Desktop view*/
 @media screen and (min-width: 1200px){
+    p {
+        font-size: 1.2em;
+    }
 
+    #need-detail {
+        width: 1000px;
+    }
 }
