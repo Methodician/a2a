@@ -14,7 +14,6 @@ section {
     margin-bottom: 5px;
 }
 
-
 #days-remaining {
     color: gray;
     text-align: center;
@@ -101,7 +100,7 @@ img {
     font-weight: 500;
     width: 250px;
     border-radius: 20px;
-    margin-top: -9px;
+    margin: -9px 20px 25px;
     padding: 5px 0px;
     margin-bottom: 25px;
 }
@@ -172,7 +171,10 @@ b {
 
 /*iPad landscape mode*/
 @media screen and (min-width: 1020px){
-
+    section {
+        width: 650px;
+        margin-top: 50px;
+    }
 }
 
 /*iPad Pro landscape*/

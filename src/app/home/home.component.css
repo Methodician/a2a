@@ -39,7 +39,7 @@ p {
     background-color: #e7e7e7;
     color: #2c3e50;
     /*padding: 35px 20px;*/
-    height: 750px;
+    height: 670px;
     padding: 35px 45px;
 }
 #needs-wrapper{
@@ -160,6 +160,10 @@ img {
         height: 220px;
         width: 340px;
     }
+
+    #needs {
+        height: 600px;
+    }
 }
 
 /*Nexus 6P and iPhone6 Plus landscape*/
@@ -206,6 +210,9 @@ img {
 /*    #needs {
         padding-bottom: 65px;
     }*/
+    #needs {
+        height: 620px;
+    }
 }
 
 /*iPad Landscape mode*/
@@ -248,7 +255,7 @@ img {
         padding: 50px 200px 90px;
     }
     #needs {
-        height: 800px;
+        height: 700px;
     }
 }
 
@@ -264,7 +271,7 @@ img {
         font-size: 1.2em;
     }
     #needs {
-        height: 800px;
+        height: 670px;
     }
 }
 
@@ -290,6 +297,7 @@ img {
     #needs {
         padding-left: 250px;
         padding-right: 250px;
+        height: 690px;
     }
     h2 {
         font-size: 5em;

@@ -1,5 +1,5 @@
 #details {
-    padding: 20px;
+    padding: 10px;
 }
 
 #details > b {
@@ -50,7 +50,23 @@
 
 /*iPad Portrait mode*/
 @media screen and (min-width: 760px){
+    section {
+        width: 550px;
+        margin-top: 50px;
+    }
 
+    #imgwrapper {
+        height: 350px;
+    }
+
+    #body {
+        padding: 10px 30px 30px;
+    }
+
+    #info{
+        padding-left: 70px;
+        padding-right: 70px;
+    }
 }
 
 /*iPad landscape mode*/
