@@ -50,9 +50,9 @@ p {
     /*white-space: nowrap;*/
 }
 need {
-    /*display: inline-block;*/
-    /*text-align: center;
-    margin-right: 30px;*/ 
+    /*display: inline-block;
+    text-align: center;*/
+    margin-right: 30px;
 }
 #imgwrapper {
     width: 100%;
