@@ -24,7 +24,7 @@ export class TopNavComponent implements OnInit {
       this.authInfo = info;
     });
     this.userSvc.userInfo$.subscribe((info: UserInfo) => {
-      if (info) {
+      if (info && info.$uid) {
         this.firstName = info.fName;
       }
     });

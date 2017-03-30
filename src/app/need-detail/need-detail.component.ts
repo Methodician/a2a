@@ -1,6 +1,6 @@
 import { AuthService } from './../shared/security/auth.service';
 import { UserService } from './../shared/data-services/user.service';
-import { UserInfo } from './../shared/models/user-info';
+import { UserInfo, UserInfoOpen } from './../shared/models/user-info';
 import { Need } from './../shared/models/need';
 import { NeedService } from './../shared/data-services/need.service';
 import { Router, ActivatedRoute } from "@angular/router";
@@ -15,7 +15,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class NeedDetailComponent implements OnInit {
   @Input() need: Need;
   @Input() approving = false;
-  @Input() orgInfo: UserInfo = null;
+  @Input() orgInfo: UserInfoOpen = null;
   @Input() previewImageUrl = '../../assets/images/electric_arc.jpg';
   @Input() previewBodyImageUrls = [];
   @Input() formShown = 'none';
@@ -47,7 +47,7 @@ export class NeedDetailComponent implements OnInit {
       this.needSvc.getNeedById(this.needId).subscribe(need => {
         this.needSvc.getNeedImages(need);
         this.need = need;
-        this.userSvc.getUserInfo(need.orgId).subscribe(info => this.orgInfo = info);
+        this.userSvc.getOpenInfo(need.orgId).subscribe(info => this.orgInfo = info);
         this.getContributions();
       });
     }
@@ -57,6 +57,7 @@ export class NeedDetailComponent implements OnInit {
 
   getContributions() {
     this.needSvc.getContributionsByNeed(this.need.$key)
+    
       .subscribe(contributions => {
         this.donated = 0;
         for (let cont of contributions) {

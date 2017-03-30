@@ -4,20 +4,44 @@ export class UserInfo {
         public fName: string,
         public lName: string,
         public repPhone: string,
-        public orgApproved: false,
         public orgName: string,
         public orgCity: string,
         public orgState: string,
         public orgZip: string,
         public agreedToTnC: boolean,
         public $uid: string,
+        public orgApproved: false,
         public orgPhone?: string,
         public orgWebsite?: string
+        /*        public closed: UserInfoClosed,
+                public open: UserInfoOpen,*/
     ) { }
 
     isApproved() {
         return !!this.orgApproved;
     }
+
+}
+
+export class UserInfoClosed {
+    constructor(
+        public repEmail: string,
+        public repPhone: string,
+        public agreedToTnC: boolean
+    ) { }
+}
+
+export class UserInfoOpen {
+    constructor(
+        public fName: string,
+        public lName: string,
+        public orgName: string,
+        public orgCity: string,
+        public orgState: string,
+        public orgZip: string,
+        public orgPhone?: string,
+        public orgWebsite?: string
+    ) { }
 }
 /*export interface UserInfo {
     repEmail: string;

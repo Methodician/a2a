@@ -34,10 +34,9 @@ export class AccountComponent implements OnInit {
             .subscribe(needs => {
               this.needs = needs;
             });
-          this.userSvc.getUserInfo(info.$uid)
-            .subscribe(info => {
-              this.userInfo = info;
-            });
+          this.userSvc.userInfo$.subscribe(user => {
+            this.userInfo = user;
+          });
         }
       })
   }

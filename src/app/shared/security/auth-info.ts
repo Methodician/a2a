@@ -1,7 +1,10 @@
 
 export class AuthInfo {
 
-    constructor(public $uid: string, public emailVerified = false) { }
+    constructor(
+        public $uid: string,
+        public emailVerified = false
+    ) { }
 
     isLoggedIn() {
         console.log('uid:', this.$uid);
