@@ -33,6 +33,20 @@
     color: lightskyblue;
 }
 
+.flexed {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.body-img {
+    object-fit: cover;
+    width: 250px; 
+    height: 200px;
+}
+
 #email-share {
     display: flex;
     flex-direction: column;
@@ -95,8 +109,9 @@
     #body-images {
         /*padding-left: 300px;
         padding-right: 300px;*/
-        width: 40%;
+        /*width: 40%;*/
     }
+
 }
 
 /*Desktop view*/
