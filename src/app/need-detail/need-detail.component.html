@@ -91,17 +91,17 @@
         <div *ngIf="need.videoIframe" width="100%" [innerHTML]="need.videoIframe | adjustIframe | safeHtml"></div>
         <div id="details">
             <b>{{ orgInfo?.fName }} {{ orgInfo?.lName }}</b>
-            <b>{{ orgInfo?.orgCity }}, {{ orgInfo?.orgState }}</b>
+            <b>{{ orgInfo?.orgCity }} {{ orgInfo?.orgState }}</b>
             <h3>{{ need.title }}</h3>
 
             <p>Started: {{ need.startDate | date }}</p>
             <p>{{ need.body }}</p>
             <div id="body-images">
-                <div *ngIf="!preview">
-                    <img *ngFor="let url of need.bodyImageUrls" [src]="url.$value" alt="Other Images">
+                <div *ngIf="!preview" class="flexed">
+                    <img *ngFor="let url of need.bodyImageUrls" [src]="url.$value" alt="Other Images" class="body-img">
                 </div>
-                <div *ngIf="preview && previewBodyImageUrls && previewBodyImageUrls.length > 0">
-                    <img *ngFor="let url of previewBodyImageUrls" [src]="url" alt="Other Images">
+                <div *ngIf="preview && previewBodyImageUrls && previewBodyImageUrls.length > 0" class="flexed">
+                    <img *ngFor="let url of previewBodyImageUrls" [src]="url" alt="Other Images" class="body-img">
                 </div>
             </div>
         </div>
