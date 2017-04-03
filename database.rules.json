@@ -2,8 +2,18 @@
   "rules": {
     "userInfo": {
       "$uid": {
-        ".write": "$uid === auth.uid",
-        ".read": "true"
+        "closed": {
+          ".write": "$uid === auth.uid",
+          ".read": "$uid === auth.uid"
+        },        
+        "open": {
+          ".write": "$uid === auth.uid",
+          ".read": "true"
+        },        
+        "orgApproved": {
+          ".write": "false",
+          ".read": "$uid === auth.uid"     
+        }   
       }
     },
     "needs": {
@@ -14,7 +24,15 @@
         "orgId"
       ]
     },
+    "needsPerOrg": {
+      ".write": "auth != null",
+      ".read": "true"
+    },
     "needImageUrls": {
+      ".write": "auth != null",
+      ".read": "true"
+    },
+    "imagePaths": {
       ".write": "auth != null",
       ".read": "true"
     },

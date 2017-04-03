@@ -13,7 +13,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class NeedComponent implements OnInit {
   @Input() need: Need;
   @Input() approving = false;
-  @Input() orgInfo = null;
+  //@Input() orgInfo = null;
   @Input() previewImageUrl = '../../assets/images/electric_arc.jpg';
   @Input() preview = false;
   //@Output() approvalChanged = new EventEmitter();
