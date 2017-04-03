@@ -112,19 +112,6 @@
         /*width: 40%;*/
     }
 
-    /*.flexed {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        margin-bottom: 25px;
-    }
-
-    .body-img {
-        object-fit: cover;
-        width: 250px; 
-        height: 200px;
-    }*/
 }
 
 /*Desktop view*/
