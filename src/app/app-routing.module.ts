@@ -15,7 +15,19 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
 
 const routes: Routes = [
-    { path: 'home', component: HomeComponent },
+    {
+        path: 'home',
+        children: [
+            {
+                path: ':id',
+                redirectTo: '/needs/:id'
+            },
+            {
+                path: '',
+                component: HomeComponent
+            }
+        ]
+    },
     {
         path: 'needs',
         children: [

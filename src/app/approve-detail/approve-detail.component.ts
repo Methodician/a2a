@@ -24,6 +24,7 @@ export class ApproveDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.needId = this.route.snapshot.params['id'];
     this.needSvc.getNeedById(this.needId).subscribe(need => {
       this.needSvc.getNeedImages(need);
