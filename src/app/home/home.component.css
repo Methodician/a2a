@@ -88,6 +88,9 @@ need {
 }
 img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 #cover-image{
     /*border-radius: 30px 30px 0 0;*/
@@ -140,6 +143,7 @@ img {
     text-align: center;
     overflow: hidden;
     border-radius: 50%;
+    /*background-image: url(../src/assets/images/explore.jpg);*/
 }
 .circle-inner {
     position: relative;
@@ -168,7 +172,7 @@ img {
 
 /*Nexus 6P and iPhone6 Plus landscape*/
 @media screen and (min-width: 732px){
-    
+
 }
 
 /*iPad Portrait mode*/
