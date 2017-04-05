@@ -40,6 +40,8 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    //TESTINGH
+    this.authSvc.authInfo$.subscribe(info => console.log);
   }
 
   isPasswordMatch() {
@@ -56,9 +58,9 @@ export class RegisterComponent implements OnInit {
         console.log('Signup result from RegisterComp', res);
         delete val.password;
         delete val.confirm;
-        this.userSvc.updateUserInfo(val, res.auth.uid);
         this.authSvc.sendVerificationEmail();
         alert('Thanks for creating an account! You must respond to the verification email to complete the process. Your organization must also be approved by an administrator.');
+        this.userSvc.createUser(val, res.auth.uid).subscribe(res => console.log);
         this.router.navigateByUrl('/account');
       },
       err => alert(err)

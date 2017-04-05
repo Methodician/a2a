@@ -41,6 +41,7 @@ export class NeedDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     if (this.route.snapshot.params['id']) {
       this.needId = this.route.snapshot.params['id'];
       //this.need$ = this.needSvc.getNeedById(this.needId);
@@ -57,7 +58,7 @@ export class NeedDetailComponent implements OnInit {
 
   getContributions() {
     this.needSvc.getContributionsByNeed(this.need.$key)
-    
+
       .subscribe(contributions => {
         this.donated = 0;
         for (let cont of contributions) {

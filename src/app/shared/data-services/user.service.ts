@@ -1,7 +1,7 @@
 import { UserInfo, UserInfoClosed, UserInfoOpen } from './../models/user-info';
 import { AuthService } from './../security/auth.service';
-import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2';
+import { Injectable, Inject } from '@angular/core';
+import { AngularFireDatabase, FirebaseRef } from 'angularfire2';
 import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
 
 @Injectable()
@@ -13,10 +13,13 @@ export class UserService {
   orgApproved$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
   uid: string = null;
 
+  dbRef: any;
   constructor(
     private authSvc: AuthService,
-    private db: AngularFireDatabase
+    private db: AngularFireDatabase,
+    @Inject(FirebaseRef) fb
   ) {
+    this.dbRef = fb.database().ref();
     //  after ridiculous time and effort and no legable errors, I found that
     //  this subscribe must be in the constructor, not ngOnInit()...
     this.authSvc.authInfo$.subscribe(info => {
@@ -34,9 +37,33 @@ export class UserService {
       /*this.userInfo$ = this.db.object(`userInfo/${info.$uid}`);*/
     });
   }
+  
   updateUserInfo(userInfo, uid?) {
     let id = uid || this.uid;
     return this.db.object(`userInfo/${id}`).update(userInfo);
+  }
+
+  createUser(userInfo, uid) {
+    let userToUpdate = {};
+    let closedInfo = {
+      agreeToTnC: userInfo.agreedToTnC,
+      repEmail: userInfo.repEmail,
+      repPhone: userInfo.repPhone
+    };
+    let openInfo = {
+      fName: userInfo.fName,
+      lName: userInfo.lName,
+      orgCity: userInfo.orgCity,
+      orgName: userInfo.orgName,
+      orgPhone: userInfo.orgPhone,
+      orgState: userInfo.orgState,
+      orgWebsite: userInfo.orgWebsite,
+      orgZip: userInfo.orgZip
+    };
+    userToUpdate[`userInfo/${uid}/closed`] = closedInfo;
+    userToUpdate[`userInfo/${uid}/open`] = openInfo;
+    //return this.db.object(`userInfo/${uid}`).set(userInfo);
+    return this.firebaseUpdate(userToUpdate);
   }
 
   getUserInfo(uid?): Observable<any> {
@@ -72,6 +99,24 @@ export class UserService {
   getClosedInfo(uid?) {
     let id = uid || this.uid;
     return this.db.object(`userInfo/${id}/closed`);
+  }
+
+  firebaseUpdate(dataToSave) {
+    const subject = new Subject();
+
+    this.dbRef.update(dataToSave)
+      .then(
+      val => {
+        subject.next(val);
+        subject.complete();
+      },
+      err => {
+        subject.error(err);
+        subject.complete();
+      }
+      );
+
+    return subject.asObservable();
   }
 
 }
