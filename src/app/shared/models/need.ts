@@ -13,7 +13,8 @@ export class Need {
         public endDate?: number,
         public needTotal?: number,
         public videoUrl?: string,
-        public bodyImageUrls?: string[]
+        public bodyImageUrls?: string[],
+        public activeFlag?: boolean
     ) { }
 
     static fromJsonList(array): Need[] {
@@ -36,6 +37,7 @@ export class Need {
         needTotal,
         videoUrl,
         bodyImageUrls,
+        activeFlag
     }): Need {
         return new Need(
             $key,
@@ -52,6 +54,7 @@ export class Need {
             needTotal,
             videoUrl,
             bodyImageUrls,
+            activeFlag
         );
     }
 }

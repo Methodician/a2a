@@ -32,9 +32,10 @@ export class ApproveNeedsComponent implements OnInit {
   }
 
   subscribeNeeds(filter: boolean) {
-    this.needSub = this.needSvc.getNeedsByApproval(filter)
+    this.needSub = this.needSvc.getActiveNeeds()
       .subscribe(needs => {
         console.log('FILTER:', this.filter);
+        needs = this.needSvc.filterNeedsByApproval(needs, filter);
         this.needs = needs;
       });
   }

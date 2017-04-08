@@ -5,21 +5,22 @@
         "closed": {
           ".write": "$uid === auth.uid",
           ".read": "$uid === auth.uid"
-        },        
+        },
         "open": {
           ".write": "$uid === auth.uid",
           ".read": "true"
-        },        
+        },
         "orgApproved": {
           ".write": "false",
-          ".read": "$uid === auth.uid"     
-        }   
+          ".read": "$uid === auth.uid"
+        }
       }
     },
     "needs": {
       ".write": "auth != null",
       ".read": "true",
       ".indexOn": [
+        "activeFlag",
         "approved",
         "orgId"
       ]

@@ -80,16 +80,29 @@ export class NeedService {
       .do(console.log);
   }
 
-  getNeedsByApproval(isApproved: boolean): Observable<Need[]> {
+  getActiveNeeds(): Observable<Need[]> {
     return this.db.list('needs', {
       query: {
-        orderByChild: 'approved',
-        equalTo: isApproved
+        orderByChild: 'activeFlag',
+        equalTo: true
       }
     })
       .filter(res => res && res.length > 0)
       .do(console.log);
     //return this.dbRef.child('needs').orderByChild('approved').equalTo(isApproved);
+  }
+
+  filterNeedsByApproval(needs: Need[], isApproved: boolean): Need[] {
+    return needs.filter((need) => {
+      return need.approved == isApproved;
+    });
+  }
+  checkActive(need: Need) {
+    return need.activeFlag;
+  }
+
+  checkApproved(need: Need) {
+    return need.approved;
   }
 
   getNeedsByOrg(orgId: string): Observable<Need[]> {

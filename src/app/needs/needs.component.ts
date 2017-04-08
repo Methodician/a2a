@@ -11,38 +11,38 @@ import { Observable } from "rxjs/Observable";
 export class NeedsComponent implements OnInit {
 
   needs: Need[] = null;
-  setsOf3: any = null;
+  //setsOf3: any = null;
   constructor(
     private needSvc: NeedService
   ) { }
 
   ngOnInit() {
-    this.needSvc.getNeedsByApproval(true)
+    this.needSvc.getActiveNeeds()
       .subscribe(needs => {
-        this.needs = needs;
+        this.needs = this.needSvc.filterNeedsByApproval(needs, true);
         //this.setsOfThree();
       });
 
   }
 
-  setsOfThree() {
-    if (this.needs.length < 1)
-      return;
-    let i = 0;
-    let row = 1;
-    let arrOfArr = [];
-    while (i < this.needs.length) {
-      let tempArr = [];
-      for (let j = 0; j < 3; j++) {
-        if (this.needs[i]) {
-          tempArr.push(this.needs[i])
+  /*  setsOfThree() {
+      if (this.needs.length < 1)
+        return;
+      let i = 0;
+      let row = 1;
+      let arrOfArr = [];
+      while (i < this.needs.length) {
+        let tempArr = [];
+        for (let j = 0; j < 3; j++) {
+          if (this.needs[i]) {
+            tempArr.push(this.needs[i])
+          }
+          i++;
         }
-        i++;
+        arrOfArr.push(tempArr);
+        tempArr = [];
       }
-      arrOfArr.push(tempArr);
-      tempArr = [];
-    }
-    this.setsOf3 = arrOfArr;
-  }
+      this.setsOf3 = arrOfArr;
+    }*/
 
 }
