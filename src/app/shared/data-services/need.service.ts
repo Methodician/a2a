@@ -87,22 +87,28 @@ export class NeedService {
         equalTo: true
       }
     })
-      .filter(res => res && res.length > 0)
-      .do(console.log);
+      .filter(res => res && res.length > 0);
+    //.do(console.log);
     //return this.dbRef.child('needs').orderByChild('approved').equalTo(isApproved);
   }
 
   filterNeedsByApproval(needs: Need[], isApproved: boolean): Need[] {
-    return needs.filter((need) => {
+    return needs.filter(need => {
       return need.approved == isApproved;
     });
   }
-  checkActive(need: Need) {
-    return need.activeFlag;
+
+  filterNeedsByActiveFlag(needs: Need[]) {
+    return needs.filter(need => {
+      return need.activeFlag;
+    });
   }
 
-  checkApproved(need: Need) {
-    return need.approved;
+  filterNeedsToNotCompleted(needs: Need[]) {
+    let now = Date.now();
+    return needs.filter(need => {
+      return need.endDate ? need.endDate > now : true;
+    });
   }
 
   getNeedsByOrg(orgId: string): Observable<Need[]> {
@@ -132,6 +138,10 @@ export class NeedService {
     if (!need.ongoing) {
       need.startDate = new Date(Date.parse(need.startDate)).getTime();
       need.endDate = new Date(Date.parse(need.endDate)).getTime();
+    }
+    else {
+      need.startDate = null;
+      need.endDate = null;
     }
 
     let needToSave = Object.assign({}, need, { orgId }, { approved: false }, { activeFlag: true }, { timeStamp: Date.now() });
@@ -243,9 +253,13 @@ export class NeedService {
     return Math.round(1 - 100 * ((need.needTotal - 1000) / need.needTotal));
   }
 
-  oneDay = 24 * 60 * 60 * 1000;
-  daysLeft(need) {
-    return Math.round(Math.abs(((new Date(need.endDate).getTime() - new Date(Date.now()).getTime()) / this.oneDay)));
+
+  daysLeft(endDate: number) {
+    let oneDay = 24 * 60 * 60 * 1000;
+    let end = new Date(endDate).getTime();
+    let today = new Date(Date.now()).getTime();
+    //return Math.round(Math.abs((end - today) / oneDay));
+    return Math.round((end - today) / oneDay);
   }
 
   firebaseUpdate(dataToSave) {

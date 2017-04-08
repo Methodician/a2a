@@ -44,7 +44,6 @@ export class NeedDetailComponent implements OnInit {
     window.scrollTo(0, 0);
     if (this.route.snapshot.params['id']) {
       this.needId = this.route.snapshot.params['id'];
-      //this.need$ = this.needSvc.getNeedById(this.needId);
       this.needSvc.getNeedById(this.needId).subscribe(need => {
         this.needSvc.getNeedImages(need);
         this.need = need;
@@ -72,18 +71,15 @@ export class NeedDetailComponent implements OnInit {
   }
 
   toggleApproval() {
-    //this.approvalChanged.emit(!this.need.approved);
     this.needSvc.setNeedApproval(this.need.$key, !this.need.approved);
   }
 
   pendingPercent() {
-    //return Math.round(((this.need.needTotal - this.need.collectedTotal) / this.need.needTotal));
     return Math.round(100 * ((this.need.needTotal - this.donated) / this.need.needTotal));
   }
 
-  oneDay = 24 * 60 * 60 * 1000;
   daysLeft() {
-    return Math.round(Math.abs(((new Date(this.need.endDate).getTime() - new Date(Date.now()).getTime()) / this.oneDay)));
+    return this.needSvc.daysLeft(this.need.endDate);
   }
 
 }

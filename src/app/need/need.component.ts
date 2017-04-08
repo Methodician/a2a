@@ -13,22 +13,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class NeedComponent implements OnInit {
   @Input() need: Need;
   @Input() approving = false;
-  //@Input() orgInfo = null;
   @Input() previewImageUrl = '../../assets/images/electric_arc.jpg';
   @Input() preview = false;
-  //@Output() approvalChanged = new EventEmitter();
 
-  //contributions = [];
   donated = 0;
 
-  /*  private contributionId: string;
-    private donorId: string*/
-
-  constructor(private needSvc: NeedService, authSvc: AuthService) {
-    /*    this.contributionId = this.needSvc.createContributionId();
-        authSvc.authInfo$.subscribe(info => {
-          this.donorId = info.$uid;
-        });*/
+  constructor(
+    private needSvc: NeedService,
+    authSvc: AuthService) {
   }
 
   ngOnInit() {
@@ -46,13 +38,11 @@ export class NeedComponent implements OnInit {
   }
 
   pendingPercent() {
-    //return Math.round(((this.need.needTotal - this.need.collectedTotal) / this.need.needTotal));
     return Math.round(100 * ((this.need.needTotal - this.donated) / this.need.needTotal));
   }
 
-  oneDay = 24 * 60 * 60 * 1000;
   daysLeft() {
-    return Math.round(Math.abs(((new Date(this.need.endDate).getTime() - new Date(Date.now()).getTime()) / this.oneDay)));
+    return this.needSvc.daysLeft(this.need.endDate);
   }
 
 }
