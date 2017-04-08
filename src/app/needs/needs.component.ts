@@ -19,6 +19,7 @@ export class NeedsComponent implements OnInit {
     this.needSvc.getActiveNeeds()
       .subscribe(needs => {
         this.needs = this.needSvc.filterNeedsToNotCompleted(this.needSvc.filterNeedsByApproval(needs, true));
+        //this.needs = this.needSvc.filterNeedsByApproval(needs, true);
       });
   }
 }
