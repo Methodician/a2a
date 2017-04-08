@@ -11,7 +11,6 @@ import { Observable } from "rxjs/Observable";
 export class NeedsComponent implements OnInit {
 
   needs: Need[] = null;
-  //setsOf3: any = null;
   constructor(
     private needSvc: NeedService
   ) { }
@@ -19,30 +18,7 @@ export class NeedsComponent implements OnInit {
   ngOnInit() {
     this.needSvc.getActiveNeeds()
       .subscribe(needs => {
-        this.needs = this.needSvc.filterNeedsByApproval(needs, true);
-        //this.setsOfThree();
+        this.needs = this.needSvc.filterNeedsToNotCompleted(this.needSvc.filterNeedsByApproval(needs, true));
       });
-
   }
-
-  /*  setsOfThree() {
-      if (this.needs.length < 1)
-        return;
-      let i = 0;
-      let row = 1;
-      let arrOfArr = [];
-      while (i < this.needs.length) {
-        let tempArr = [];
-        for (let j = 0; j < 3; j++) {
-          if (this.needs[i]) {
-            tempArr.push(this.needs[i])
-          }
-          i++;
-        }
-        arrOfArr.push(tempArr);
-        tempArr = [];
-      }
-      this.setsOf3 = arrOfArr;
-    }*/
-
 }
