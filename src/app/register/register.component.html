@@ -7,26 +7,34 @@
       <div class="form-field">
         <label>*Email</label>
         <input name="repEmail" formControlName="repEmail" type="email" class="form-control">
+        <div class="field-error-message" *ngIf="isErrorVisible('repEmail','required')">Email is required</div>
+        <div class="field-error-message" *ngIf="isErrorVisible('repEmail','validEmail')">Please enter avalid email address.</div>
       </div>
       <div class="form-field">
         <label>*Password</label>
         <input name="password" formControlName="password" type="password" class="form-control">
+        <div class="field-error-message" *ngIf="isErrorVisible('password','required')">Password is required</div>
       </div>
       <div class="form-field">
         <label>*Confirm Password:</label>
         <input name="confirm" formControlName="confirm" type="password" class="form-control">
+        <div class="field-error-message" *ngIf="isErrorVisible('confirm','required')">Please confirm your password.</div>
+        <div class="field-error-message" *ngIf="!isPasswordMatch() && isControlDirty('confirm')">The password must match.</div>
       </div>
       <div class="form-field">
         <label>*First Name</label>
         <input name="fName" formControlName="fName" type="text" class="form-control">
+        <div class="field-error-message" *ngIf="isErrorVisible('fName','required')">Email is required</div>
       </div>
       <div class="form-field">
         <label>*Last Name</label>
         <input name="lName" formControlName="lName" type="text" class="form-control">
+        <div class="field-error-message" *ngIf="isErrorVisible('lName','required')">Email is required</div>
       </div>
       <div class="form-field">
         <label>*Phone</label>
         <input name="repPhone" formControlName="repPhone" type="tel" class="form-control">
+        <div class="field-error-message" *ngIf="isErrorVisible('repPhone','required')">Email is required</div>
       </div>
     </div>
     <div class="form-bg">
@@ -34,6 +42,7 @@
       <div class="form-field">
         <label>*Name</label>
         <input name="orgName" formControlName="orgName" type="text" class="form-control">
+        <div class="field-error-message" *ngIf="isErrorVisible('orgName','required')">Email is required</div>
       </div>
       <div class="form-field">
         <label>Phone</label>
@@ -42,23 +51,40 @@
       <div class="form-field">
         <label>Website URL</label>
         <input name="orgWebsite" formControlName="orgWebsite" type="url" class="form-control">
+        <div class="field-error-message" *ngIf="isErrorVisible('orgWebsite','validUrl')">not a valid url</div>
       </div>
       <div class="form-field">
         <label>*City</label>
         <input name="orgCity" formControlName="orgCity" type="text" class="form-control">
+        <div class="field-error-message" *ngIf="isErrorVisible('orgCity','required')">field is mandatory</div>
       </div>
       <div class="form-field">
         <label>*State</label>
         <input name="orgState" formControlName="orgState" type="text" class="form-control">
+        <div class="field-error-message" *ngIf="isErrorVisible('orgState','required')">Email is required</div>
       </div>
       <div class="form-field">
         <label>*Zip</label>
         <input name="orgZip" formControlName="orgZip" type="text" class="form-control">
+        <div class="field-error-message" *ngIf="isErrorVisible('orgZip','required')">Email is required</div>
       </div>
     </div>
     <div class="form-bg">
-      Please read and agree to our terms and conditions <input name="agreedToCnC" formControlName="agreedToTnC" type="checkbox"
-        class="checkbox">
+      Please read and agree to our terms and conditions
+      <input #agree name="agreedToTnC" formControlName="agreedToTnC" type="checkbox" class="checkbox">
+      <h3>
+        These are our most fakest "Terms and Conditions":
+      </h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati voluptas deserunt fugiat ipsa dolore, nostrum ab laboriosam
+        asperiores, minima maxime distinctio culpa perferendis ipsam, necessitatibus quae quas nisi veritatis vero! Lorem
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, adipisci quibusdam voluptate odio harum, voluptas
+        totam perferendis repudiandae minima eum corrupti quas voluptatibus sint iure beatae, officia, enim placeat. Dicta.
+        L orem ipsum dolor sit amet, consectetur adipisicing elit. Iste eius officiis, distinctio iusto numquam dignissimos
+        dicta doloremque harum, sapiente nostrum aliquam quasi obcaecati optio maiores ipsum reprehenderit architecto eligendi
+        tenetur!
+      </p>
+      <div class="field-error-message" *ngIf="!aggreedToTnC()">You must agree to the terms and conditions.</div>
     </div>
   </fieldset>
   <button (click)="signUp()" [disabled]="!isPasswordMatch() || !formValid()" class="btn btn-default">Register User</button>

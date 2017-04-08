@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './../shared/security/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { validateUrl } from '../shared/validators/validateUrl';
+import { validateEmail } from '../shared/validators/validateEmail';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +24,7 @@ export class RegisterComponent implements OnInit {
     private router: Router
   ) {
     this.form = this.fb.group({
-      repEmail: ['', Validators.required],
+      repEmail: ['', [validateEmail, Validators.required]],
       password: ['', Validators.required],
       confirm: ['', Validators.required],
       fName: ['', Validators.required],
@@ -30,7 +32,7 @@ export class RegisterComponent implements OnInit {
       repPhone: ['', Validators.required],
       orgName: ['', Validators.required],
       orgPhone: '',
-      orgWebsite: '',
+      orgWebsite: ['', validateUrl],
       orgCity: ['', Validators.required],
       orgState: ['', Validators.required],
       orgZip: ['', Validators.required],
@@ -47,6 +49,20 @@ export class RegisterComponent implements OnInit {
   isPasswordMatch() {
     const val = this.form.value;
     return val.password && val.password == val.confirm;
+  }
+
+  isControlDirty(field: string) {
+    let control = this.form.controls[field];
+    return control.dirty;
+  }
+
+  aggreedToTnC() {
+    let control = this.form.controls['agreedToTnC'];
+    return control.value;
+  }
+  isErrorVisible(field: string, error: string) {
+    let control = this.form.controls[field];
+    return control.dirty && control.errors && control.errors[error];
   }
 
   signUp() {
