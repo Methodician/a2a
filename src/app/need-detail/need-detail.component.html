@@ -95,7 +95,7 @@
             <h3>{{ need.title }}</h3>
 
             <p>Started: {{ need.startDate | date }}</p>
-            <p>{{ need.body }}</p>
+            <p class="line-break">{{ need.body }}</p>
             <div id="body-images">
                 <div *ngIf="!preview" class="flexed">
                     <img *ngFor="let url of need.bodyImageUrls" [src]="url.$value" alt="Other Images" class="body-img">

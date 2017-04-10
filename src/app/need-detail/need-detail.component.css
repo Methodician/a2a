@@ -25,6 +25,10 @@
     display: flex;
 }
 
+.line-break {
+    white-space: pre-wrap;
+}
+
 .fa-facebook-square {
     color: dodgerblue;
 }
