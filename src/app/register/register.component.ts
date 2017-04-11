@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
       confirm: ['', Validators.required],
       fName: ['', Validators.required],
       lName: ['', Validators.required],
-      repPhone: ['', Validators.required],
+      repPhone: ['', [validatePhone, Validators.required]],
       orgName: ['', Validators.required],
       orgPhone: ['', validatePhone],
       orgWebsite: ['', validateUrl],

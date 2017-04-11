@@ -33,8 +33,9 @@
       </div>
       <div class="form-field">
         <label>*Phone</label>
-        <input [class.input-error]="isErrorVisible('repPhone','required')" name="repPhone" formControlName="repPhone" type="tel" maxlength=13 class="form-control">
+        <input [class.input-error]="isErrorVisible('repPhone','required') || isErrorVisible('repPhone','validPhone')" name="repPhone" formControlName="repPhone" type="tel" maxlength=14 class="form-control">
         <div class="field-error-message" *ngIf="isErrorVisible('repPhone','required')">Don't forget to enter your phone number, please.</div>
+        <div class="field-error-message" *ngIf="isErrorVisible('repPhone','validPhone')">Please enter a vaild phone number. ex: 555 555 5555</div>
       </div>
     </div>
     <div class="form-bg">
