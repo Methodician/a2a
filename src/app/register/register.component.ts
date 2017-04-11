@@ -6,6 +6,7 @@ import { AuthService } from './../shared/security/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { validateUrl } from '../shared/validators/validateUrl';
 import { validateEmail } from '../shared/validators/validateEmail';
+import { validatePhone } from '../shared/validators/validatePhone';
 
 @Component({
   selector: 'app-register',
@@ -29,9 +30,9 @@ export class RegisterComponent implements OnInit {
       confirm: ['', Validators.required],
       fName: ['', Validators.required],
       lName: ['', Validators.required],
-      repPhone: ['', Validators.required],
+      repPhone: ['', [validatePhone, Validators.required]],
       orgName: ['', Validators.required],
-      orgPhone: '',
+      orgPhone: ['', validatePhone],
       orgWebsite: ['', validateUrl],
       orgCity: ['', Validators.required],
       orgState: ['', Validators.required],
