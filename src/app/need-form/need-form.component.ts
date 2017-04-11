@@ -2,6 +2,8 @@ import { DatePipe } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 
+//import { validateNeedTotal } from '../shared/validators/validateNeedTotal';
+
 @Component({
   selector: 'need-form',
   templateUrl: './need-form.component.html',
@@ -40,9 +42,49 @@ export class NeedFormComponent implements OnInit {
 
   }
 
+  isNeedOngoing() {
+    return this.form.controls['ongoing'].value;
+  }
+
   isErrorVisible(field: string, error: string) {
     let control = this.form.controls[field];
     return control.dirty && control.errors && control.errors[error];
+  }
+
+  isTotalOk() {
+    let total = this.form.controls['needTotal'].value;
+    if (this.isNeedOngoing() || total > 0)
+      return true;
+    else return false;
+  }
+
+  isStartOk() {
+    let val = this.form.controls['startDate'].value;
+    let start = Date.parse(this.form.controls['startDate'].value);
+    let today = new Date().setUTCHours(0, 0, 0, 0);
+
+    let startOk = start >= today;
+    //let startOk = this.form.controls['startDate'].value >= new Date(Date.now());
+    if (this.isNeedOngoing() || startOk)
+      return true;
+    else return false;
+  }
+
+  isEndOk() {
+    let end = Date.parse(this.form.controls['endDate'].value);
+    let start = Date.parse(this.form.controls['startDate'].value);
+    //let today = new Date().setUTCHours(0, 0, 0, 0);
+    let endOk = end > start;
+    //let endOk = end > today && end > start;
+    //let endOk = this.form.controls['endDate'].value > new Date(Date.now()).setDate(new Date(Date.now()).getDate() + 1);
+    //let endOk = this.form.controls['endDate'].value > new Date(Date.now());
+    if (this.isNeedOngoing() || endOk)
+      return true;
+    else return false;
+  }
+
+  areDatesOk() {
+    return this.isStartOk() && this.isEndOk();
   }
 
   reset() {
@@ -50,11 +92,12 @@ export class NeedFormComponent implements OnInit {
   }
 
   get valid() {
-    return this.form.valid;
+    return this.form.valid && this.isTotalOk() && this.areDatesOk();
   }
 
   get value() {
     return this.form.value;
   }
+
 
 }
