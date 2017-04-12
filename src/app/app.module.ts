@@ -1,3 +1,4 @@
+import { IsAdminGuard } from './shared/security/isAdmin.guard';
 import { OrgApprovedGuard } from './shared/security/orgApproved.guard';
 import { EmailVerifiedGuard } from './shared/security/emailVerified.guard';
 import { SafeUrlPipe } from './shared/pipes/safe-url.pipe';
@@ -90,6 +91,7 @@ export const firebaseAuthConfig = {
     AuthGuard,
     EmailVerifiedGuard,
     OrgApprovedGuard,
+    IsAdminGuard,
     DatePipe
     /*    ReversePipe,
         SafeUrlPipe*/

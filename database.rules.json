@@ -12,7 +12,11 @@
         },
         "orgApproved": {
           ".write": "false",
-          ".read": "$uid === auth.uid"
+          ".read": "true"
+        },
+        "isAdmin": {
+          ".write": "false",
+          ".read": "true"
         }
       }
     },

@@ -37,7 +37,21 @@ export class UserService {
       /*this.userInfo$ = this.db.object(`userInfo/${info.$uid}`);*/
     });
   }
-  
+
+  isAdmin() {
+    let sub = new Subject();
+    this.authSvc.authInfo$.subscribe(info => {
+      if (info.$uid) {
+        this.db.object(`userInfo/${info.$uid}/isAdmin`).subscribe(admin => {
+          sub.next(admin);
+          sub.complete();
+        });
+      }
+    });
+
+    return sub.asObservable();
+  }
+
   updateUserInfo(userInfo, uid?) {
     let id = uid || this.uid;
     return this.db.object(`userInfo/${id}`).update(userInfo);
