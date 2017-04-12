@@ -1,3 +1,4 @@
+import { IsAdminGuard } from './shared/security/isAdmin.guard';
 import { OrgApprovedGuard } from './shared/security/orgApproved.guard';
 import { AccountComponent } from './account/account.component';
 import { EmailVerifiedGuard } from './shared/security/emailVerified.guard';
@@ -53,7 +54,8 @@ const routes: Routes = [
                 path: '',
                 component: ApproveNeedsComponent
             }
-        ]
+        ],
+        canActivate: [IsAdminGuard]
     },
     {
         path: 'account',
