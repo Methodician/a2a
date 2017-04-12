@@ -140,30 +140,51 @@ b {
 
 /*most phones landscape mode*/
 @media screen and (min-width: 500px){
-
+  .preview-imgwrapper,
+  .preview-body {
+    width: 300px !important;
+    margin-left: 155px;
+    margin-right: 155px;
+  }
 }
 
 /*Nexus 6P and iPhone6 Plus landscape*/
 @media screen and (min-width: 732px){
-
+  .preview-imgwrapper,
+  .preview-body {
+    margin-left: 190px;
+    margin-right: 190px;
+  }
 }
 
 /*iPad Portrait mode*/
 @media screen and (min-width: 760px){
-
+  .preview-imgwrapper,
+  .preview-body {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
 }
 
 /*iPad landscape mode*/
 @media screen and (min-width: 1020px){
-
+  .preview-imgwrapper,
+  .preview-body {
+    margin-left: 320px;
+    margin-right: 320px;
+  }
 }
 
 /*iPad Pro landscape*/
 @media screen and (min-width: 1366) and (min-height: 1024px){
-
+  
 }
 
 /*Desktop view*/
 @media screen and (min-width: 1200px){
-
+  .preview-imgwrapper,
+  .preview-body {
+    margin-left: 430px;
+    margin-right: 430px;
+  }
 }
