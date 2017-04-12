@@ -1,5 +1,3 @@
-<!--<need *ngIf="need" [need]="need" [detail]="1" [orgInfo]="orgInfo"></need>-->
-
 <section *ngIf="need" id="need-detail">
     <div id="imgwrapper">
         <img id="cover-image" [src]="preview ? previewImageUrl : need.coverImageUrl" alt="Cover Image">
@@ -34,13 +32,13 @@
             </div>
             <section class="container">
                 <!--<form #form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" (ngSubmit)="donate(btnId.value)">
-          <input type="hidden" name="cmd" value="_s-xclick">
-          <input type="hidden" name="custom" value="{&#34;contributionId&#34;:&#34;{{contributionId}}&#34;,&#34;orgId&#34;:&#34;{{need.orgId}}&#34;,&#34;needId&#34;:&#34;{{need.$key}}&#34;}">
-          <input #btnId type="hidden" name="hosted_button_id" value="C3HSEYXMSHQHN">
-          <input (click)="form.submit()" type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0"
-            name="submit" alt="PayPal - The safer, easier way to pay online!">
-        </form>-->
-                <!--SANDBOX BTN-->
+                  <input type="hidden" name="cmd" value="_s-xclick">
+                  <input type="hidden" name="custom" value="{&#34;contributionId&#34;:&#34;{{contributionId}}&#34;,&#34;orgId&#34;:&#34;{{need.orgId}}&#34;,&#34;needId&#34;:&#34;{{need.$key}}&#34;}">
+                  <input #btnId type="hidden" name="hosted_button_id" value="C3HSEYXMSHQHN">
+                  <input (click)="form.submit()" type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0"
+                    name="submit" alt="PayPal - The safer, easier way to pay online!">
+                </form>-->
+<!--SANDBOX BTN-->
                 <form *ngIf="formShown == 'donate'" #form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                     <!--(ngSubmit)="donate()"-->
                     <input type="hidden" name="cmd" value="_s-xclick">
@@ -76,7 +74,6 @@
                         name="submit" alt="PayPal - The safer, easier way to pay online!">
                 </form>
                 <br>
-                <!--<button class="sharebtn">SHARE</button>-->
             </section>
             <div id="littlebtns" *ngIf="approving">
                 <button class="sharebtn" (click)="toggleApproval()">{{ need.approved ? 'Unapprove' : 'Approve' }}</button>
@@ -88,7 +85,10 @@
                 <button routerLink="../">BACK TO NEEDS</button>
             </div>
         </div>
-        <div *ngIf="need.videoIframe" width="100%" height="100%" [innerHTML]="need.videoIframe | adjustIframe | safeHtml"></div>
+<!-- You Tube Imbed -->
+        <div class="youtube-vid" *ngIf="need.videoIframe" width="100%" height="100%" [innerHTML]="need.videoIframe | adjustIframe | safeHtml">
+        </div>
+
         <div id="details">
             <b>{{ orgInfo?.fName }} {{ orgInfo?.lName }}</b>
             <b>{{ orgInfo?.orgCity }} {{ orgInfo?.orgState }}</b>

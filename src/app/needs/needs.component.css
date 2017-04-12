@@ -1,5 +1,5 @@
 p {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 
@@ -15,6 +15,7 @@ p {
   padding: 40px 20px 30px;
   margin-bottom: 30px;
 }
+
 @media screen and (min-width: 992px) {
   .col-md-4 {
     width: 300px;
@@ -33,54 +34,54 @@ p {
 
 /*iPad Portrait mode*/
 @media screen and (min-width: 760px){
-    p {
-        padding: 10px 60px 5px;
-    }
+  p {
+    padding: 10px 60px 5px;
+  }
 
-    #needs {
-        padding-left: 45px;
-        padding-right: 45px;
-        margin-top: 40px;
-        margin-bottom: 65px;
-    }
+  #needs {
+    padding-left: 45px;
+    padding-right: 45px;
+    margin-top: 40px;
+    margin-bottom: 65px;
+  }
 }
 
 /*iPad landscape mode*/
 @media screen and (min-width: 1020px){
-    p {
-      padding: 10px 100px 5px;
-    }
+  p {
+    padding: 10px 100px 5px;
+  }
 }
 
 /*iPad Pro landscape*/
 @media screen and (min-width: 1366px) and (min-height: 1024px){
-    p {
-      padding: 10px 200px 5px;
-    }
+  p {
+    padding: 10px 200px 5px;
+  }
 
-    #needs {
-        padding-left: 200px;
-        padding-right: 200px;
-        margin-top: 80px;
-        margin-bottom: 130px;
-    }
+  #needs {
+    padding-left: 200px;
+    padding-right: 200px;
+    margin-top: 80px;
+    margin-bottom: 130px;
+  }
 }
 
 /*Desktop view*/
 @media screen and (min-width: 1200px){
-    h2 {
-      font-size: 4em;
-    }
+  h2 {
+    font-size: 4em;
+  }
 
-    p {
-      padding: 10px 200px 5px;
-      font-size: 1.2em;
-    }
+  p {
+    padding: 10px 200px 5px;
+    font-size: 1.2em;
+  }
 
-    #needs {
-        padding-left: 160px;
-        padding-right: 160px;
-        margin-top: 80px;
-        margin-bottom: 130px;
-    }
+  #needs {
+    padding-left: 160px;
+    padding-right: 160px;
+    margin-top: 80px;
+    margin-bottom: 130px;
+  }
 }

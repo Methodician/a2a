@@ -5,6 +5,16 @@
     margin-bottom: 5px;
 }*/
 
+.youtube-vid {
+  width: 560px;
+  height: 316px;
+  margin: 0 auto;
+}
+
+.youtube-vid iframe {
+  height: 100%;
+}
+
 #details {
     padding: 10px;
 }
@@ -47,7 +57,7 @@
 
 .body-img {
     object-fit: cover;
-    width: 250px; 
+    width: 250px;
     height: 200px;
 }
 
