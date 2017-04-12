@@ -1,10 +1,10 @@
 <!--ToDo: Create Truncate Pipe with Elipses-->
 <b>{{ need.title | truncateTitle:25 }}</b>
-<div id="imgwrapper">
+<div id="imgwrapper" [class.preview-imgwrapper]="preview">
   <img id="cover-image" [src]="preview ? previewImageUrl : need.coverImageUrl" alt="Cover Image">
   <!--<img *ngIf="preview" [src]="previewImageUrl" alt="Cover Image">-->
 </div>
-<div id="body">
+<div id="body" [class.preview-body]="preview">
   <div id="info">
     <div>
       <div id="donated">
