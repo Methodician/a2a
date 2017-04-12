@@ -43,12 +43,24 @@ export class UserService {
     this.authSvc.authInfo$.subscribe(info => {
       if (info.$uid) {
         this.db.object(`userInfo/${info.$uid}/isAdmin`).subscribe(admin => {
-          sub.next(admin);
+          sub.next(admin.$value);
           sub.complete();
         });
       }
     });
+    return sub.asObservable();
+  }
 
+  isOrgApproved() {
+    let sub = new Subject();
+    this.authSvc.authInfo$.subscribe(info => {
+      if (info.$uid) {
+        this.db.object(`userInfo/${info.$uid}/orgApproved`).subscribe(approved => {
+          sub.next(approved.$value);
+          sub.complete();
+        });
+      }
+    });
     return sub.asObservable();
   }
 
@@ -88,10 +100,10 @@ export class UserService {
     //let closed = {};
     let subject = new Subject();
     if (!!id) {
-      this.db.object(`userInfo/${id}/orgApproved`).subscribe(approved => {
+      this.isOrgApproved().subscribe(approved => {
         this.getOpenInfo().subscribe(open => {
           this.getClosedInfo().subscribe(closed => {
-            let userInfo = Object.assign({}, { orgApproved: approved.$value }, open, closed);
+            let userInfo = Object.assign({}, { orgApproved: approved }, open, closed);
             userInfo.$key = id;
             userInfo.$uid = id;
             subject.next(userInfo);

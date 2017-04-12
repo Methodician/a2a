@@ -14,7 +14,7 @@ export class IsAdminGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
         return this.userSvc.isAdmin()
             .map((admin: any) =>
-                admin ? admin.$value : false
+                admin ? admin : false
             )
             .take(1)
             .do(allowed => {

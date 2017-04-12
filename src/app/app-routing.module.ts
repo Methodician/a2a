@@ -1,3 +1,4 @@
+import { ReviewFinancialsComponent } from './review-financials/review-financials.component';
 import { IsAdminGuard } from './shared/security/isAdmin.guard';
 import { OrgApprovedGuard } from './shared/security/orgApproved.guard';
 import { AccountComponent } from './account/account.component';
@@ -46,13 +47,26 @@ const routes: Routes = [
         path: 'approveneeds',
         children: [
             {
-                // ToDo: add an isAdminGuard and apply it here (also Firebase Security Rules)
                 path: ':id',
                 component: ApproveDetailComponent
             },
             {
                 path: '',
                 component: ApproveNeedsComponent
+            }
+        ],
+        canActivate: [IsAdminGuard]
+    },
+    {
+        path: 'reviewfinancials',
+        children: [
+            /*{
+                path: ':id',
+                component: ApproveDetailComponent
+            },*/
+            {
+                path: '',
+                component: ReviewFinancialsComponent
             }
         ],
         canActivate: [IsAdminGuard]
