@@ -1,3 +1,4 @@
+import { FinancialService } from './shared/data-services/financial.service';
 import { IsAdminGuard } from './shared/security/isAdmin.guard';
 import { OrgApprovedGuard } from './shared/security/orgApproved.guard';
 import { EmailVerifiedGuard } from './shared/security/emailVerified.guard';
@@ -36,6 +37,7 @@ import { ApproveDetailComponent } from './approve-detail/approve-detail.componen
 import { TruncateTitlePipe } from './shared/pipes/truncate-title.pipe';
 import { AccountComponent } from './account/account.component';
 import { TestComponentComponent } from './test-component/test-component.component';
+import { ReviewFinancialsComponent } from './review-financials/review-financials.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBymDlc5x-NzBC-xL5RZ1GtroML8KeV56g",
@@ -72,6 +74,7 @@ export const firebaseAuthConfig = {
     TruncateTitlePipe,
     AccountComponent,
     TestComponentComponent,
+    ReviewFinancialsComponent,
     //AppModuleComponent,
   ],
   imports: [
@@ -88,6 +91,7 @@ export const firebaseAuthConfig = {
     AuthService,
     UserService,
     NeedService,
+    FinancialService,
     AuthGuard,
     EmailVerifiedGuard,
     OrgApprovedGuard,
