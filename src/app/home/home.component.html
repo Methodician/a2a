@@ -42,14 +42,17 @@
     </div>
   </div>
 </section>
+
 <section id="needs" class="row">
   <h2>Needs</h2>
   <p>
-    A participant is a school, agency, or community needs. All participants must register and be verified before being allowed
+    A participant is a school, agency, or community need. All participants must register and be verified before being allowed
     to post needs. Participation is free.
   </p>
-  <div *ngIf="lastNeeds" id="needs-wrapper">
-    <need *ngFor="let need of lastNeeds | reverse" [need]="need"></need>
+  <div class="needs-scroll">
+    <div class="col-md-4 need-wrapper" *ngFor="let need of lastNeeds | reverse">
+      <need [need]="need"></need>
+    </div>
   </div>
 </section>
 <!--<section id="spotlight" class="row">

@@ -1,167 +1,179 @@
-#home-top {
-    text-align: center;
-    margin-top: 65px;
-    padding-bottom: 40px;
+p {
+  margin: 0 0 25px;
+  font-weight: 300;
 }
 
-p {
-    margin: 0 0 25px;
-    font-weight: 300;
+need {
+  margin-right: 30px;
 }
 
 .intro-bubble {
-    margin-left: 30px;
-    margin-right: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.video-placeholder {
+  height: 120px;
+  width: 240px;
+  background-color: white;
+  margin: 30px 0;
+}
+
+.needs-scroll{
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+}
+
+.cover-image{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+}
+
+.btn-success {
+  background-color: #CDDC39;
+  border-color: #CDDC39;
+}
+
+.need-wrapper {
+  padding: 15px;
+  width: 300px;
+  height: auto;
+}
+
+#home-top {
+  text-align: center;
+  margin-top: 65px;
+  padding-bottom: 40px;
 }
 
 #about,
 #spotlight,
 #contact {
-    padding: 35px 30px;
+  padding: 35px 30px;
 }
 
 #about {
-    background-color: #2c3e50;
-    color: #ccc;
-    padding-bottom: 40px;
+  background-color: #2c3e50;
+  color: #ccc;
+  padding-bottom: 40px;
 }
+
 #about h2,
 #about h4 {
-    color: #f7f7f7;
+  color: #f7f7f7;
 }
-.video-placeholder {
-    height: 120px;
-    width: 240px;
-    background-color: white;
-    margin: 30px 0;
-}
+
 #needs {
-    background-color: #e7e7e7;
-    color: #2c3e50;
-    /*padding: 35px 20px;*/
-    height: 670px;
-    padding: 35px 45px;
+  background-color: #e7e7e7;
+  color: #2c3e50;
+  padding: 35px 45px;
+  height: auto;
 }
-#needs-wrapper{
-    overflow-x: scroll;
-    overflow-y: hidden;
-    display: flex;
-    /*overflow: auto;*/
-    /*white-space: nowrap;*/
-}
-need {
-    margin-right: 30px;
-}
+
 #imgwrapper {
-    width: 100%;
-    height: 200px;
-    overflow: hidden !important;
-    background: #c1c1c1;
-    border-radius: 30px 30px 0 0;
-    margin-top: 10px;
-}
-.cover-image{
-    /*border-radius: 30px 30px 0 0;*/
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
+  width: 100%;
+  height: 200px;
+  overflow: hidden !important;
+  background: #c1c1c1;
+  border-radius: 30px 30px 0 0;
+  margin-top: 10px;
 }
 
 #contact p {
-    margin-bottom: 0px;
-}
-.btn-success {
-    background-color: #CDDC39;
-    border-color: #CDDC39;
+  margin-bottom: 0px;
 }
 
 /*TESTING*/
 
 
 img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
-#cover-image{
-    /*border-radius: 30px 30px 0 0;*/
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-}
+
 .imgwrapper {
-    width: 100%;
-    height: 200px;
-    overflow: hidden !important;
-    background: #c1c1c1;
-    border-radius: 30px 30px 0 0 !important;
-    margin-top: 10px;
+  width: 100%;
+  height: 200px;
+  overflow: hidden !important;
+  background: #c1c1c1;
+  border-radius: 30px 30px 0 0 !important;
+  margin-top: 10px;
 }
+
 .needSecTest {
-    width: 286px;
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 5px;
+  width: 286px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
+
+#cover-image{
+  /*border-radius: 30px 30px 0 0;*/
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+}
+
+
 /*END TESTING*/
+
 .col-xs-5 {
-    padding-left: 0;
-    padding-right: 1px;
+  padding-left: 0;
+  padding-right: 1px;
 }
+
 .col-xs-7 {
-    padding-left: 0;
+  padding-left: 0;
 }
+
 .image-placeholder {
-    height: 120px;
-    width: 140px;
-    background-color: white;
-    margin: 10px;
-    margin-top: 0;
+  height: 120px;
+  width: 140px;
+  background-color: white;
+  margin: 10px;
+  margin-top: 0;
 }
-#needs .fa {
-    margin-left: 9px;
-}
-/*#spotlight {
-    background-color: #F2A1BC;
-    color: #fff;
-    padding-bottom: 50px;
-}*/
+
 .circle-wrapper{
-    height: 200px;
-    margin-bottom: 20px;
-    text-align: center;
-    overflow: hidden;
-    border-radius: 50%;
-    /*background-image: url(../src/assets/images/explore.jpg);*/
+  height: 200px;
+  margin-bottom: 20px;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 50%;
 }
+
 .circle-inner {
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#needs .fa {
+  margin-left: 9px;
 }
 
 /*most phones landscape mode*/
 @media screen and (min-width: 500px){
-    .intro-bubble .img-circle {
-        padding-left: 100px;
-        padding-right: 100px;
-    }
+  .intro-bubble .img-circle {
+      padding-left: 100px;
+      padding-right: 100px;
+  }
 
-    .video-placeholder {
-        height: 220px;
-        width: 340px;
-    }
+  .video-placeholder {
+      height: 220px;
+      width: 340px;
+  }
 
-    #needs {
-        height: 600px;
-    }
 }
 
 /*Nexus 6P and iPhone6 Plus landscape*/
@@ -171,144 +183,152 @@ img {
 
 /*iPad Portrait mode*/
 @media screen and (min-width: 760px){
-    .container {
-        width: 100%;
-    }
-    h2 {
-        font-size: 3.5em;
-    }
-    #home-top {
-        padding-left: 50px;
-        padding-right: 50px;
-        height: calc(100vh - 115px);
-    }
-    .welcome{
-        padding: 50px 100px 40px;
-    }
-    .welcome h2 {
-        font-size: 4.5em;
-    }
-    .welcome p {
-        font-size: 1.5em;
-    }
-    .intro-bubble .img-circle {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    .intro-bubble {
-        margin-left: 0;
-        margin-right: 0;
-    }
-    #about,
-    #needs,
-    #spotlight,
-    #contact {
-        padding: 40px 100px 60px;
-    }
-/*    #needs {
-        padding-bottom: 65px;
-    }*/
-    #needs {
-        height: 620px;
-    }
+  h2 {
+    font-size: 3.5em;
+  }
+  .container {
+    width: 100%;
+  }
 
-    .video-placeholder {
-        height: 320px;
-        width: 540px;
-    }
+  .welcome{
+    padding: 50px 100px 40px;
+  }
+  .welcome h2 {
+    font-size: 4.5em;
+  }
+
+  .welcome p {
+    font-size: 1.5em;
+  }
+
+  .intro-bubble .img-circle {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .intro-bubble {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .video-placeholder {
+    height: 320px;
+    width: 540px;
+  }
+
+  #home-top {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  #about,
+  #needs,
+  #spotlight,
+  #contact {
+    padding: 40px 100px 60px;
+  }
 }
 
 /*iPad Landscape mode*/
 @media screen and (min-width: 1020px){
-    #home-top {
-        padding-left: 80px;
-        padding-right: 80px;
-        margin-bottom: 100px;
-    }
-    .welcome {
-        padding: 10px 100px 15px;
-    }
-    #about,
-    #needs,
-    #spotlight,
-    #contact {
-        padding-left: 200px;
-        padding-right: 200px;
-    }
+
+  .welcome {
+    padding: 10px 100px 15px;
+  }
+
+  #home-top {
+    padding-left: 80px;
+    padding-right: 80px;
+    margin-bottom: 100px;
+  }
+
+  #about,
+  #needs,
+  #spotlight,
+  #contact {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
 }
 
 /*iPad Pro Portrait*/
 @media screen and (min-width: 1024px) and (min-height: 1366px){
-    .welcome {
-        padding: 150px 100px 100px;
-    }
-    h2 {
-        font-size: 5.5em;
-    }
-    .welcome p {
-        font-size: 2em;
-    }
-    p {
-        font-size: 1.2em;
-    }
-    #about,
-    #needs,
-    #spotlight,
-    #contact {
-        padding: 50px 200px 90px;
-    }
-    #needs {
-        height: 700px;
-    }
+
+  h2 {
+    font-size: 5.5em;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+
+  .welcome {
+    padding: 150px 100px 100px;
+  }
+
+  .welcome p {
+    font-size: 2em;
+  }
+
+  #about,
+  #needs,
+  #spotlight,
+  #contact {
+    padding: 50px 200px 90px;
+  }
 }
 
 /*iPad Pro Landscape*/
 @media screen and (min-width: 1366px) and (min-height: 1024px){
-    h2 {
-        font-size: 5.5em;
-    }
-    .welcome p {
-        font-size: 2em;
-    }
-    p {
-        font-size: 1.2em;
-    }
-    #needs {
-        height: 670px;
-    }
+
+  h2 {
+    font-size: 5.5em;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+
+  .welcome p {
+    font-size: 2em;
+  }
+
 }
 
 /*Desktop view*/
 @media screen and (min-width: 1200px){
-    #home-top {
-        padding-left: 200px;
-        padding-right: 200px;
-        margin-bottom: 170px;
-    }
-    .welcome {
-        padding: 0px 100px 35px;
-    }
-   /* #howitworks {
-        margin-bottom: 200px;
-    }*/
-    #about,
-/*    #needs,*/
-    #spotlight,
-    #contact {
-        padding: 50px 350px 90px;
-    }
-    #needs {
-        padding-left: 250px;
-        padding-right: 250px;
-        height: 690px;
-    }
-    h2 {
-        font-size: 5em;
-    }
-    .welcome p {
-        font-size: 1.8em;
-    }
-    p {
-        font-size: 1.2em;
-    }
+
+  h2 {
+    font-size: 5em;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+
+  .welcome {
+    padding: 0px 100px 35px;
+  }
+
+
+  .welcome p {
+    font-size: 1.8em;
+  }
+
+  #home-top {
+    padding-left: 200px;
+    padding-right: 200px;
+    margin-bottom: 170px;
+  }
+
+  #about,
+  #spotlight,
+  #contact {
+    padding: 50px 350px 90px;
+  }
+
+  #needs {
+    padding-left: 250px;
+    padding-right: 250px;
+  }
 }

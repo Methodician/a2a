@@ -2,21 +2,23 @@ p {
     font-weight: 300;
 }
 
-#needs-top {
-    background-color: #e7e7e7;
-    color: #2c3e50;
-    text-align: center;
-    padding: 40px 20px 30px;
-    margin-bottom: 30px;
-}
 
 .btn-danger {
-    background-color: #FF8C7C;
-    border-color: #FF8C7C;
+  background-color: #FF8C7C;
+  border-color: #FF8C7C;
 }
 
-.need-wrapper {
-    padding-top: 25px;
+#needs-top {
+  background-color: #e7e7e7;
+  color: #2c3e50;
+  text-align: center;
+  padding: 40px 20px 30px;
+  margin-bottom: 30px;
+}
+@media screen and (min-width: 992px) {
+  .col-md-4 {
+    width: 300px;
+  }
 }
 
 /*most phones landscape mode*/
@@ -46,14 +48,14 @@ p {
 /*iPad landscape mode*/
 @media screen and (min-width: 1020px){
     p {
-        padding: 10px 100px 5px;
+      padding: 10px 100px 5px;
     }
 }
 
 /*iPad Pro landscape*/
 @media screen and (min-width: 1366px) and (min-height: 1024px){
     p {
-        padding: 10px 200px 5px;
+      padding: 10px 200px 5px;
     }
 
     #needs {
@@ -67,12 +69,12 @@ p {
 /*Desktop view*/
 @media screen and (min-width: 1200px){
     h2 {
-        font-size: 4em;
+      font-size: 4em;
     }
-    
+
     p {
-        padding: 10px 200px 5px;
-        font-size: 1.2em;
+      padding: 10px 200px 5px;
+      font-size: 1.2em;
     }
 
     #needs {
