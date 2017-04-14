@@ -1,11 +1,11 @@
-#perpetual {
-    width: 50%;
-    display: inline-block;
+p {
+  font-weight: 300;
+  margin-left: 10px;
 }
 
-.form-group {
-  margin: 35px 10px 0;
-  font-weight: 300;
+label {
+  margin-top: 15px;
+  font-weight: 400;
 }
 
 fieldset {
@@ -18,27 +18,28 @@ legend {
   padding-bottom: 10px;
 }
 
-label {
-  margin-top: 15px;
-  font-weight: 400;
+.form-group {
+  margin: 35px 10px 0;
+  font-weight: 300;
 }
 
 .form-control {
-    color: #545454;
-    border: 1px solid #d4d4d4;
-    box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075); 
+  color: #545454;
+  border: 1px solid #d4d4d4;
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
 }
 
-p {
-  font-weight: 300;
-  margin-left: 10px;
-}
 
 .btn-default {
   color: #fff;
   background-color: #FF8C7C;
   border-color: #FF8C7C;
   padding: 10px 30px;
+}
+
+#perpetual {
+  width: 50%;
+  display: inline-block;
 }
 
 /*most phones landscape mode*/

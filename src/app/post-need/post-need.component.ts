@@ -10,7 +10,7 @@ import { DatePipe } from "@angular/common";
 @Component({
   selector: 'app-post-need',
   templateUrl: './post-need.component.html',
-  styleUrls: ['./post-need.component.css']
+  styleUrls: ['./post-need.component.css', '../shared/styles/validation.css']
 })
 export class PostNeedComponent implements OnInit, OnDestroy {
 
@@ -87,7 +87,7 @@ export class PostNeedComponent implements OnInit, OnDestroy {
   }
 
   formValid(needFormValid) {
-    
+
     let hasCoverImage = !!this.coverImage;
     return needFormValid && hasCoverImage;
   }
