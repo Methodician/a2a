@@ -1,9 +1,3 @@
-/*section {
-    width: 500px;
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 5px;
-}*/
 
 .youtube-vid {
   width: 560px;
@@ -16,66 +10,70 @@
 }
 
 #details {
-    padding: 10px;
+  padding: 10px;
 }
 
 #details > b {
-    display: block;
+  display: block;
 }
 
 #other-images > img {
-    border-radius: unset;
+  border-radius: unset;
 }
 
 #social-share {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 #social-share > .fa {
-    display: flex;
+  display: flex;
 }
 
 .line-break {
-    white-space: pre-wrap;
+  white-space: pre-wrap;
 }
 
 .fa-facebook-square {
-    color: dodgerblue;
+  color: dodgerblue;
 }
 
 .fa-twitter-square {
-    color: lightskyblue;
+  color: lightskyblue;
 }
 
 .flexed {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-bottom: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
 }
 
 .body-img {
-    object-fit: cover;
-    width: 250px;
-    height: 200px;
+  object-fit: cover;
+  width: 250px;
+  height: 200px;
 }
 
 #email-share {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    text-align: center;
-    background-color: hotpink;
-    color: white;
-    width: 36px;
-    height: 36px;
-    border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  background-color: hotpink;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
 }
 
-/*most phones landscape mode*/
-@media screen and (min-width: 500px){
+@media screen and (min-width: 300px){
 
+  .youtube-vid {
+    width: 280px;
+    height: 158px;
+    margin: 0 auto;
+  }
 }
 
 /*Nexus 6P and iPhone6 Plus landscape*/
@@ -85,28 +83,35 @@
 
 /*iPad Portrait mode*/
 @media screen and (min-width: 760px){
-    #need-detail {
-        width: 600px;
-        margin-top: 50px;
-    }
 
-    #imgwrapper {
-        height: 330px;
-    }
+  .youtube-vid {
+    width: 521px;
+    height: 292px;
+    margin: 0 auto;
+  }
 
-    #body {
-        padding: 10px 30px 30px;
-    }
+  #need-detail {
+    width: 600px;
+    margin-top: 50px;
+  }
 
-    #info {
-        padding-left: 70px;
-        padding-right: 70px;
-    }
+  #imgwrapper {
+    height: 330px;
+  }
 
-    #littlebtns {
-        padding-left: 100px;
-        padding-right: 100px;
-    }
+  #body {
+    padding: 10px 30px 30px;
+  }
+
+  #info {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+
+  #littlebtns {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
 }
 
 /*iPad landscape mode*/
@@ -115,26 +120,25 @@
 }
 
 /*iPad Pro landscape*/
-@media screen and (min-width: 1366) and (min-height: 1024px){
-    #need-detail {
-        width: 800px;
-    }
-
-    #body-images {
-        /*padding-left: 300px;
-        padding-right: 300px;*/
-        /*width: 40%;*/
-    }
-
+@media screen and (min-width: 1366px) and (min-height: 1024px){
+  #need-detail {
+    width: 800px;
+  }
 }
 
 /*Desktop view*/
 @media screen and (min-width: 1200px){
-    p {
-        font-size: 1.2em;
-    }
+  p {
+    font-size: 1.2em;
+  }
 
-    #need-detail {
-        width: 1000px;
-    }
+  .youtube-vid {
+    width: 735px;
+    height: 414px;
+    margin: 0 auto;
+  }
+
+  #need-detail {
+    width: 1000px;
+  }
 }
