@@ -42,7 +42,7 @@ export class UserService {
     let sub = new Subject();
     this.authSvc.authInfo$.subscribe(info => {
       if (info.$uid) {
-        this.db.object(`userInfo/${info.$uid}/isAdmin`).subscribe(admin => {
+        this.db.object(`userInfo/isAdmin/${info.$uid}`).subscribe(admin => {
           sub.next(admin.$value);
           sub.complete();
         });
@@ -55,7 +55,7 @@ export class UserService {
     let sub = new Subject();
     this.authSvc.authInfo$.subscribe(info => {
       if (info.$uid) {
-        this.db.object(`userInfo/${info.$uid}/orgApproved`).subscribe(approved => {
+        this.db.object(`userInfo/isApproved/${info.$uid}`).subscribe(approved => {
           sub.next(approved.$value);
           sub.complete();
         });
@@ -86,18 +86,18 @@ export class UserService {
       orgWebsite: userInfo.orgWebsite,
       orgZip: userInfo.orgZip
     };
-    userToUpdate[`userInfo/${uid}/closed`] = closedInfo;
-    userToUpdate[`userInfo/${uid}/open`] = openInfo;
+    userToUpdate[`userInfo/closed/${uid}`] = closedInfo;
+    userToUpdate[`userInfo/open/${uid}`] = openInfo;
     //return this.db.object(`userInfo/${uid}`).set(userInfo);
     return this.firebaseUpdate(userToUpdate);
   }
 
+  getUserList() {
+    return this.db.list('userInfo/open');
+  }
+
   getUserInfo(uid?): Observable<any> {
     let id = uid || this.uid;
-    //console.log('Uid in UserService.getUserInfo:', id);
-    //let approved =null;
-    //let open = {};
-    //let closed = {};
     let subject = new Subject();
     if (!!id) {
       this.isOrgApproved().subscribe(approved => {
@@ -119,12 +119,12 @@ export class UserService {
 
   getOpenInfo(uid?) {
     let id = uid || this.uid;
-    return this.db.object(`userInfo/${id}/open`);
+    return this.db.object(`userInfo/open/${id}`);
   }
 
   getClosedInfo(uid?) {
     let id = uid || this.uid;
-    return this.db.object(`userInfo/${id}/closed`);
+    return this.db.object(`userInfo/closed/${id}`);
   }
 
   firebaseUpdate(dataToSave) {

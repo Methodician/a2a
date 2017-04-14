@@ -2,4 +2,14 @@
   Admin Financial Info
 </h1>
 
+<select [(ngModel)]="users" size="5">
+  <option *ngFor="let user of users">{{ user.fName }} {{ user.lName }} - {{ user.orgCity }} {{ user.orgState }} </option>
+</select>
 
+<div class="panel panel-success">
+
+</div>
+
+<pre>
+  {{ users | json }}
+</pre>
