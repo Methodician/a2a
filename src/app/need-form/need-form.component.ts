@@ -7,7 +7,7 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 @Component({
   selector: 'need-form',
   templateUrl: './need-form.component.html',
-  styleUrls: ['./need-form.component.css']
+  styleUrls: ['./need-form.component.css', '../shared/styles/validation.css']
 })
 export class NeedFormComponent implements OnInit {
 

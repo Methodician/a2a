@@ -13,14 +13,6 @@ label {
   font-weight: 400;
 }
 
-.field-error-message {
-  color:#ff8c7c;
-}
-
-.input-error {
-  border: 2px solid #FFAEA3 !important;
-}
-
 .form-group {
   margin: 35px 10px 20px;
   font-weight: 300;
@@ -61,7 +53,7 @@ label {
     margin-top: 0px;
     margin-bottom: 50px;
   }
-  
+
   .form-bg {
     background: #f5f5f5;
     padding: 10px 30px 40px;
