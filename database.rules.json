@@ -1,6 +1,26 @@
 {
   "rules": {
     "userInfo": {
+      "isApproved": {
+        ".write": "false",
+        ".read": "true"
+      },
+      "isAdmin": {
+        ".write": "false",
+        ".read": "true"
+      },
+      "open": {
+        ".read": "true",
+        "$uid": {
+          ".write": "$uid === auth.uid"
+        }
+      },
+      "closed": {
+        "$uid": {
+          ".write": "$uid === auth.uid",
+          ".read": "$uid === auth.uid"
+        }
+      },
       "$uid": {
         "closed": {
           ".write": "$uid === auth.uid",
