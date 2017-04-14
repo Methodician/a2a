@@ -64,7 +64,6 @@ export class NeedFormComponent implements OnInit {
     let today = new Date().setUTCHours(0, 0, 0, 0);
 
     let startOk = start >= today;
-    //let startOk = this.form.controls['startDate'].value >= new Date(Date.now());
     if (this.isNeedOngoing() || startOk)
       return true;
     else return false;
@@ -73,11 +72,7 @@ export class NeedFormComponent implements OnInit {
   isEndOk() {
     let end = Date.parse(this.form.controls['endDate'].value);
     let start = Date.parse(this.form.controls['startDate'].value);
-    //let today = new Date().setUTCHours(0, 0, 0, 0);
     let endOk = end > start;
-    //let endOk = end > today && end > start;
-    //let endOk = this.form.controls['endDate'].value > new Date(Date.now()).setDate(new Date(Date.now()).getDate() + 1);
-    //let endOk = this.form.controls['endDate'].value > new Date(Date.now());
     if (this.isNeedOngoing() || endOk)
       return true;
     else return false;

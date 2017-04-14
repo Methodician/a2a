@@ -23,18 +23,18 @@
       </div>
       <div *ngIf="!form.value.ongoing" class="form-field">
         <label>Start Date</label>
-        <input [class.input-error]="isErrorVisible('date','required')" name="startDate" formControlName="startDate" type="date" class="form-control">
+        <input [class.input-error]="!isStartOk()" name="startDate" formControlName="startDate" type="date" class="form-control">
         <div class="field-error-message" *ngIf="!isStartOk()">The start date cannot be in the past.</div>
       </div>
       <div *ngIf="!form.value.ongoing" class="form-field">
         <label>End Date</label>
-        <input [class.input-error]="isErrorVisible('endDate','required')" name="endDate" formControlName="endDate" type="date" class="form-control">
+        <input [class.input-error]="!isEndOk()" name="endDate" formControlName="endDate" type="date" class="form-control">
         <div class="field-error-message" *ngIf="!isEndOk()">The end date must be after the start date.</div>
       </div>
       <div *ngIf="!form.value.ongoing" class="form-field">
         <label>Finance Goal</label>
-        <input [class.input-error]="isErrorVisible('needTotal','required')" name="needTotal" formControlName="needTotal" type="number" class="form-control">
-        <div class="field-error-message" *ngIf="!isTotalOk()">Please enter a goal for this need which is greater than $0.</div>
+        <input [class.input-error]="!isTotalOk()" name="needTotal" formControlName="needTotal" type="number" class="form-control">
+        <div class="field-error-message" *ngIf="!isTotalOk()">Please enter a goal for this need greater than $0.</div>
       </div>
     </div>
   </fieldset>
