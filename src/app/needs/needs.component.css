@@ -2,10 +2,22 @@ p {
   font-weight: 300;
 }
 
-
 .btn-danger {
   background-color: #FF8C7C;
   border-color: #FF8C7C;
+}
+
+.need-tile-group {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.need-tile {
+  max-width: 300px;
+  padding: 25px;
 }
 
 #needs-top {
@@ -16,20 +28,27 @@ p {
   margin-bottom: 30px;
 }
 
-@media screen and (min-width: 992px) {
-  .col-md-4 {
-    width: 300px;
-  }
-}
 
 /*most phones landscape mode*/
-@media screen and (min-width: 500px){
-
+@media screen and (min-width: 300px){
+  .need-tile {
+    margin: 0 auto;
+    border: 3px solid red;
+  }
 }
 
 /*Nexus 6P and iPhone6 Plus landscape*/
 @media screen and (min-width: 732px){
+  .need-tile {
+    margin: none;
+    border: none;
+  }
 
+  .need-tile-group {
+    margin: 0 auto;
+    width: 70%;
+    border: 3px solid green;
+  }
 }
 
 /*iPad Portrait mode*/
@@ -43,6 +62,12 @@ p {
     padding-right: 45px;
     margin-top: 40px;
     margin-bottom: 65px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .col-md-4 {
+    width: 300px;
   }
 }
 

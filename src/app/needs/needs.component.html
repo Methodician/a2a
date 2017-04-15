@@ -1,8 +1,5 @@
 <section id="needs-top" class="row">
   <div class="container">
-    <!--    <a routerLink="../postaneed" class="btn btn-circle btn-lg btn-danger">
-      <i class="fa fa-plus"></i>
-    </a>-->
     <h2>BROWSE NEEDS</h2>
     <p>
       A participant is a school, agency, or community needs. All participants must register and be verified before being allowed
@@ -13,12 +10,8 @@
     </p>
   </div>
 </section>
-<section id="needs" class="row">
-  <div *ngFor="let need of needs | reverse">
+<section id="needs" class="row need-tile-group">
+  <div class="need-tile" *ngFor="let need of needs | reverse">
     <need [need]="need"></need>
   </div>
 </section>
-
-<!--<pre>
-  {{ needs | reverse | json }}
-</pre>-->
