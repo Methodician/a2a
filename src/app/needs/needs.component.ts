@@ -8,6 +8,7 @@ import { Observable } from "rxjs/Observable";
   templateUrl: './needs.component.html',
   styleUrls: ['./needs.component.css']
 })
+
 export class NeedsComponent implements OnInit {
 
   needs: Need[] = null;
