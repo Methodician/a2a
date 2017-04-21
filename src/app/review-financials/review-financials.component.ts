@@ -1,3 +1,4 @@
+import { FinancialService } from './../shared/data-services/financial.service';
 import { UserInfoOpen } from './../shared/models/user-info';
 import { FirebaseListObservable } from 'angularfire2';
 import { UserService } from './../shared/data-services/user.service';
@@ -10,13 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReviewFinancialsComponent implements OnInit {
   private users: UserInfoOpen[];
-
+  private selectedUser: UserInfoOpen;
   constructor(
-    private userSvc: UserService
+    private userSvc: UserService,
+    private finSvc: FinancialService
   ) { }
 
   ngOnInit() {
-    this.userSvc.getUserList().subscribe(list => this.users = list);
+    this.userSvc.getUserList().take(1).subscribe(list => {
+      this.selectedUser = list[0];
+      this.users = list;
+    });
+  }
+
+  selectUser(user) {
+    this.selectedUser = user;
   }
 
 }
