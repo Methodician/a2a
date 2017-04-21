@@ -4,10 +4,10 @@
 -->
 <need-form #form></need-form>
 <div class="form-group">
-  <label>Cover Image*</label>
-  <input type="file" class="form-control" (change)="coverImageChange($event)">
+  <label>*Cover Image</label>
+  <input type="file" class="form-control field-error-message" (change)="coverImageChange($event)">
   <label>Body Images (optional)</label>
-  <input type="file" multiple class="form-control" (change)="bodyImagesChange($event)">
+  <input type="file" multiple class="form-control field-error-message" (change)="bodyImagesChange($event)">
 
   <button (click)="save(form)" [disabled]="!formValid(form.valid)" class="btn btn-default">Post New Need</button>
 

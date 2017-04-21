@@ -11,7 +11,7 @@ import { validatePhone } from '../shared/validators/validatePhone';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css', '../shared/styles/validation.css']
 })
 export class RegisterComponent implements OnInit {
 
@@ -61,6 +61,7 @@ export class RegisterComponent implements OnInit {
     let control = this.form.controls['agreedToTnC'];
     return control.value;
   }
+  
   isErrorVisible(field: string, error: string) {
     let control = this.form.controls[field];
     return control.dirty && control.errors && control.errors[error];

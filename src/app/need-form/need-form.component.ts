@@ -7,7 +7,7 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 @Component({
   selector: 'need-form',
   templateUrl: './need-form.component.html',
-  styleUrls: ['./need-form.component.css']
+  styleUrls: ['./need-form.component.css', '../shared/styles/validation.css']
 })
 export class NeedFormComponent implements OnInit {
 
@@ -61,11 +61,11 @@ export class NeedFormComponent implements OnInit {
   isStartOk() {
     let ctrl = this.form.controls['startDate'];
     let val = ctrl.value;
-    let start = Date.parse(this.form.controls['startDate'].value);
+    let start = Date.parse(val);
     let today = new Date().setUTCHours(0, 0, 0, 0);
 
     let startOk = start >= today;
-    //let startOk = this.form.controls['startDate'].value >= new Date(Date.now());
+
     if (ctrl.dirty)
       return (this.isNeedOngoing() || startOk)
     return true;
@@ -73,18 +73,12 @@ export class NeedFormComponent implements OnInit {
 
   isEndOk() {
     let ctrl = this.form.controls['endDate'];
-    let end = Date.parse(this.form.controls['endDate'].value);
+    let end = Date.parse(ctrl.value);
     let start = Date.parse(this.form.controls['startDate'].value);
-    //let today = new Date().setUTCHours(0, 0, 0, 0);
     let endOk = end > start;
-    //let endOk = end > today && end > start;
-    //let endOk = this.form.controls['endDate'].value > new Date(Date.now()).setDate(new Date(Date.now()).getDate() + 1);
-    //let endOk = this.form.controls['endDate'].value > new Date(Date.now());
     if (ctrl.dirty)
       return (this.isNeedOngoing() || endOk)
     return true;
-
-
   }
 
   areDatesOk() {
