@@ -9,6 +9,16 @@ section {
   margin-bottom: 5px;
 }
 
+img {
+  width: 100%;
+}
+
+#need-card-wrapper {
+  border: 2px solid #2c3e50;
+  border-radius: 30px;
+  background-color: #ececec;
+}
+
 #days-remaining {
   color: gray;
   text-align: center;
@@ -16,10 +26,6 @@ section {
 
 #pending {
   text-align: right;
-}
-
-img {
-  width: 100%;
 }
 
 #cover-image{
@@ -38,15 +44,14 @@ img {
   height: 190px;
   overflow: hidden !important;
   background: #c1c1c1;
-  border-radius: 30px 30px 0 0;
+  /*border-radius: 30px 30px 0 0;*/
   margin-top: 10px;
 }
 
 #body {
-  border: 2px solid #c7c7c7;
+  /*border: 2px solid #c7c7c7;*/
   /*border-top-color: #ffffff;*/
   border-radius: 0 0 30px 30px;
-  background-color: white;
 }
 
 #info {
@@ -94,12 +99,27 @@ img {
 }
 
 /*FOR NEED DETAILS*/
-#details {
-  padding: 20px;
-}
-
 b {
   font-size: 1.2em;
+}
+
+.fa-facebook-square {
+  color: dodgerblue;
+}
+
+.fa-twitter-square {
+  color: lightskyblue;
+}
+
+#b-div {
+  border-radius: 30px 30px 0 0;
+  /*border: 2px solid #c7c7c7;*/
+  padding: 20px 10px 0 10px;
+  margin-bottom: 15px;
+}
+
+#details {
+  padding: 20px;
 }
 
 #details > b {
@@ -116,14 +136,6 @@ b {
 }
 #social-share > .fa {
   display: flex;
-}
-
-.fa-facebook-square {
-  color: dodgerblue;
-}
-
-.fa-twitter-square {
-  color: lightskyblue;
 }
 
 #email-share {
@@ -177,7 +189,7 @@ b {
 
 /*iPad Pro landscape*/
 @media screen and (min-width: 1366) and (min-height: 1024px){
-  
+
 }
 
 /*Desktop view*/
