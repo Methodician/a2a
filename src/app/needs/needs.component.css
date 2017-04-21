@@ -46,7 +46,7 @@ p {
 
   .need-tile-group {
     margin: 0 auto;
-    width: 70%;
+    width: 100%;
     border: 3px solid green;
   }
 }
@@ -58,8 +58,6 @@ p {
   }
 
   #needs {
-    padding-left: 45px;
-    padding-right: 45px;
     margin-top: 40px;
     margin-bottom: 65px;
   }
@@ -85,8 +83,6 @@ p {
   }
 
   #needs {
-    padding-left: 200px;
-    padding-right: 200px;
     margin-top: 80px;
     margin-bottom: 130px;
   }
@@ -104,8 +100,6 @@ p {
   }
 
   #needs {
-    padding-left: 160px;
-    padding-right: 160px;
     margin-top: 80px;
     margin-bottom: 130px;
   }
