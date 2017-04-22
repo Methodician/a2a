@@ -23,7 +23,7 @@ export class UserService {
     //  after ridiculous time and effort and no legable errors, I found that
     //  this subscribe must be in the constructor, not ngOnInit()...
     this.authSvc.authInfo$.subscribe(info => {
-      console.log('UserService auth info:', info);
+      //console.log('UserService auth info:', info);
       this.uid = info.$uid;
       this.getUserInfo().subscribe(info => {
         if (info.$key != "null") {
@@ -31,10 +31,6 @@ export class UserService {
           this.userInfo$.next(info);
         }
       });
-      /*this.db.object(`userInfo/${info.$uid}`).subscribe(info => {
-        this.userInfo$.next(info);
-      });*/
-      /*this.userInfo$ = this.db.object(`userInfo/${info.$uid}`);*/
     });
   }
 
@@ -51,16 +47,25 @@ export class UserService {
     return sub.asObservable();
   }
 
-  isOrgApproved() {
+  isOrgApproved(uid?: string) {
     let sub = new Subject();
-    this.authSvc.authInfo$.subscribe(info => {
-      if (info.$uid) {
-        this.db.object(`userInfo/isApproved/${info.$uid}`).subscribe(approved => {
-          sub.next(approved.$value);
-          sub.complete();
-        });
-      }
-    });
+    if (!!uid) {
+      this.db.object(`userInfo/isApproved/${uid}`).subscribe(approved => {
+        sub.next(approved.$value);
+        sub.complete();
+      });
+    }
+    else {
+      this.authSvc.authInfo$.subscribe(info => {
+        if (info.$uid) {
+          this.db.object(`userInfo/isApproved/${info.$uid}`).subscribe(approved => {
+            sub.next(approved.$value);
+            sub.complete();
+          });
+        }
+      });
+    }
+
     return sub.asObservable();
   }
 
@@ -101,8 +106,8 @@ export class UserService {
     let id = uid || this.uid;
     let subject = new Subject();
     if (!!id) {
-      this.isOrgApproved().subscribe(approved => {
-        this.getOpenInfo().subscribe(open => {
+      this.isOrgApproved(id).subscribe(approved => {
+        this.getOpenInfo(id).subscribe(open => {
           this.getClosedInfo().subscribe(closed => {
             let userInfo = Object.assign({}, { orgApproved: approved }, open, closed);
             userInfo.$key = id;

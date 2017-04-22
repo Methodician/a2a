@@ -14,6 +14,10 @@
       <h4>Organization: {{ selectUser.orgName }}</h4>
       <table>
         <tr>
+          <th>Name:</th>
+          <td>{{ selectedUser.orgName }}</td>
+        </tr>
+        <tr>
           <th>Location:</th>
           <td>{{ selectedUser.orgCity }}, {{ selectedUser.orgState}}</td>
         </tr>
@@ -25,8 +29,19 @@
           <th>Website:</th>
           <td><a [href]="selectedUser.orgWebsite">{{ selectedUser.orgWebsite }}</a></td>
         </tr>
+        <tr>
+          <th>Approved:</th>
+          <td>{{ selectedUser.isApproved ? "Yes" : "No" }}</td>
+        </tr>
       </table>
     </div>
+  </div>
+  <div class="col-md-4">
+    Total: {{ total }}
+    <pre>
+      Selected:
+      {{ selectedUser | json }}
+    </pre>
   </div>
 </div>
 
@@ -34,3 +49,7 @@
 <pre>
   {{ users | json }}
 </pre>
+
+<!--TEMP POSSIBLY USEFUL CODE FOR TRANSFERRING CONTRIBUTIONS BETWEEN ORG-->
+Old Key: <input type="text" #newKey>
+<button (click)="moveContributionOrgNode(newKey.value)" class="btn btn-primary">Move Contributions</button>
