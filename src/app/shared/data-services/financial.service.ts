@@ -21,13 +21,29 @@ export class FinancialService {
     return this.db.object(`contributionTotalLog/${id}`);
   }
 
-  getContributionsPerOrg(orgId: string) {
-    return this.db.list(`contributionsPerOrg/${orgId}`);
+  getContributionSubtotal(id: string) {
+    return this.db.object(`contributionSubtotalLog/${id}`);
+  }
+
+  getContributionFee(id: string) {
+    return this.db.object(`contributionFeeLog/${id}`);
+  }
+
+  getContributionsPerOrg(id: string) {
+    return this.db.list(`contributionsPerOrg/${id}`);
+  }
+
+  getPayoutsPerOrg(id: string) {
+    return this.db.list(`payoutsPerOrg/${id}`);
+  }
+
+  recordPayout(orgId: string, amount: number) {
+    return this.db.list(`payoutsPerOrg/${orgId}`).push(amount);
   }
 
 
   //TEMP POSSIBLY USEFUL CODE FOR TRANSFERRING CONTRIBUTIONS BETWEEN ORG
-  moveContributionOrgNode(oldKey, newKey) {
+  /*moveContributionOrgNode(oldKey, newKey) {
     this.db.list(`needsPerOrg/${oldKey}`).subscribe(contents => {
       var newCont = {};
       for (let c of contents) {
@@ -35,6 +51,6 @@ export class FinancialService {
       }
       return this.db.object(`needsPerOrg/${newKey}`).set(newCont);
     });
-  }
+  }*/
 
 }
