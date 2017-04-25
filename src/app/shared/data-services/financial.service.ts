@@ -1,7 +1,8 @@
 //import { UserInfo, UserInfoClosed, UserInfoOpen } from './../models/user-info';
 //import { AuthService } from './../security/auth.service';
 import { Injectable, Inject } from '@angular/core';
-import { AngularFireDatabase, FirebaseRef } from 'angularfire2';
+import * as firebase from 'firebase';
+import { AngularFireDatabase, FirebaseRef, AngularFire } from 'angularfire2';
 import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
 
 
@@ -9,10 +10,9 @@ import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
 export class FinancialService {
 
   dbRef: any;
-
   constructor(
     private db: AngularFireDatabase,
-    @Inject(FirebaseRef) fb
+    @Inject(FirebaseRef) fb,
   ) {
     this.dbRef = fb.database().ref();
   }
@@ -37,8 +37,26 @@ export class FinancialService {
     return this.db.list(`payoutsPerOrg/${id}`);
   }
 
-  recordPayout(orgId: string, amount: number) {
-    return this.db.list(`payoutsPerOrg/${orgId}`).push(amount);
+  recordPayout(orgId: string, amount: number, note: string) {
+    let timestamp = firebase.database.ServerValue.TIMESTAMP;
+    let payout = {
+      amount,
+      note,
+      timestamp
+    }
+    return this.db.list(`payoutsPerOrg/${orgId}`).push(payout);
+  }
+
+  editPayout(orgId: string, payout: any) {
+    let newPayoutInfo = {
+      amount: payout.amount,
+      note: payout.note
+    }
+    return this.db.object(`payoutsPerOrg/${orgId}/${payout.$key}`).update(newPayoutInfo);
+  }
+
+  deletePayout(orgId: string, payoutId: string) {
+    return this.db.object(`payoutsPerOrg/${orgId}/${payoutId}`).remove();
   }
 
 

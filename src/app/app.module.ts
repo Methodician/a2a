@@ -37,7 +37,6 @@ import { ApproveDetailComponent } from './approve-detail/approve-detail.componen
 import { TruncateTitlePipe } from './shared/pipes/truncate-title.pipe';
 import { AccountComponent } from './account/account.component';
 import { TestComponentComponent } from './test-component/test-component.component';
-import { ReviewFinancialsComponent } from './review-financials/review-financials.component';
 import { AdminComponent } from './admin/admin.component';
 
 export const firebaseConfig = {
@@ -75,7 +74,6 @@ export const firebaseAuthConfig = {
     TruncateTitlePipe,
     AccountComponent,
     TestComponentComponent,
-    ReviewFinancialsComponent,
     AdminComponent,
     //AppModuleComponent,
   ],

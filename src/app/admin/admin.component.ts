@@ -1,3 +1,5 @@
+import { Need } from './../shared/models/need';
+import { NeedService } from './../shared/data-services/need.service';
 import { FinancialService } from './../shared/data-services/financial.service';
 import { UserInfoOpen, UserInfo } from './../shared/models/user-info';
 import { FirebaseListObservable } from 'angularfire2';
@@ -7,23 +9,26 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.css', '../needs/needs.component.css']
 })
 export class AdminComponent implements OnInit {
 
   private users: UserInfoOpen[];
+  private needs: Need[] = null;
   private selectedUser: any;
+  private payouts: any[];
+  private selectedPayout: any;
 
   private total: number;
   private fees: number;
   private subtotal: number;
   private payoutTotal: number;
-  private payouts: any[];
   private contributionIds: string[];
 
   constructor(
     private userSvc: UserService,
-    private finSvc: FinancialService
+    private finSvc: FinancialService,
+    private needSvc: NeedService
   ) { }
 
   ngOnInit() {
@@ -34,6 +39,8 @@ export class AdminComponent implements OnInit {
   }
 
   selectUser(user) {
+    this.needs = null;
+    this.selectedPayout = null;
     let id = user.$key
     this.getContributions(id);
     //this.calculateContributionTotal();
@@ -42,7 +49,13 @@ export class AdminComponent implements OnInit {
         this.selectedUser = Object.assign(user, details, { isApproved: approved });
       })
     });
+    this.needSvc.getNeedsByOrg(user.$key).subscribe(needs => {
+      this.needs = needs;
+    });
+  }
 
+  selectPayout(payout) {
+    this.selectedPayout = payout;
   }
 
   getContributions(id) {
@@ -57,8 +70,7 @@ export class AdminComponent implements OnInit {
     this.total = 0;
     this.subtotal = 0;
     this.fees = 0;
-    this.payoutTotal = 0;
-    this.payouts = [];
+
     for (let cid of this.contributionIds) {
       this.finSvc.getContributionTotal(cid).subscribe(contribution => {
         if (contribution.$value)
@@ -73,11 +85,24 @@ export class AdminComponent implements OnInit {
           this.subtotal += parseFloat(subtotal.$value);
       });
     }
-    this.finSvc.getPayoutsPerOrg(uid).subscribe(payouts => {
+    this.sumPayoutsOnRecord(uid);
+    /*this.finSvc.getPayoutsPerOrg(uid).subscribe(payouts => {
       console.log(payouts);
       this.payouts = payouts;
       for (let pay of payouts) {
         this.payoutTotal += parseFloat(pay.$value);
+      }
+    });*/
+  }
+
+  sumPayoutsOnRecord(uid) {
+    this.finSvc.getPayoutsPerOrg(uid).take(1).subscribe(payouts => {
+      this.payoutTotal = 0;
+      this.payouts = [];
+      console.log(payouts);
+      this.payouts = payouts;
+      for (let pay of payouts) {
+        this.payoutTotal += parseFloat(pay.amount);
       }
     });
   }
@@ -94,9 +119,23 @@ export class AdminComponent implements OnInit {
     return this.payoutSubTotal() - this.payoutTotal;
   }
 
-  recordPayout(amount: number) {
-    if (confirm('This will create a payout record. To reverse this action, enter a negative number of the same value or contact a database admin')) {
-      this.finSvc.recordPayout(this.selectedUser.$key, amount);
+  recordPayout(amount: number, note: string) {
+    if (confirm('This will create a payout record. You can edit or delete it by selecting it in Financials Overview.')) {
+      this.finSvc.recordPayout(this.selectedUser.$key, amount, note);
+      this.calculateTotals(this.selectedUser.$key);
+    }
+  }
+
+  editPayout() {
+    if (confirm('Are you sure you want to edit an existing payout? This cannot be undone.')) {
+      this.finSvc.editPayout(this.selectedUser.$key, this.selectedPayout);
+      this.calculateTotals(this.selectedUser.$key);
+    }
+  }
+
+  deletePayout() {
+    if (confirm('This will delete the payout from records. This CANNOT BE UNDONE. Are you sure?')) {
+      this.finSvc.deletePayout(this.selectedUser.$key, this.selectedPayout.$key);
       this.calculateTotals(this.selectedUser.$key);
     }
   }
@@ -105,6 +144,7 @@ export class AdminComponent implements OnInit {
     this.userSvc.setUserApproval(!this.selectedUser.isApproved, this.selectedUser.$key);
     this.selectUser(this.selectedUser);
   }
+
 
 
   //TEMP POSSIBLY USEFUL CODE FOR TRANSFERRING CONTRIBUTIONS BETWEEN ORG

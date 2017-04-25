@@ -2,9 +2,7 @@
   Admin Financial Info
 </h1>
 
-<select class="form-control" size="5" [ngModel]="selectedUser" (ngModelChange)="selectUser($event)">
-  <option *ngFor="let user of users" [ngValue]="user">{{ user.fName }} {{ user.lName }} - {{ user.orgCity }} {{ user.orgState }} </option>
-</select>
+
 <div class="row">
   <!--Selected User-->
   <div class="col-md-4">
@@ -12,6 +10,9 @@
       <div class="panel-heading">
         <h3>Selected User: {{ selectedUser.fName }} {{ selectedUser.lName}}</h3>
       </div>
+      <select class="form-control" size="5" [ngModel]="selectedUser" (ngModelChange)="selectUser($event)">
+        <option *ngFor="let user of users" [ngValue]="user">{{ user.fName }} {{ user.lName }} - {{ user.orgCity }} {{ user.orgState }} </option>
+      </select>
       <h4>Organization: {{ selectUser.orgName }}</h4>
       <table class="table">
         <tr>
@@ -42,45 +43,59 @@
   </div>
   <!--Financial Overview-->
   <div class="col-md-4">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3>Financials Overview:</h3>
+    <div class="row">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3>Financials Overview:</h3>
+        </div>
+        <table class="table table-condensed table-bordered">
+          <tr>
+            <th>Total:</th>
+            <td>${{ total }}</td>
+          </tr>
+          <tr>
+            <th>PayPal Fees:</th>
+            <td>${{ fees }}</td>
+          </tr>
+          <tr>
+            <th>Subtotal:</th>
+            <td>${{ subtotal }}</td>
+          </tr>
+          <tr>
+            <th>a2a Fees:</th>
+            <td>${{ a2aFee() }}</td>
+          </tr>
+          <tr>
+            <th>Payout Total:</th>
+            <td>${{ payoutSubTotal() }}</td>
+          </tr>
+          <tr>
+            <th>Payouts on Record:</th>
+            <td>${{ payoutTotal }}</td>
+          </tr>
+          <tr>
+            <th>Pending Payouts:</th>
+            <td>${{ pendingPayouts() }}</td>
+          </tr>
+        </table>
+        <br>
+        <h4>Payouts:</h4>
+        <select class="form-control" size="5" [ngModel]="selectedPayout" (ngModelChange)="selectPayout($event)">
+          <option *ngFor="let payout of payouts" [ngValue]="payout">${{ payout.amount }} | {{ payout.timestamp | date }} | {{ payout.note }} </option>
+        </select>
       </div>
-      <table class="table table-condensed table-bordered">
-        <tr>
-          <th>Total:</th>
-          <td>${{ total }}</td>
-        </tr>
-        <tr>
-          <th>PayPal Fees:</th>
-          <td>${{ fees }}</td>
-        </tr>
-        <tr>
-          <th>Subtotal:</th>
-          <td>${{ subtotal }}</td>
-        </tr>
-        <tr>
-          <th>a2a Fees:</th>
-          <td>${{ a2aFee() }}</td>
-        </tr>
-        <tr>
-          <th>Payout Total:</th>
-          <td>${{ payoutSubTotal() }}</td>
-        </tr>
-        <tr>
-          <th>Payouts on Record:</th>
-          <td>${{ payoutTotal }}</td>
-        </tr>
-        <tr>
-          <th>Pending Payouts:</th>
-          <td>${{ pendingPayouts() }}</td>
-        </tr>
-      </table>
     </div>
-    <!--<pre>
-      Selected:
-      {{ selectedUser | json }}
-    </pre>-->
+    <!-- <div class="row">
+      <div class="panel panel-primary">
+        <div class="panel panel-heading">
+          <h3>Details:</h3>
+        </div>
+        <div class="panel-body">
+
+          <pre>{{ payouts | json }}</pre>
+        </div>
+      </div>
+    </div>-->
   </div>
   <!--Actions-->
   <div class="col-md-4">
@@ -88,11 +103,27 @@
       <div class="panel-heading">
         <h3>Actions:</h3>
       </div>
-      <h4>Make a payout:</h4>
-      <form class="form-inline">
-        Amount: <input #payoutAmount class="form-control" type="number" step="100">
-        <button (click)="recordPayout(payoutAmount.value)" class="btn btn-primary">Record Payment</button>
-      </form>
+      <div class="actions-form">
+        <h4>Make a payout:</h4>
+        <form>
+          Amount: <input #payoutAmount class="form-control" type="number" step="100"> Note: <textarea #payoutNote class="form-control"
+            rows="3"></textarea>
+          <br>
+          <button (click)="recordPayout(payoutAmount.value, payoutNote.value)" class="btn btn-primary">Record Payout</button>
+        </form>
+      </div>
+      <div *ngIf="selectedPayout" class="actions-form">
+        <h4>Review selected payout:</h4>
+        <form name="selectedPayout">
+          Amount: <input name="selectedPayoutAmount" [(ngModel)]="selectedPayout.amount" class="form-control" type="number"
+            step="100"> Note:
+          <textarea name="selectedPayoutNote" [(ngModel)]="selectedPayout.note" class="form-control" rows="3"></textarea>          Date Entered: {{ selectedPayout?.timestamp | date }}
+          <br>
+          <button (click)="editPayout()" class="btn btn-primary">Edit payout</button>
+          <button (click)="deletePayout()" class="btn btn-danger">Delete Payout</button>
+        </form>
+      </div>
+
     </div>
     <!--Total: {{ total }} Fees: {{ fees }} Subtotal: {{ subtotal }}
     <pre>
@@ -100,26 +131,25 @@
     </pre>-->
   </div>
 </div>
-<div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
-    <div class="panel panel-primary">
-      <div class="panel panel-heading">
-        <h3>Details:</h3>
-      </div>
-      <div class="panel-body">
-        Payout Total:
-        <pre>{{ payouts | json }}</pre>
-      </div>
-    </div>
+
+<div *ngIf="needs" class="panel panel-primary">
+  <div class="panel-heading">
+    <h3>Needs:</h3>
   </div>
-  <div class="col-md-4"></div>
+  <div class="panel-body">
+    <section id="needs" class="row need-tile-group">
+      <div class="need-tile" *ngFor="let need of needs | reverse">
+        <need [need]="need"></need>
+      </div>
+    </section>
+  </div>
 </div>
 
 
-<pre>
+
+<!--<pre>
   {{ users | json }}
-</pre>
+</pre>-->
 
 <!--TEMP POSSIBLY USEFUL CODE FOR TRANSFERRING CONTRIBUTIONS BETWEEN ORG-->
 <!--Old Key: <input type="text" #newKey>
