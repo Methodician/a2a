@@ -28,7 +28,7 @@ _There are no known bugs as of the last commit. Please send an ISSUE on github i
 
 ## Contact for hire
 
-Do you want to talk to Flight about building something for you?, please __email  [us here.](info.flight.run@gmail.com)__
+Do you want to talk to Flight about building something for you?, please email [us here:](<info.flight.run@gmail.com>)
 
 ## Technologies Used
 
