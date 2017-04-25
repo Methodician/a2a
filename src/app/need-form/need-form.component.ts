@@ -61,27 +61,39 @@ export class NeedFormComponent implements OnInit {
   isStartOk() {
     let ctrl = this.form.controls['startDate'];
     let val = ctrl.value;
-    let start = Date.parse(this.form.controls['startDate'].value);
-    let today = new Date().setUTCHours(0, 0, 0, 0);
-
-    let startOk = start >= today;
+// <<<<<<< HEAD
+//     let start = Date.parse(this.form.controls['startDate'].value);
+//     let today = new Date().setUTCHours(0, 0, 0, 0);
+//
+//     let startOk = start >= today;
 // <<<<<<< c9c342f1f8b33817fa536fb95c084501adf89f36
 //     if (this.isNeedOngoing() || startOk)
 //       return true;
 //     else return false;
 // =======
     //let startOk = this.form.controls['startDate'].value >= new Date(Date.now());
+    // if (ctrl.dirty)
+    //   return (this.isNeedOngoing() || startOk)
+    // return true;
+//>>>>>>> small update to need form and working financials
+//=======
+    let start = Date.parse(val);
+    let today = new Date().setUTCHours(0, 0, 0, 0);
+
+    let startOk = start >= today;
+
     if (ctrl.dirty)
       return (this.isNeedOngoing() || startOk)
     return true;
-//>>>>>>> small update to need form and working financials
+//>>>>>>> 732707fc3fc638bfba21b59fddfe4617ec636439
   }
 
   isEndOk() {
     let ctrl = this.form.controls['endDate'];
-    let end = Date.parse(this.form.controls['endDate'].value);
-    let start = Date.parse(this.form.controls['startDate'].value);
-    let endOk = end > start;
+// <<<<<<< HEAD
+//     let end = Date.parse(this.form.controls['endDate'].value);
+//     let start = Date.parse(this.form.controls['startDate'].value);
+//     let endOk = end > start;
 // <<<<<<< c9c342f1f8b33817fa536fb95c084501adf89f36
 //     if (this.isNeedOngoing() || endOk)
 //       return true;
@@ -90,10 +102,18 @@ export class NeedFormComponent implements OnInit {
     //let endOk = end > today && end > start;
     //let endOk = this.form.controls['endDate'].value > new Date(Date.now()).setDate(new Date(Date.now()).getDate() + 1);
     //let endOk = this.form.controls['endDate'].value > new Date(Date.now());
+    // if (ctrl.dirty)
+    //   return (this.isNeedOngoing() || endOk)
+    // return true;
+//>>>>>>> small update to need form and working financials
+//=======
+    let end = Date.parse(ctrl.value);
+    let start = Date.parse(this.form.controls['startDate'].value);
+    let endOk = end > start;
     if (ctrl.dirty)
       return (this.isNeedOngoing() || endOk)
     return true;
-//>>>>>>> small update to need form and working financials
+//>>>>>>> 732707fc3fc638bfba21b59fddfe4617ec636439
   }
 
   areDatesOk() {
