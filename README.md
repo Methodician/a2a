@@ -1,4 +1,43 @@
-# A2a
+# _a2a_
+
+#### _a microlending app to help donors to contribute directly to their community needs}, {April, 2017_
+
+#### By the team at **[Flight](https://flight.run/)**
+
+![screenshot](a2a-screen.png)
+
+## Setup/Installation Requirements
+
+Download this repo using your terminal: git clone https://github.com/Methodician/a2a.git
+
+    cd a2a
+
+View the code by drag-and-dropping the file into your [favorite text editor](https://atom.io)
+
+Build the project locally by typing:
+
+    npm install
+
+    ng serve
+
+aid2assist.com should now be running locally on [port 4200.](localhost:4200)
+
+## Known Bugs
+
+_There are no known bugs as of the last commit. Please send an ISSUE on github in the repository if you see something we have not._
+
+## Contact for hire
+
+Do you want to talk to Flight about building something for you?, please head to our site and [drop us a line](https://flight.run/contact).
+
+## Technologies Used
+
+* Angular 2
+* CSS3
+* TypeScript
+* Firebase
+
+# a2a instructions from the Angular CLI:
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.20-4.
 
