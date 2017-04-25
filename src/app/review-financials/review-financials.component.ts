@@ -16,8 +16,8 @@ export class ReviewFinancialsComponent implements OnInit {
   private total: number;
   private fees: number;
   private subtotal: number;
-  private payouts: number;
-
+  private payoutTotal: number;
+  private payouts: any[];
   private contributionIds: string[];
 
   constructor(
@@ -48,54 +48,54 @@ export class ReviewFinancialsComponent implements OnInit {
     this.finSvc.getContributionsPerOrg(id).subscribe(ids => {
       this.contributionIds = ids.map(id => id.$key);
       //this.calculateContributionTotal();
-      this.calculateTotals();
+      this.calculateTotals(id);
     });
   }
 
-  calculateTotals() {
+  calculateTotals(uid) {
     this.total = 0;
     this.subtotal = 0;
     this.fees = 0;
-    this.payouts = 0;
-    for (let id of this.contributionIds) {
-      this.finSvc.getContributionTotal(id).subscribe(contribution => {
+    this.payoutTotal = 0;
+    this.payouts = [];
+    for (let cid of this.contributionIds) {
+      this.finSvc.getContributionTotal(cid).subscribe(contribution => {
         if (contribution.$value)
           this.total += parseFloat(contribution.$value);
       });
-      this.finSvc.getContributionFee(id).subscribe(fee => {
+      this.finSvc.getContributionFee(cid).subscribe(fee => {
         if (fee.$value)
           this.fees += parseFloat(fee.$value);
       });
-      this.finSvc.getContributionSubtotal(id).subscribe(subtotal => {
+      this.finSvc.getContributionSubtotal(cid).subscribe(subtotal => {
         if (subtotal.$value)
           this.subtotal += parseFloat(subtotal.$value);
       });
     }
-    if (this.selectedUser) {
-      this.finSvc.getPayoutsPerOrg(this.selectedUser.$key).subscribe(payouts => {
-        console.log(payouts);
-        for (let pay of payouts) {
-          this.payouts += parseFloat(pay.$value);
-        }
-      });
-    }
+    this.finSvc.getPayoutsPerOrg(uid).subscribe(payouts => {
+      console.log(payouts);
+      this.payouts = payouts;
+      for (let pay of payouts) {
+        this.payoutTotal += parseFloat(pay.$value);
+      }
+    });
   }
 
   a2aFee() {
     return this.total * 0.05;
   }
 
-  payoutTotal() {
+  payoutSubTotal() {
     return this.subtotal - this.a2aFee();
   }
 
   pendingPayouts() {
-    return this.payoutTotal() - this.payouts;
+    return this.payoutSubTotal() - this.payoutTotal;
   }
 
   recordPayout(amount: number) {
     this.finSvc.recordPayout(this.selectedUser.$key, amount);
-    this.calculateTotals();
+    this.calculateTotals(this.selectedUser.$key);
   }
 
 
