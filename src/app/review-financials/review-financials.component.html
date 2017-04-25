@@ -6,7 +6,8 @@
   <option *ngFor="let user of users" [ngValue]="user">{{ user.fName }} {{ user.lName }} - {{ user.orgCity }} {{ user.orgState }} </option>
 </select>
 <div class="row">
-  <div class="col-md-3">
+  <!--Selected User-->
+  <div class="col-md-4">
     <div *ngIf="selectedUser" class="panel panel-primary">
       <div class="panel-heading">
         <h3>Selected User: {{ selectedUser.fName }} {{ selectedUser.lName}}</h3>
@@ -36,10 +37,11 @@
       </table>
     </div>
   </div>
+  <!--Financial Overview-->
   <div class="col-md-4">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3>Financials:</h3>
+        <h3>Financials Overview:</h3>
       </div>
       <table class="table table-condensed table-bordered">
         <tr>
@@ -60,11 +62,11 @@
         </tr>
         <tr>
           <th>Payout Total:</th>
-          <td>${{ payoutTotal() }}</td>
+          <td>${{ payoutSubTotal() }}</td>
         </tr>
         <tr>
           <th>Payouts on Record:</th>
-          <td>${{ payouts }}</td>
+          <td>${{ payoutTotal }}</td>
         </tr>
         <tr>
           <th>Pending Payouts:</th>
@@ -77,6 +79,7 @@
       {{ selectedUser | json }}
     </pre>-->
   </div>
+  <!--Actions-->
   <div class="col-md-4">
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -93,6 +96,21 @@
       {{ contributionIds | json }}
     </pre>-->
   </div>
+</div>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="panel panel-primary">
+      <div class="panel panel-heading">
+        <h3>Details:</h3>
+      </div>
+      <div class="panel-body">
+        Payout Total:
+        <pre>{{ payouts | json }}</pre>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4"></div>
 </div>
 
 
