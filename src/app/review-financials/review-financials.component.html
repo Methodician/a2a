@@ -2,13 +2,34 @@
   Admin Financial Info
 </h1>
 
-<select [(ngModel)]="users" size="5">
-  <option *ngFor="let user of users">{{ user.fName }} {{ user.lName }} - {{ user.orgCity }} {{ user.orgState }} </option>
+<select size="5" [ngModel]="selectedUser" (ngModelChange)="selectUser($event)">
+  <option *ngFor="let user of users" [ngValue]="user">{{ user.fName }} {{ user.lName }} - {{ user.orgCity }} {{ user.orgState }} </option>
 </select>
-
-<div class="panel panel-success">
-
+<div class="row">
+  <div class="col-md-3">
+    <div *ngIf="selectedUser" class="panel panel-primary">
+      <div class="panel-heading">
+        <h3>Selected User: {{ selectedUser.fName }} {{ selectedUser.lName}}</h3>
+      </div>
+      <h4>Organization: {{ selectUser.orgName }}</h4>
+      <table>
+        <tr>
+          <th>Location:</th>
+          <td>{{ selectedUser.orgCity }}, {{ selectedUser.orgState}}</td>
+        </tr>
+        <tr>
+          <th>Phone:</th>
+          <td>{{ selectedUser.orgPhone }}</td>
+        </tr>
+        <tr>
+          <th>Website:</th>
+          <td><a [href]="selectedUser.orgWebsite">{{ selectedUser.orgWebsite }}</a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
+
 
 <pre>
   {{ users | json }}

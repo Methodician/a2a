@@ -59,23 +59,41 @@ export class NeedFormComponent implements OnInit {
   }
 
   isStartOk() {
-    let val = this.form.controls['startDate'].value;
+    let ctrl = this.form.controls['startDate'];
+    let val = ctrl.value;
     let start = Date.parse(this.form.controls['startDate'].value);
     let today = new Date().setUTCHours(0, 0, 0, 0);
 
     let startOk = start >= today;
-    if (this.isNeedOngoing() || startOk)
-      return true;
-    else return false;
+// <<<<<<< c9c342f1f8b33817fa536fb95c084501adf89f36
+//     if (this.isNeedOngoing() || startOk)
+//       return true;
+//     else return false;
+// =======
+    //let startOk = this.form.controls['startDate'].value >= new Date(Date.now());
+    if (ctrl.dirty)
+      return (this.isNeedOngoing() || startOk)
+    return true;
+//>>>>>>> small update to need form and working financials
   }
 
   isEndOk() {
+    let ctrl = this.form.controls['endDate'];
     let end = Date.parse(this.form.controls['endDate'].value);
     let start = Date.parse(this.form.controls['startDate'].value);
     let endOk = end > start;
-    if (this.isNeedOngoing() || endOk)
-      return true;
-    else return false;
+// <<<<<<< c9c342f1f8b33817fa536fb95c084501adf89f36
+//     if (this.isNeedOngoing() || endOk)
+//       return true;
+//     else return false;
+// =======
+    //let endOk = end > today && end > start;
+    //let endOk = this.form.controls['endDate'].value > new Date(Date.now()).setDate(new Date(Date.now()).getDate() + 1);
+    //let endOk = this.form.controls['endDate'].value > new Date(Date.now());
+    if (ctrl.dirty)
+      return (this.isNeedOngoing() || endOk)
+    return true;
+//>>>>>>> small update to need form and working financials
   }
 
   areDatesOk() {

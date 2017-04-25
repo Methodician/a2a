@@ -93,6 +93,7 @@ export class UserService {
   }
 
   getUserList() {
+    //return this.dbRef.child('userInfo/open');
     return this.db.list('userInfo/open');
   }
 
