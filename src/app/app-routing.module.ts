@@ -1,4 +1,4 @@
-import { ReviewFinancialsComponent } from './review-financials/review-financials.component';
+import { AdminComponent } from './admin/admin.component';
 import { IsAdminGuard } from './shared/security/isAdmin.guard';
 import { OrgApprovedGuard } from './shared/security/orgApproved.guard';
 import { AccountComponent } from './account/account.component';
@@ -58,7 +58,7 @@ const routes: Routes = [
         canActivate: [IsAdminGuard]
     },
     {
-        path: 'reviewfinancials',
+        path: 'admin',
         children: [
             /*{
                 path: ':id',
@@ -66,7 +66,7 @@ const routes: Routes = [
             },*/
             {
                 path: '',
-                component: ReviewFinancialsComponent
+                component: AdminComponent
             }
         ],
         canActivate: [IsAdminGuard]

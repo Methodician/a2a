@@ -69,9 +69,13 @@ export class UserService {
     return sub.asObservable();
   }
 
-  updateUserInfo(userInfo, uid?) {
-    let id = uid || this.uid;
-    return this.db.object(`userInfo/${id}`).update(userInfo);
+  /*  updateUserInfo(userInfo, uid?) {
+      let id = uid || this.uid;
+      return this.db.object(`userInfo/${id}`).update(userInfo);
+    }*/
+
+  setUserApproval(approved: boolean, uid: string) {
+    this.db.object(`userInfo/isApproved/${uid}`).set(approved);
   }
 
   createUser(userInfo, uid) {

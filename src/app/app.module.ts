@@ -38,6 +38,7 @@ import { TruncateTitlePipe } from './shared/pipes/truncate-title.pipe';
 import { AccountComponent } from './account/account.component';
 import { TestComponentComponent } from './test-component/test-component.component';
 import { ReviewFinancialsComponent } from './review-financials/review-financials.component';
+import { AdminComponent } from './admin/admin.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBymDlc5x-NzBC-xL5RZ1GtroML8KeV56g",
@@ -75,6 +76,7 @@ export const firebaseAuthConfig = {
     AccountComponent,
     TestComponentComponent,
     ReviewFinancialsComponent,
+    AdminComponent,
     //AppModuleComponent,
   ],
   imports: [
