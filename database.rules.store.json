@@ -1,0 +1,81 @@
+{
+  "rules": {
+    "userInfo": {
+      "isApproved": {
+        ".write": "root.child('userInfo/isAdmin/' + auth.uid).val() == true",
+        ".read": "true"
+      },
+      "isAdmin": {
+        ".write": "false",
+        ".read": "true"
+      },
+      "open": {
+        ".read": "true",
+        "$uid": {
+          ".write": "$uid === auth.uid"
+        }
+      },
+      "closed": {
+        "$uid": {
+          ".write": "$uid === auth.uid",
+          ".read": "$uid === auth.uid || root.child('userInfo/isAdmin/' + auth.uid).val() == true"
+        }
+      }
+    },
+    "needs": {
+      ".write": "auth != null",
+      ".read": "true",
+      ".indexOn": [
+        "activeFlag",
+        "approved",
+        "orgId"
+      ]
+    },
+    "needsPerOrg": {
+      "$uid": {
+        ".write": "$uid === auth.uid || root.child('userInfo/isAdmin/' + auth.uid).val() == true"
+      },
+      ".read": "true"
+    },
+    "payoutsPerOrg": {
+      ".read": "root.child('userInfo/isAdmin/' + auth.uid).val() == true",
+      ".write": "root.child('userInfo/isAdmin/' + auth.uid).val() == true"
+    },
+    "needImageUrls": {
+      ".write": "auth != null",
+      ".read": "true"
+    },
+    "imagePaths": {
+      ".write": "auth != null",
+      ".read": "true"
+    },
+    "contributionTotalLog": {
+      ".write": "false",
+      ".read": "true"
+    },
+    "contributionSubtotalLog": {
+      ".write": "false",
+      ".read": "true"
+    },
+    "contributionFeeLog": {
+      ".write": "false",
+      ".read": "true"
+    },
+    "contributionsPerNeed": {
+      ".write": "root.child('userInfo/isAdmin/' + auth.uid).val() == true",
+      ".read": "true"
+    },
+      "contributionsPerOrg": {
+      ".write": "root.child('userInfo/isAdmin/' + auth.uid).val() == true",
+      ".read": "true"
+    },
+    "contributionIpn": {
+      ".write": "false",
+      ".read": "false"
+    },
+    "payPalTransactions": {
+      ".write": "false",
+      ".read": "false"
+    }
+  }
+}
