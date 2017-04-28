@@ -17,6 +17,8 @@ export class NeedsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
+
     this.needSvc.getActiveNeeds()
       .subscribe(needs => {
         this.needs = this.needSvc.filterNeedsToNotCompleted(this.needSvc.filterNeedsByApproval(needs, true));

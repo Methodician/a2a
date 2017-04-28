@@ -64,7 +64,7 @@ export class NeedDetailComponent implements OnInit {
           this.needSvc.getContributionTotal(cont.$key)
             .subscribe(total => {
               if (total.$value)
-                this.donated += parseFloat(total.$value);
+                this.donated += parseFloat(total.$value || 0);
             });
         }
       });

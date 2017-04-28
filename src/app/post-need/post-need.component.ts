@@ -3,7 +3,6 @@ import { UserInfo } from './../shared/models/user-info';
 import { AuthService } from './../shared/security/auth.service';
 import { NeedService } from './../shared/data-services/need.service';
 import { Router } from '@angular/router';
-//import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DatePipe } from "@angular/common";
 
@@ -16,7 +15,6 @@ export class PostNeedComponent implements OnInit, OnDestroy {
 
   orgId: string;
   orgInfo: UserInfo;
-  //needKey: string;
   tempAccessors: any[] = [];
 
   coverImage: any;
@@ -37,9 +35,7 @@ export class PostNeedComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    //console.log('Organization ID in post-need.comp:', this.orgId);
     this.userSvc.getUserInfo(this.orgId).subscribe(info => this.orgInfo = info);
-    //this.needKey = this.needSvc.createNeedId();
   }
 
   ngOnDestroy() {
@@ -47,21 +43,15 @@ export class PostNeedComponent implements OnInit, OnDestroy {
   }
 
   coverImageChange(event) {
-    console.log('cover image changed');
-    console.log(event);
     this.coverImage = event.srcElement.files[0];
     this.needSvc.storeTempImage(this.coverImage)
       .subscribe((imageAccessors: any) => {
-        console.log(imageAccessors);
         this.previewImageUrl = imageAccessors.url;
         this.tempAccessors.push(imageAccessors);
       });
-    //console.log(this.previewImageUrl);
-    //console.log(this.coverImage);
   }
 
   bodyImagesChange(event) {
-    console.log('body images changed');
     this.bodyImages = event.srcElement.files;
     this.previewBodyImageUrls = [];
     for (let image of this.bodyImages) {
@@ -71,7 +61,6 @@ export class PostNeedComponent implements OnInit, OnDestroy {
           this.tempAccessors.push(imageAccessors);
         });
     }
-    console.log(this.bodyImages);
   }
 
   save(form) {
@@ -87,7 +76,6 @@ export class PostNeedComponent implements OnInit, OnDestroy {
   }
 
   formValid(needFormValid) {
-
     let hasCoverImage = !!this.coverImage;
     return needFormValid && hasCoverImage;
   }

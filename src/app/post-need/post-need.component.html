@@ -15,20 +15,8 @@
 <section id="previews" class="container">
   <need [need]="form.value" [preview]="1" [previewImageUrl]="previewImageUrl"></need>
   <need-detail [need]="form.value" [preview]="1" [orgInfo]="orgInfo" [previewImageUrl]="previewImageUrl" [previewBodyImageUrls]="previewBodyImageUrls"></need-detail>
-  <!-- [orgInfo]="orgInfo"-->
 </section>
 <pre>
   {{ this.previewBodyImageUrls | json }}
 </pre>
-<!--<pre>
-  Form:
-  {{ form.value | json }}
-</pre>
-<pre>
-  Cover Image:
-  {{ coverImage }}
-</pre>
-<pre>
-  Body Images:
-  {{ bodyImages }}
-</pre>-->
+
