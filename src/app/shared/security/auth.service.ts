@@ -16,11 +16,9 @@ export class AuthService {
   constructor(
     private auth: FirebaseAuth,
     @Inject(FirebaseRef) fbRef
-    /*private db: AngularFireDatabase*/
   ) {
     this.auth.subscribe(info => {
       if (info) {
-        console.log('Auth info from AuthSvc:', info);
         const authInfo = new AuthInfo(info.uid, info.auth.emailVerified);
         this.authInfo$.next(authInfo);
       }
@@ -61,7 +59,6 @@ export class AuthService {
     let user = this.fbRef.auth().currentUser;
 
     user.sendEmailVerification().then(() => {
-      console.log('Verification email sent')
     }, (error) => {
       alert('It looks like your verification email was not sent. Please try again or contact support.');
     });

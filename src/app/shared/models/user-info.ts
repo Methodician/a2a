@@ -13,8 +13,6 @@ export class UserInfo {
         public orgApproved: false,
         public orgPhone?: string,
         public orgWebsite?: string
-        /*        public closed: UserInfoClosed,
-                public open: UserInfoOpen,*/
     ) { }
 
     isApproved() {
@@ -43,15 +41,3 @@ export class UserInfoOpen {
         public orgWebsite?: string
     ) { }
 }
-/*export interface UserInfo {
-    repEmail: string;
-    fName: string;
-    lName: string;
-    repPhone: string;
-    orgName: string;
-    orgPhone?: string;
-    orgWebsite?: string;
-    orgCity: string;
-    orgState: string;
-    orgZip: string;
-}*/

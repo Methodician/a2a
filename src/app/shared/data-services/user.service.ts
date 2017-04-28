@@ -23,7 +23,6 @@ export class UserService {
     //  after ridiculous time and effort and no legable errors, I found that
     //  this subscribe must be in the constructor, not ngOnInit()...
     this.authSvc.authInfo$.subscribe(info => {
-      //console.log('UserService auth info:', info);
       this.uid = info.$uid;
       this.getUserInfo().subscribe(info => {
         if (info.$key != "null") {
@@ -69,11 +68,6 @@ export class UserService {
     return sub.asObservable();
   }
 
-  /*  updateUserInfo(userInfo, uid?) {
-      let id = uid || this.uid;
-      return this.db.object(`userInfo/${id}`).update(userInfo);
-    }*/
-
   setUserApproval(approved: boolean, uid: string) {
     this.db.object(`userInfo/isApproved/${uid}`).set(approved);
   }
@@ -97,12 +91,10 @@ export class UserService {
     };
     userToUpdate[`userInfo/closed/${uid}`] = closedInfo;
     userToUpdate[`userInfo/open/${uid}`] = openInfo;
-    //return this.db.object(`userInfo/${uid}`).set(userInfo);
     return this.firebaseUpdate(userToUpdate);
   }
 
   getUserList() {
-    //return this.dbRef.child('userInfo/open');
     return this.db.list('userInfo/open');
   }
 
@@ -123,7 +115,6 @@ export class UserService {
       });
     }
     //else subject.complete();
-    //return this.db.object(`userInfo/${id}`);
     return subject.asObservable();
   }
 

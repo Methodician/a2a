@@ -20,9 +20,7 @@ export class NeedService {
   }
 
   donate(info, id, subscription) {
-    console.log('orgId:', info.orgId);
-    console.log('needId:', info.needId);
-    console.log('contributionId:', id);
+
 
     let dataToSave = {};
 
@@ -33,21 +31,8 @@ export class NeedService {
       dataToSave[`${rootWord}/${id}`] = info;
       dataToSave[`${rootWord}PerNeed/${info.needId}/${id}`] = true;
       dataToSave[`${rootWord}PerOrg/${info.orgId}/${id}`] = true;
-      /*if (subscription) {
-        dataToSave[`subscriptions/${id}`] = info;
-        dataToSave[`subscriptionsPerNeed/${info.needId}/${id}`] = true;
-        dataToSave[`subscriptionsPerOrg/${info.orgId}/${id}`] = true;
-      }
-      else {
-        dataToSave[`contributions/${id}`] = info;
-        dataToSave[`contributionsPerNeed/${info.needId}/${id}`] = true;
-        dataToSave[`contributionsPerOrg/${info.orgId}/${id}`] = true;
-      }*/
       return this.firebaseUpdate(dataToSave);
     })
-
-
-    //this.db.list('contributions').push(info);
   }
 
 
@@ -58,10 +43,6 @@ export class NeedService {
   getContributionTotal(id: string) {
     return this.db.object(`contributionTotalLog/${id}`);
   }
-
-  /*  getNeedContributionTotal(id: string) {
-  
-    }*/
 
   getAllNeeds() {
     return this.db.list('needs');
@@ -76,8 +57,7 @@ export class NeedService {
         limitToLast: count
       }
     })
-      .filter(res => res && res.length > 0)
-      .do(console.log);
+      .filter(res => res && res.length > 0);
   }
 
   getActiveNeeds(): Observable<Need[]> {
@@ -88,8 +68,6 @@ export class NeedService {
       }
     })
       .filter(res => res && res.length > 0);
-    //.do(console.log);
-    //return this.dbRef.child('needs').orderByChild('approved').equalTo(isApproved);
   }
 
   filterNeedsByApproval(needs: Need[], isApproved: boolean): Need[] {
@@ -118,8 +96,7 @@ export class NeedService {
         equalTo: orgId
       }
     })
-      .filter(res => res && res.length > 0)
-      .do(console.log);
+      .filter(res => res && res.length > 0);
   }
 
   getNeedById(id: string) {
@@ -145,8 +122,6 @@ export class NeedService {
     }
 
     let needToSave = Object.assign({}, need, { orgId }, { approved: false }, { activeFlag: true }, { timeStamp: Date.now() });
-
-
     if (coverImage.type !== 'image/jpeg' && coverImage.type !== 'image/bmp' && coverImage.type !== 'image/png' && coverImage.type !== 'image/gif') {
       alert('The file type you used for cover image doesn\'t look like an image...');
       return;
@@ -159,18 +134,14 @@ export class NeedService {
       }
     }
 
-    //const newNeedKey = needKey ? needKey : this.dbRef.child('needs').push().key;
     const newNeedKey = this.createNeedKey();
-
     this.updateCoverImage(newNeedKey, coverImage);
-
     if (bodyImages) {
       for (let i = 0; i < bodyImages.length; i++) {
         this.addBodyImage(newNeedKey, bodyImages[i]);
       }
     }
 
-    //let needToSave = Object.assign({}, needToSave, )
     let dataToSave = {};
 
     dataToSave[`needs/${newNeedKey}`] = needToSave;
@@ -187,14 +158,12 @@ export class NeedService {
     let filePath = `images/temp/${key}`;
     let fileRef = this.fsRef.child(filePath);
     fileRef.put(image).then(snapshot => {
-      //console.log(snapshot.metadata);
       let imageAccessors = {
         url: snapshot.metadata.downloadURLs[0],
         path: snapshot.metadata.fullPath,
         key: key
       }
       this.dbRef.child(`imagePaths/temp/${key}`).set(imageAccessors.path);
-      //console.log(imageAccessors);
       subject.next(imageAccessors);
       subject.complete();
     });
@@ -221,7 +190,6 @@ export class NeedService {
     let filePath = `images/${needKey}/${fileName}`;
     let fileRef = this.fsRef.child(filePath);
     fileRef.put(coverImage).then(snapshot => {
-      console.log('uploaded a cover image:', snapshot);
       return this.db.object(`needs/${needKey}`).update({ coverImageUrl: snapshot.metadata.downloadURLs[0] });
     });
   }
@@ -231,7 +199,6 @@ export class NeedService {
     let filepath = `images/${needKey}/bodyImages/${fileName}`;
     let fileRef = this.fsRef.child(filepath);
     fileRef.put(bodyImage).then(snapshot => {
-      console.log('uplaoded a vody image:', snapshot);
       return this.db.list(`needImageUrls/${needKey}`).push(snapshot.metadata.downloadURLs[0]);
     });
   }
@@ -248,17 +215,14 @@ export class NeedService {
     return this.dbRef.child('needs').push().key;
   }
 
-  pendingPercent(need) {
-    //return Math.round(((this.need.needTotal - this.need.collectedTotal) / this.need.needTotal));
+  /*pendingPercent(need) {
     return Math.round(1 - 100 * ((need.needTotal - 1000) / need.needTotal));
-  }
-
+  }*/
 
   daysLeft(endDate: number) {
     let oneDay = 24 * 60 * 60 * 1000;
     let end = new Date(endDate).getTime();
     let today = new Date(Date.now()).getTime();
-    //return Math.round(Math.abs((end - today) / oneDay));
     return Math.round((end - today) / oneDay);
   }
 
