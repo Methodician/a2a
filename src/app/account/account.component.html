@@ -109,12 +109,6 @@
         </div>
       </div>
     </div>
-    <!--    <pre>
-      {{ userInfo | json }}
-    </pre>
-    <pre>
-      {{ authInfo | json }}
-    </pre>-->
   </div>
 </div>
 
@@ -135,7 +129,7 @@
   </div>
 </section>
 <section id="needs" class="row">
-  <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let need of needs">
+  <div class="col-xs-12 col-sm-6 col-md-4 need-wrap" *ngFor="let need of needs">
 
     <need [need]="need"></need>
   </div>

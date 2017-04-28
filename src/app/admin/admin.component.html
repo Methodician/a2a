@@ -81,7 +81,7 @@
         <br>
         <h4>Payouts:</h4>
         <select class="form-control" size="5" [ngModel]="selectedPayout" (ngModelChange)="selectPayout($event)">
-          <option *ngFor="let payout of payouts" [ngValue]="payout">${{ payout.amount }} | {{ payout.timestamp | date }} | {{ payout.note }} </option>
+          <option *ngFor="let payout of payouts" [ngValue]="payout">${{ payout.amount }} | {{ payout.timestamp | date }} | {{ payout.note || 'no notes' }} </option>
         </select>
       </div>
     </div>
