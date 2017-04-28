@@ -5,12 +5,13 @@
       <div class="form-field">
         <label>*Title</label>
         <input [class.input-error]="isErrorVisible('title','required')" name="title" formControlName="title" type="text" class="form-control">
-        <div class="field-error-message" *ngIf="isErrorVisible('title','required')">field is mandatory</div>
+        <div class="field-error-message" *ngIf="isErrorVisible('title','required')">Please give your need a title.</div>
       </div>
       <div class="form-field">
         <label>*Body</label>
-        <textarea [class.input-error]="isErrorVisible('body','required')" name="body" formControlName="body" id="body" cols="30" rows="5" class="form-control"></textarea>
-        <div class="field-error-message" *ngIf="isErrorVisible('body','required')">field is mandatory</div>
+        <textarea [class.input-error]="isErrorVisible('body','required')" name="body" formControlName="body" id="body" cols="30"
+          rows="5" class="form-control"></textarea>
+        <div class="field-error-message" *ngIf="isErrorVisible('body','required')">Your need needs a body :-)</div>
       </div>
       <div class="form-field">
         <label>YouTube embed HTML</label>

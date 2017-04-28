@@ -43,8 +43,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    //TESTINGH
-    this.authSvc.authInfo$.subscribe(info => console.log);
   }
 
   isPasswordMatch() {
