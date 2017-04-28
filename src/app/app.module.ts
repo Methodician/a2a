@@ -12,19 +12,15 @@ import { CollapseModule } from 'ng2-bootstrap/collapse';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-//import { RouterModule } from '@angular/router';
-//import { HttpModule } from '@angular/http';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NeedsComponent } from './needs/needs.component';
-//import { AppModuleComponent } from './app-module/app-module.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { TesterComponent } from './tester/tester.component';
 import { PostNeedComponent } from './post-need/post-need.component';
 import { NeedComponent } from './need/need.component';
 import { NeedDetailComponent } from './need-detail/need-detail.component';
@@ -36,7 +32,6 @@ import { ApproveNeedsComponent } from './approve-needs/approve-needs.component';
 import { ApproveDetailComponent } from './approve-detail/approve-detail.component';
 import { TruncateTitlePipe } from './shared/pipes/truncate-title.pipe';
 import { AccountComponent } from './account/account.component';
-import { TestComponentComponent } from './test-component/test-component.component';
 import { AdminComponent } from './admin/admin.component';
 
 export const firebaseConfig = {
@@ -60,7 +55,6 @@ export const firebaseAuthConfig = {
     TopNavComponent,
     LoginComponent,
     RegisterComponent,
-    TesterComponent,
     PostNeedComponent,
     NeedComponent,
     NeedDetailComponent,
@@ -73,16 +67,12 @@ export const firebaseAuthConfig = {
     ApproveDetailComponent,
     TruncateTitlePipe,
     AccountComponent,
-    TestComponentComponent,
     AdminComponent,
-    //AppModuleComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    //HttpModule,
-    //RouterModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     CollapseModule.forRoot()
@@ -97,8 +87,6 @@ export const firebaseAuthConfig = {
     OrgApprovedGuard,
     IsAdminGuard,
     DatePipe
-    /*    ReversePipe,
-        SafeUrlPipe*/
   ],
   bootstrap: [AppComponent]
 })

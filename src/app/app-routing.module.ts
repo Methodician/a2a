@@ -8,7 +8,6 @@ import { ApproveNeedsComponent } from './approve-needs/approve-needs.component';
 import { NeedDetailComponent } from './need-detail/need-detail.component';
 import { AuthGuard } from './shared/security/auth.guard';
 import { PostNeedComponent } from './post-need/post-need.component';
-import { TesterComponent } from './tester/tester.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { NeedsComponent } from './needs/needs.component';
@@ -60,10 +59,6 @@ const routes: Routes = [
     {
         path: 'admin',
         children: [
-            /*{
-                path: ':id',
-                component: ApproveDetailComponent
-            },*/
             {
                 path: '',
                 component: AdminComponent
@@ -92,7 +87,6 @@ const routes: Routes = [
     },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'tester', component: TesterComponent },
     {
         path: '',
         redirectTo: '/home',
