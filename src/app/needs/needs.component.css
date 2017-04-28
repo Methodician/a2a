@@ -61,11 +61,11 @@ p {
   }
 }
 
-/*@media screen and (min-width: 992px) {
-  .col-md-4 {
+@media screen and (min-width: 992px) {
+  .need-wrap {
     width: 300px;
   }
-}*/
+}
 
 /*iPad landscape mode*/
 @media screen and (min-width: 1020px){
