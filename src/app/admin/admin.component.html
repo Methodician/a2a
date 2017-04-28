@@ -2,9 +2,9 @@
   Admin Financial Info
 </h1>
 
-
+<!--ADMIN TOOLS-->
 <div class="row">
-  <!--Selected User-->
+  <!--SELECT USER-->
   <div class="col-md-4">
     <div *ngIf="selectedUser" class="panel panel-primary">
       <div class="panel-heading">
@@ -41,63 +41,52 @@
       </table>
     </div>
   </div>
-  <!--Financial Overview-->
+  <!--/select user-->
+  <!--FINANCIAL OVERVIEW-->
   <div class="col-md-4">
-    <div class="row">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3>Financials Overview:</h3>
-        </div>
-        <table class="table table-condensed table-bordered">
-          <tr>
-            <th>Total:</th>
-            <td>${{ total }}</td>
-          </tr>
-          <tr>
-            <th>PayPal Fees:</th>
-            <td>${{ fees }}</td>
-          </tr>
-          <tr>
-            <th>Subtotal:</th>
-            <td>${{ subtotal }}</td>
-          </tr>
-          <tr>
-            <th>a2a Fees:</th>
-            <td>${{ a2aFee() }}</td>
-          </tr>
-          <tr>
-            <th>Payout Total:</th>
-            <td>${{ payoutSubTotal() }}</td>
-          </tr>
-          <tr>
-            <th>Payouts on Record:</th>
-            <td>${{ payoutTotal }}</td>
-          </tr>
-          <tr>
-            <th>Pending Payouts:</th>
-            <td>${{ pendingPayouts() }}</td>
-          </tr>
-        </table>
-        <br>
-        <h4>Payouts:</h4>
-        <select class="form-control" size="5" [ngModel]="selectedPayout" (ngModelChange)="selectPayout($event)">
-          <option *ngFor="let payout of payouts" [ngValue]="payout">${{ payout.amount || 'N/A' }} | {{ payout.timestamp | date }} | {{ payout.note || 'N/A' }} </option>
-        </select>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3>Financials Overview:</h3>
       </div>
+      <table class="table table-condensed table-bordered">
+        <tr>
+          <th>Total:</th>
+          <td>${{ total }}</td>
+        </tr>
+        <tr>
+          <th>PayPal Fees:</th>
+          <td>${{ fees }}</td>
+        </tr>
+        <tr>
+          <th>Subtotal:</th>
+          <td>${{ subtotal }}</td>
+        </tr>
+        <tr>
+          <th>a2a Fees:</th>
+          <td>${{ a2aFee() }}</td>
+        </tr>
+        <tr>
+          <th>Payout Total:</th>
+          <td>${{ payoutSubTotal() }}</td>
+        </tr>
+        <tr>
+          <th>Payouts on Record:</th>
+          <td>${{ payoutTotal }}</td>
+        </tr>
+        <tr>
+          <th>Pending Payouts:</th>
+          <td>${{ pendingPayouts() }}</td>
+        </tr>
+      </table>
+      <br>
+      <h4>Payouts:</h4>
+      <select class="form-control" size="5" [ngModel]="selectedPayout" (ngModelChange)="selectPayout($event)">
+        <option *ngFor="let payout of payouts" [ngValue]="payout">${{ payout.amount || 'N/A' }} | {{ payout.timestamp | date }} | {{ payout.note || 'N/A' }} </option>
+      </select>
     </div>
-    <!-- <div class="row">
-      <div class="panel panel-primary">
-        <div class="panel panel-heading">
-          <h3>Details:</h3>
-        </div>
-        <div class="panel-body">
-
-          <pre>{{ payouts | json }}</pre>
-        </div>
-      </div>
-    </div>-->
   </div>
-  <!--Actions-->
+  <!--/financial overview-->
+  <!--ACTIONS-->
   <div class="col-md-4">
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -130,8 +119,11 @@
       {{ contributionIds | json }}
     </pre>-->
   </div>
+  <!--/actions-->
 </div>
+<!--/admin tools-->
 
+<!--NEEDS FOR USER-->
 <div *ngIf="needs" class="panel panel-primary">
   <div class="panel-heading">
     <h3>Needs:</h3>
@@ -144,12 +136,7 @@
     </section>
   </div>
 </div>
-
-
-
-<!--<pre>
-  {{ users | json }}
-</pre>-->
+<!--/needs for user-->
 
 <!--TEMP POSSIBLY USEFUL CODE FOR TRANSFERRING CONTRIBUTIONS BETWEEN ORG-->
 <!--Old Key: <input type="text" #newKey>

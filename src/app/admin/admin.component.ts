@@ -72,27 +72,24 @@ export class AdminComponent implements OnInit {
     this.fees = 0;
 
     for (let cid of this.contributionIds) {
-      this.finSvc.getContributionTotal(cid).subscribe(contribution => {
-        if (contribution.$value)
-          this.total += parseFloat(contribution.$value);
-      });
-      this.finSvc.getContributionFee(cid).subscribe(fee => {
-        if (fee.$value)
-          this.fees += parseFloat(fee.$value);
-      });
-      this.finSvc.getContributionSubtotal(cid).subscribe(subtotal => {
-        if (subtotal.$value)
-          this.subtotal += parseFloat(subtotal.$value);
-      });
+      this.sumContributionData(cid);
     }
     this.sumPayoutsOnRecord(uid);
-    /*this.finSvc.getPayoutsPerOrg(uid).subscribe(payouts => {
-      console.log(payouts);
-      this.payouts = payouts;
-      for (let pay of payouts) {
-        this.payoutTotal += parseFloat(pay.$value);
-      }
-    });*/
+  }
+
+  sumContributionData(cid) {
+    this.finSvc.getContributionTotal(cid).subscribe(contribution => {
+      if (contribution.$value)
+        this.total += parseFloat(contribution.$value || 0);
+    });
+    this.finSvc.getContributionFee(cid).subscribe(fee => {
+      if (fee.$value)
+        this.fees += parseFloat(fee.$value || 0);
+    });
+    this.finSvc.getContributionSubtotal(cid).subscribe(subtotal => {
+      if (subtotal.$value)
+        this.subtotal += parseFloat(subtotal.$value || 0);
+    });
   }
 
   sumPayoutsOnRecord(uid) {
@@ -102,7 +99,7 @@ export class AdminComponent implements OnInit {
       console.log(payouts);
       this.payouts = payouts;
       for (let pay of payouts) {
-        this.payoutTotal += parseFloat(pay.amount);
+        this.payoutTotal += parseFloat(pay.amount || 0);
       }
     });
   }
@@ -127,7 +124,7 @@ export class AdminComponent implements OnInit {
   }
 
   editPayout() {
-    if (confirm('Are you sure you want to edit an existing payout? This cannot be undone.')) {
+    if (confirm('Are you sure you want to edit an existing payout? This CANNOT BE UNDONE.')) {
       this.finSvc.editPayout(this.selectedUser.$key, this.selectedPayout);
       this.calculateTotals(this.selectedUser.$key);
     }
