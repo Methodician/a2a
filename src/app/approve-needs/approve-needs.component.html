@@ -1,11 +1,7 @@
 <button *ngIf="filter" (click)="switchFilter()" class="btn btn-primary">Show Unapproved</button>
 <button *ngIf="!filter" (click)="switchFilter()" class="btn btn-primary">Show Approved</button>
-<section id="needs" class="row">
-  <div *ngFor="let need of needs | reverse" class="col-xs-12 col-sm-6 col-md-4">
+<section id="needs" class="row need-tile-group">
+  <div *ngFor="let need of needs | reverse" class="need-tile">
     <need [need]="need" [approving]="true"></need>
   </div>
 </section>
-<!--<h1>{{ filter }}</h1>
-<pre>
-  {{ needs | reverse | json }}
-</pre>-->
