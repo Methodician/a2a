@@ -190,11 +190,6 @@ b {
   }
 }
 
-/*iPad Pro landscape*/
-@media screen and (min-width: 1366) and (min-height: 1024px){
-
-}
-
 /*Desktop view*/
 @media screen and (min-width: 1200px){
   .preview-imgwrapper,

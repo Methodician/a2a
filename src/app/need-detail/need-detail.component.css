@@ -9,25 +9,6 @@
   height: 100%;
 }
 
-#details {
-  padding: 10px;
-}
-
-#details > b {
-  display: block;
-}
-
-#other-images > img {
-  border-radius: unset;
-}
-
-#social-share {
-  display: flex;
-  justify-content: space-around;
-}
-#social-share > .fa {
-  display: flex;
-}
 
 .line-break {
   white-space: pre-wrap;
@@ -55,6 +36,26 @@
   height: 200px;
 }
 
+#details {
+  padding: 10px;
+}
+
+#details > b {
+  display: block;
+}
+
+#other-images > img {
+  border-radius: unset;
+}
+
+#social-share {
+  display: flex;
+  justify-content: space-around;
+}
+#social-share > .fa {
+  display: flex;
+}
+
 #email-share {
   display: flex;
   flex-direction: column;
@@ -68,17 +69,11 @@
 }
 
 @media screen and (min-width: 300px){
-
   .youtube-vid {
     width: 280px;
     height: 158px;
     margin: 0 auto;
   }
-}
-
-/*Nexus 6P and iPhone6 Plus landscape*/
-@media screen and (min-width: 732px){
-
 }
 
 /*iPad Portrait mode*/
@@ -112,11 +107,6 @@
     padding-left: 100px;
     padding-right: 100px;
   }
-}
-
-/*iPad landscape mode*/
-@media screen and (min-width: 1020px){
-
 }
 
 /*iPad Pro landscape*/

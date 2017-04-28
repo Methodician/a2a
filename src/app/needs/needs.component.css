@@ -61,10 +61,6 @@ p {
   }
 }
 
-@media screen and (min-width: 992px) {
-
-}
-
 /*iPad landscape mode*/
 @media screen and (min-width: 1020px){
   p {
