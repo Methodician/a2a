@@ -11,7 +11,7 @@ import { Observable } from "rxjs/Observable";
 
 export class NeedsComponent implements OnInit {
 
-  needs: Need[] = null;
+  needs: Need[] = [];
   constructor(
     private needSvc: NeedService
   ) { }
@@ -21,8 +21,8 @@ export class NeedsComponent implements OnInit {
 
     this.needSvc.getActiveNeeds()
       .subscribe(needs => {
+        this.needs = [];
         this.needs = this.needSvc.filterNeedsToNotCompleted(this.needSvc.filterNeedsByApproval(needs, true));
-        //this.needs = this.needSvc.filterNeedsByApproval(needs, true);
       });
   }
 }

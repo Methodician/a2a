@@ -60,6 +60,10 @@ const routes: Routes = [
         path: 'admin',
         children: [
             {
+                path: ':id',
+                redirectTo: '/needs/:id'
+            },
+            {
                 path: '',
                 component: AdminComponent
             }

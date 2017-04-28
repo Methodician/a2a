@@ -19,9 +19,7 @@ export class NeedService {
     this.fsRef = app.storage().ref();
   }
 
-  donate(info, id, subscription) {
-
-
+  /*donate(info, id, subscription) {
     let dataToSave = {};
 
     this.authSvc.authInfo$.subscribe(authInfo => {
@@ -33,7 +31,7 @@ export class NeedService {
       dataToSave[`${rootWord}PerOrg/${info.orgId}/${id}`] = true;
       return this.firebaseUpdate(dataToSave);
     })
-  }
+  }*/
 
 
   getContributionsByNeed(id: string) {
