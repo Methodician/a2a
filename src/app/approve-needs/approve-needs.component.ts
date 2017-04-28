@@ -5,7 +5,7 @@ import { NeedService } from './../shared/data-services/need.service';
 @Component({
   selector: 'app-approve-needs',
   templateUrl: './approve-needs.component.html',
-  styleUrls: ['./approve-needs.component.css']
+  styleUrls: ['./approve-needs.component.css', '../needs/needs.component.css']
 })
 export class ApproveNeedsComponent implements OnInit {
 
