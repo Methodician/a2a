@@ -42,16 +42,6 @@ legend {
   display: inline-block;
 }
 
-/*most phones landscape mode*/
-@media screen and (min-width: 500px){
-
-}
-
-/*Nexus 6P and iPhone6 Plus landscape*/
-@media screen and (min-width: 732px){
-
-}
-
 /*iPad Portrait mode*/
 @media screen and (min-width: 760px){
   .form-bg {
@@ -74,11 +64,6 @@ legend {
   .form-group {
     margin: 70px 200px 0;
   }
-}
-
-/*iPad Pro landscape*/
-@media screen and (min-width: 1366) and (min-height: 1024px){
-
 }
 
 /*Desktop view*/

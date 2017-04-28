@@ -1,13 +1,12 @@
 #app-wrapper {
-/*    display: block;
-    width: 700px;*/
     margin: 50px auto auto;
 }
+
 #footer {
     margin-top: 40px;
-    /*vertical-align: middle;*/
     background-color: #f7f7f7;
 }
+
 #footer a {
     font-weight: 300;
     /*padding: 30px 0;*/
@@ -16,47 +15,9 @@
     height: 100px;
     line-height: 100px;
 }
+
 #footer a:hover,
 #footer a:focus {
     color: #2c3e50;
     text-decoration: none;
-}
-
-/*#howitworks img {
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-
-}*/
-
-/*most phones landscape mode*/
-@media screen and (min-width: 500px){
-
-}
-
-/*Nexus 6P and iPhone6 Plus landscape*/
-@media screen and (min-width: 732px){
-
-}
-
-/*iPad Portrait mode*/
-@media screen and (min-width: 760px){
-
-}
-
-/*iPad landscape mode*/
-@media screen and (min-width: 1020px){
-
-}
-
-/*iPad Pro landscape*/
-@media screen and (min-width: 1366) and (min-height: 1024px){
-
-}
-
-/*Desktop view*/
-@media screen and (min-width: 1200px){
-
 }

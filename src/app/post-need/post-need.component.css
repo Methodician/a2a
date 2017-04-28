@@ -39,16 +39,6 @@ p {
   margin-bottom: 30px;
 }
 
-/*most phones landscape mode*/
-@media screen and (min-width: 500px){
-
-}
-
-/*Nexus 6P and iPhone6 Plus landscape*/
-@media screen and (min-width: 732px){
-
-}
-
 /*iPad Portrait mode*/
 @media screen and (min-width: 760px){
   button {
@@ -76,11 +66,6 @@ p {
   .form-group {
     margin: 0 250px 20px;
   }
-}
-
-/*iPad Pro landscape*/
-@media screen and (min-width: 1366) and (min-height: 1024px){
-
 }
 
 /*Desktop view*/
