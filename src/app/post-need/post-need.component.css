@@ -19,6 +19,12 @@ p {
   padding-bottom: 50px;
 }
 
+#needs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .form-group {
   margin: 0 10px 20px;
   font-weight: 300;

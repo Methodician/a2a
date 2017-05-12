@@ -9,7 +9,7 @@ import { DatePipe } from "@angular/common";
 @Component({
   selector: 'app-post-need',
   templateUrl: './post-need.component.html',
-  styleUrls: ['./post-need.component.css', '../shared/styles/validation.css']
+  styleUrls: ['./post-need.component.css', '../shared/styles/validation.css', '../needs/needs.component.css']
 })
 export class PostNeedComponent implements OnInit, OnDestroy {
 

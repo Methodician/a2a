@@ -13,10 +13,10 @@
 
 </div>
 <section id="previews" class="container">
-  <need [need]="form.value" [preview]="1" [previewImageUrl]="previewImageUrl"></need>
+  <div id="needs" class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4 need-tile">
+      <need [need]="form.value" [preview]="1" [previewImageUrl]="previewImageUrl"></need>
+    </div>
+  </div>
   <need-detail [need]="form.value" [preview]="1" [orgInfo]="orgInfo" [previewImageUrl]="previewImageUrl" [previewBodyImageUrls]="previewBodyImageUrls"></need-detail>
 </section>
-<pre>
-  {{ this.previewBodyImageUrls | json }}
-</pre>
-

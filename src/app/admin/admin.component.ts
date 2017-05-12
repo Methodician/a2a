@@ -2,7 +2,6 @@ import { Need } from './../shared/models/need';
 import { NeedService } from './../shared/data-services/need.service';
 import { FinancialService } from './../shared/data-services/financial.service';
 import { UserInfoOpen, UserInfo } from './../shared/models/user-info';
-import { FirebaseListObservable } from 'angularfire2';
 import { UserService } from './../shared/data-services/user.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,17 +12,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  private users: UserInfoOpen[];
-  private needs: Need[] = null;
-  private selectedUser: any;
-  private payouts: any[];
-  private selectedPayout: any;
+  users: UserInfoOpen[];
+  needs: Need[] = null;
+  selectedUser: any;
+  payouts: any[];
+  selectedPayout: any;
 
-  private total: number;
-  private fees: number;
-  private subtotal: number;
-  private payoutTotal: number;
-  private contributionIds: string[];
+  total: number;
+  fees: number;
+  subtotal: number;
+  payoutTotal: number;
+  contributionIds: string[];
 
   constructor(
     private userSvc: UserService,

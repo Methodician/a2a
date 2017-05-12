@@ -1,3 +1,4 @@
+import { AppModuleComponent } from './app-module/app-module.component';
 import { FinancialService } from './shared/data-services/financial.service';
 import { IsAdminGuard } from './shared/security/isAdmin.guard';
 import { OrgApprovedGuard } from './shared/security/orgApproved.guard';
@@ -68,6 +69,7 @@ export const firebaseAuthConfig = {
     TruncateTitlePipe,
     AccountComponent,
     AdminComponent,
+    AppModuleComponent
   ],
   imports: [
     BrowserModule,

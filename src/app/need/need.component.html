@@ -2,10 +2,12 @@
   <div id="b-div">
     <b>{{ need.title | truncateTitle:25 }}</b>
   </div>
-  <div id="imgwrapper" [class.preview-imgwrapper]="preview">
+  <!--<div id="imgwrapper" [class.preview-imgwrapper]="preview">-->
+  <div id="imgwrapper">
     <img id="cover-image" [src]="preview ? previewImageUrl : need.coverImageUrl" alt="Cover Image">
   </div>
-  <div id="body" [class.preview-body]="preview">
+  <!--<div id="body" [class.preview-body]="preview">-->
+  <div id="body">
     <div id="info">
       <div>
         <div id="donated">

@@ -2,7 +2,7 @@
   "rules": {
     "userInfo": {
       "isApproved": {
-        ".write": "false",
+        ".write": "root.child('userInfo/isAdmin/' + auth.uid).val() == true",
         ".read": "true"
       },
       "isAdmin": {
@@ -18,25 +18,7 @@
       "closed": {
         "$uid": {
           ".write": "$uid === auth.uid",
-          ".read": "$uid === auth.uid"
-        }
-      },
-      "$uid": {
-        "closed": {
-          ".write": "$uid === auth.uid",
-          ".read": "$uid === auth.uid"
-        },
-        "open": {
-          ".write": "$uid === auth.uid",
-          ".read": "true"
-        },
-        "orgApproved": {
-          ".write": "false",
-          ".read": "true"
-        },
-        "isAdmin": {
-          ".write": "false",
-          ".read": "true"
+          ".read": "$uid === auth.uid || root.child('userInfo/isAdmin/' + auth.uid).val() == true"
         }
       }
     },
@@ -50,8 +32,14 @@
       ]
     },
     "needsPerOrg": {
-      ".write": "auth != null",
+      "$uid": {
+        ".write": "$uid === auth.uid || root.child('userInfo/isAdmin/' + auth.uid).val() == true"
+      },
       ".read": "true"
+    },
+    "payoutsPerOrg": {
+      ".read": "root.child('userInfo/isAdmin/' + auth.uid).val() == true",
+      ".write": "root.child('userInfo/isAdmin/' + auth.uid).val() == true"
     },
     "needImageUrls": {
       ".write": "auth != null",
@@ -65,8 +53,20 @@
       ".write": "false",
       ".read": "true"
     },
-    "contributionsPerNeed": {
+    "contributionSubtotalLog": {
       ".write": "false",
+      ".read": "true"
+    },
+    "contributionFeeLog": {
+      ".write": "false",
+      ".read": "true"
+    },
+    "contributionsPerNeed": {
+      ".write": "root.child('userInfo/isAdmin/' + auth.uid).val() == true",
+      ".read": "true"
+    },
+    "contributionsPerOrg": {
+      ".write": "root.child('userInfo/isAdmin/' + auth.uid).val() == true",
       ".read": "true"
     },
     "contributionIpn": {
