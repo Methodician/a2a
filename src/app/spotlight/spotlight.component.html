@@ -1,0 +1,22 @@
+<div id="need-card-wrapper">
+  <div id="b-div">
+    <b>{{ spotlight.title | truncateTitle:25 }}</b>
+  </div>
+  <!--<div id="imgwrapper" [class.preview-imgwrapper]="preview">-->
+  <div id="imgwrapper">
+    <img id="cover-image" [src]="spotlight.coverImageUrl ? spotlight.coverImageUrl : previewImageUrl" alt="Cover Image">
+  </div>
+  <!--<div id="body" [class.preview-body]="preview">-->
+  <div id="body">
+    <div id="info">
+      Recurring payment: ${{ spotlight.monthlyCommitment }}/mo
+    </div>
+
+    <div id="buttons">
+      <div id="bigbtn">
+        <!-- <button [routerLink]="need.$key">MORE INFO</button>-->
+        <button>MORE INFO</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,4 @@
+import { SpotlightService } from './shared/data-services/spotlight.service';
 import { AppModuleComponent } from './app-module/app-module.component';
 import { FinancialService } from './shared/data-services/financial.service';
 import { IsAdminGuard } from './shared/security/isAdmin.guard';
@@ -34,6 +35,11 @@ import { ApproveDetailComponent } from './approve-detail/approve-detail.componen
 import { TruncateTitlePipe } from './shared/pipes/truncate-title.pipe';
 import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
+import { SpotlightComponent } from './spotlight/spotlight.component';
+import { SpotlightsComponent } from './spotlights/spotlights.component';
+import { SpotlightFormComponent } from './spotlight-form/spotlight-form.component';
+import { PostSpotlightComponent } from './post-spotlight/post-spotlight.component';
+import { SpotlightDetailComponent } from './spotlight-detail/spotlight-detail.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBymDlc5x-NzBC-xL5RZ1GtroML8KeV56g",
@@ -69,7 +75,12 @@ export const firebaseAuthConfig = {
     TruncateTitlePipe,
     AccountComponent,
     AdminComponent,
-    AppModuleComponent
+    AppModuleComponent,
+    SpotlightComponent,
+    SpotlightsComponent,
+    SpotlightFormComponent,
+    PostSpotlightComponent,
+    SpotlightDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -83,6 +94,7 @@ export const firebaseAuthConfig = {
     AuthService,
     UserService,
     NeedService,
+    SpotlightService,
     FinancialService,
     AuthGuard,
     EmailVerifiedGuard,

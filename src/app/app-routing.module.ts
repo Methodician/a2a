@@ -1,3 +1,6 @@
+import { PostSpotlightComponent } from './post-spotlight/post-spotlight.component';
+import { SpotlightsComponent } from './spotlights/spotlights.component';
+import { SpotlightDetailComponent } from './spotlight-detail/spotlight-detail.component';
 import { AdminComponent } from './admin/admin.component';
 import { IsAdminGuard } from './shared/security/isAdmin.guard';
 import { OrgApprovedGuard } from './shared/security/orgApproved.guard';
@@ -43,6 +46,19 @@ const routes: Routes = [
         ]
     },
     {
+        path: 'spotlight',
+        children: [
+            {
+                path: ':id',
+                component: SpotlightDetailComponent
+            },
+            {
+                path: '',
+                component: SpotlightsComponent
+            }
+        ]
+    },
+    {
         path: 'approveneeds',
         children: [
             {
@@ -59,6 +75,10 @@ const routes: Routes = [
     {
         path: 'admin',
         children: [
+            {
+                path: 'spotlight/:id',
+                component: PostSpotlightComponent
+            },
             {
                 path: ':id',
                 redirectTo: '/needs/:id'

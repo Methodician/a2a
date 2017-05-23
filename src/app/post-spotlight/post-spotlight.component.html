@@ -1,0 +1,30 @@
+<spotlight-form #form [initialValue]="spotlight"></spotlight-form>
+<div class="form-group">
+  <label>*Cover Image</label>
+  <input type="file" class="form-control field-error-message" (change)="coverImageChange($event)">
+  <label>Body Images (optional)</label>
+  <input type="file" multiple class="form-control field-error-message" (change)="bodyImagesChange($event)">
+
+  <button (click)="save(form)" [disabled]="!formValid(form.valid)" class="btn btn-default">Post New Need</button>
+
+</div>
+<section id="previews" class="container">
+  <div id="needs" class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4 need-tile">
+      <!--<spotlight [preview]="1" [previewImageUrl]="previewImageUrl"></spotlight>-->
+      <spotlight [spotlight]="form.value" [previewImageUrl]="previewImageUrl"></spotlight>
+    </div>
+  </div>
+  <!--<spotlight-detail [preview]="1" [orgInfo]="orgInfo" [previewImageUrl]="previewImageUrl" [previewBodyImageUrls]="previewBodyImageUrls"></spotlight-detail>-->
+  <spotlight-detail [spotlight]="form.value" [previewImageUrl]="previewImageUrl"></spotlight-detail>
+</section>
+
+<h3>User:</h3>
+<pre>
+  {{ user | json}}
+</pre>
+
+<h3>Spotlight:</h3>
+<pre>
+  {{ spotlight | json }}
+</pre>

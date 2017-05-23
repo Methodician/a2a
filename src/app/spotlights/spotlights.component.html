@@ -1,0 +1,13 @@
+<section id="needs-top" class="row">
+  <div class="container">
+    <h2>DONOR SPOTLIGHT!</h2>
+    <p>
+      These donors are special. They've comitted a significant monthly sum to one or more needs and we just want to say thanks!
+    </p>
+  </div>
+</section>
+<section id="needs" class="row need-tile-group">
+  <div class="need-tile" *ngFor="let spotlight of spotlights | reverse">
+    <spotlight [spotlight]="spotlight"></spotlight>
+  </div>
+</section>

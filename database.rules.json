@@ -37,6 +37,10 @@
       },
       ".read": "true"
     },
+    "spotlights": {
+      ".read": "true",
+      ".write": "root.child('userInfo/isAdmin/' + auth.uid).val() == true"
+    },
     "payoutsPerOrg": {
       ".read": "root.child('userInfo/isAdmin/' + auth.uid).val() == true",
       ".write": "root.child('userInfo/isAdmin/' + auth.uid).val() == true"

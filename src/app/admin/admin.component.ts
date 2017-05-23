@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Need } from './../shared/models/need';
 import { NeedService } from './../shared/data-services/need.service';
 import { FinancialService } from './../shared/data-services/financial.service';
@@ -27,7 +28,8 @@ export class AdminComponent implements OnInit {
   constructor(
     private userSvc: UserService,
     private finSvc: FinancialService,
-    private needSvc: NeedService
+    private needSvc: NeedService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -55,6 +57,10 @@ export class AdminComponent implements OnInit {
 
   selectPayout(payout) {
     this.selectedPayout = payout;
+  }
+
+  addSpotlight() {
+    this.router.navigate(['admin/spotlight', this.selectedUser.$key]);
   }
 
   getContributions(id) {

@@ -40,6 +40,9 @@
         </tr>
       </table>
     </div>
+    <pre>
+      {{ selectedUser | json }}
+    </pre>
   </div>
   <!--/select user-->
   <!--FINANCIAL OVERVIEW-->
@@ -112,7 +115,10 @@
           <button (click)="deletePayout()" class="btn btn-danger">Delete Payout</button>
         </form>
       </div>
-
+      <div class="actions-form">
+        <h4>Spotlights:</h4>
+        <button (click)="addSpotlight()" class="btn btn-primary">Add a Spotlight</button>
+      </div>
     </div>
     <!--Total: {{ total }} Fees: {{ fees }} Subtotal: {{ subtotal }}
     <pre>

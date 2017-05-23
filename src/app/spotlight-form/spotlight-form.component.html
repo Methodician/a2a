@@ -1,0 +1,28 @@
+<form autocomplete="off" novalidate class="login-form" [formGroup]="form">
+  <fieldset class="form-group">
+    <legend>Add Spotlight</legend>
+    <div class="form-bg">
+      <div class="form-field">
+        <label>*Title</label>
+        <input [class.input-error]="isErrorVisible('title','required')" name="title" formControlName="title" type="text" class="form-control">
+        <div class="field-error-message" *ngIf="isErrorVisible('title','required')">Please give your spotlight a title.</div>
+      </div>
+      <div class="form-field">
+        <label>*Body</label>
+        <textarea [class.input-error]="isErrorVisible('body','required')" name="body" formControlName="body" id="body" cols="30"
+          rows="5" class="form-control"></textarea>
+        <div class="field-error-message" *ngIf="isErrorVisible('body','required')">Your need needs a body :-)</div>
+      </div>
+      <div class="form-field">
+        <label>YouTube embed HTML</label>
+        <p>(on YouTube click "Share" then click "Embed" between "Share" and "Email" and just copy and paste below.)</p>
+        <input name="videoIframe" formControlName="videoIframe" id="videoIframe" class="form-control">
+      </div>
+    </div>
+    <div *ngIf="!form.value.ongoing" class="form-field">
+      <label>Monthly Commitment</label>
+      <input name="monthlyCommitment" formControlName="monthlyCommitment" type="number" class="form-control">
+      <!--<div class="field-error-message" *ngIf="!isTotalOk()">Please enter a goal for this need greater than $0.</div>-->
+    </div>
+  </fieldset>
+</form>

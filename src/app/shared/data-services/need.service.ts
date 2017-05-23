@@ -9,6 +9,7 @@ import { Injectable, Inject } from '@angular/core';
 export class NeedService {
   dbRef: any;
   fsRef: any;
+
   constructor(
     private authSvc: AuthService,
     private db: AngularFireDatabase,
