@@ -24,7 +24,7 @@
         <div *ngIf="spotlight && spotlight.bodyImageUrls" class="flexed">
           <img *ngFor="let url of spotlight.bodyImageUrls" [src]="url.$value" alt="Other Images" class="body-img">
         </div>
-        <div *ngIf="preview && previewBodyImageUrls && previewBodyImageUrls.length > 0" class="flexed">
+        <div *ngIf="previewBodyImageUrls && previewBodyImageUrls.length > 0" class="flexed">
           <img *ngFor="let url of previewBodyImageUrls" [src]="url" alt="Other Images" class="body-img">
         </div>
       </div>

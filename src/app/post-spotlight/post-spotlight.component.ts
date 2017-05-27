@@ -1,7 +1,7 @@
 import { UserInfoOpen } from './../shared/models/user-info';
 import { SpotlightService } from './../shared/data-services/spotlight.service';
 import { UserService } from './../shared/data-services/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -13,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class PostSpotlightComponent implements OnInit {
 
   user: UserInfoOpen;
+  orgId: string;
   spotlight: any;
   tempAccessors: any[] = [];
 
@@ -23,6 +24,7 @@ export class PostSpotlightComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private userSvc: UserService,
     private spotlightSvc: SpotlightService
   ) { }
@@ -30,6 +32,7 @@ export class PostSpotlightComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.params['id']) {
       let id = this.route.snapshot.params['id'];
+      this.orgId = id;
 
       this.spotlightSvc.getSpotlight(id).subscribe(spotlight => {
         this.userSvc.getOpenInfo(id).subscribe(user => {
@@ -43,6 +46,10 @@ export class PostSpotlightComponent implements OnInit {
         });
       });
     }
+  }
+
+  ngOnDestroy() {
+    this.spotlightSvc.deleteTempImages(this.tempAccessors);
   }
 
   coverImageChange(event) {
@@ -64,6 +71,18 @@ export class PostSpotlightComponent implements OnInit {
           this.tempAccessors.push(imageAccessors);
         });
     }
+  }
+
+  save(form) {
+    this.spotlightSvc.createNewSpotlight(this.orgId, form.value, this.coverImage, this.bodyImages)
+      .subscribe(
+      () => {
+        alert('Spotlight successfully added!');
+        form.reset();
+        this.router.navigate(['../admin']);
+      },
+      err => alert(`Error creating or posting spotlight: ${err}`)
+      );
   }
 
   formValid(needFormValid) {

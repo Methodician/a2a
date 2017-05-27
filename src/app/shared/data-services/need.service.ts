@@ -151,7 +151,6 @@ export class NeedService {
   }
 
   storeTempImage(image: any) {
-    // ToDo: Delete temporary image upon submit or cancel...
     const subject = new Subject();
     let key = this.dbRef.child('imagePaths/temp').push().key;
     let filePath = `images/temp/${key}`;

@@ -5,7 +5,7 @@
   <label>Body Images (optional)</label>
   <input type="file" multiple class="form-control field-error-message" (change)="bodyImagesChange($event)">
 
-  <button (click)="save(form)" [disabled]="!formValid(form.valid)" class="btn btn-default">Post New Need</button>
+  <button (click)="save(form)" [disabled]="!formValid(form.valid)" class="btn btn-default">Submit</button>
 
 </div>
 <section id="previews" class="container">
@@ -16,7 +16,7 @@
     </div>
   </div>
   <!--<spotlight-detail [preview]="1" [orgInfo]="orgInfo" [previewImageUrl]="previewImageUrl" [previewBodyImageUrls]="previewBodyImageUrls"></spotlight-detail>-->
-  <spotlight-detail [spotlight]="form.value" [previewImageUrl]="previewImageUrl"></spotlight-detail>
+  <spotlight-detail [spotlight]="form.value" [previewImageUrl]="previewImageUrl" [previewBodyImageUrls]="previewBodyImageUrls"></spotlight-detail>
 </section>
 
 <h3>User:</h3>
