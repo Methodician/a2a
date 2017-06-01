@@ -14,8 +14,9 @@
 
     <div id="buttons">
       <div id="bigbtn">
-        <!-- <button [routerLink]="need.$key">MORE INFO</button>-->
-        <button>MORE INFO</button>
+        <button [routerLink]="spotlight.$key">MORE INFO</button>
+        <button *ngIf="admin" (click)="toggleActivation(spotlight.activeFlag)">{{ spotlight.activeFlag ? 'Deactivate' : 'Reactivate' }}</button>
+        <!--<button>MORE INFO</button>-->
       </div>
     </div>
   </div>

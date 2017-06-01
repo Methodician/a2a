@@ -1,3 +1,4 @@
+import { SpotlightService } from './../shared/data-services/spotlight.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,15 +8,18 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SpotlightComponent implements OnInit {
   @Input() spotlight;
+  @Input() admin = false;
 
   @Input() previewImageUrl = '../../assets/images/electric_arc.jpg';
 
-  constructor() { }
+  constructor(private spotlightSvc: SpotlightService) { }
 
   ngOnInit() {
-    this.spotlight = {
-      title: 'Im so good'
-    };
+
+  }
+
+  toggleActivation(active: boolean) {
+    this.spotlightSvc.toggleActivation(this.spotlight.$key, !active);
   }
 
 }

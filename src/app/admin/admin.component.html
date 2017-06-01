@@ -40,9 +40,9 @@
         </tr>
       </table>
     </div>
-    <pre>
+    <!--    <pre>
       {{ selectedUser | json }}
-    </pre>
+    </pre>-->
   </div>
   <!--/select user-->
   <!--FINANCIAL OVERVIEW-->
@@ -143,6 +143,26 @@
   </div>
 </div>
 <!--/needs for user-->
+
+<!--SPOTLIGHTS FOR USER-->
+<div *ngIf="spotlights" class="panel panel-primary">
+  <div class="panel-heading">
+    <h3>Spotlights:</h3>
+  </div>
+  <div class="panel-body">
+    <section id="spotlights" class="row need-tile-group">
+      <div class="need-tile" *ngFor="let spotlight of spotlights | reverse">
+        <!--<div class="panel panel-success">
+          <pre>
+            {{spotlight | json}}
+          </pre>
+        </div>-->
+        <spotlight [spotlight]="spotlight" [admin]="true"></spotlight>
+      </div>
+    </section>
+  </div>
+</div>
+<!--/spotlights for user-->
 
 <!--TEMP POSSIBLY USEFUL CODE FOR TRANSFERRING CONTRIBUTIONS BETWEEN ORG-->
 <!--Old Key: <input type="text" #newKey>

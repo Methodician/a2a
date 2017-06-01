@@ -1,3 +1,4 @@
+import { SpotlightService } from './../shared/data-services/spotlight.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 
@@ -11,9 +12,24 @@ export class SpotlightDetailComponent implements OnInit {
   @Input() previewImageUrl = '../../assets/images/electric_arc.jpg';
   @Input() previewBodyImageUrls = [];
 
-  constructor() { }
+  spotlightId: string;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private spotlightSvc: SpotlightService
+  ) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
+    if (this.route.snapshot.params['id']) {
+      this.spotlightId = this.route.snapshot.params['id'];
+      this.spotlightSvc.getSpotlight(this.spotlightId).subscribe(spotlight => {
+        this.spotlightSvc.getSpotlightImages(spotlight);
+        this.spotlight = spotlight;
+      })
+    }
   }
+
 
 }

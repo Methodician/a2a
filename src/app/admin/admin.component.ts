@@ -1,3 +1,4 @@
+import { SpotlightService } from './../shared/data-services/spotlight.service';
 import { Router } from '@angular/router';
 import { Need } from './../shared/models/need';
 import { NeedService } from './../shared/data-services/need.service';
@@ -15,6 +16,7 @@ export class AdminComponent implements OnInit {
 
   users: UserInfoOpen[];
   needs: Need[] = null;
+  spotlights: any[] = null;
   selectedUser: any;
   payouts: any[];
   selectedPayout: any;
@@ -29,7 +31,8 @@ export class AdminComponent implements OnInit {
     private userSvc: UserService,
     private finSvc: FinancialService,
     private needSvc: NeedService,
-    private router: Router
+    private router: Router,
+    private spotlightSvc: SpotlightService
   ) { }
 
   ngOnInit() {
@@ -41,6 +44,7 @@ export class AdminComponent implements OnInit {
 
   selectUser(user) {
     this.needs = null;
+    this.spotlights = null;
     this.selectedPayout = null;
     let id = user.$key
     this.getContributions(id);
@@ -53,6 +57,9 @@ export class AdminComponent implements OnInit {
     this.needSvc.getNeedsByOrg(user.$key).subscribe(needs => {
       this.needs = needs;
     });
+    this.spotlightSvc.getSpotlightsByOrg(user.$key).subscribe(spotlights => {
+      this.spotlights = spotlights;
+    })
   }
 
   selectPayout(payout) {

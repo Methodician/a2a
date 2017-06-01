@@ -22,6 +22,37 @@ export class SpotlightService {
     return this.db.object(`spotlights/${id}`);
   }
 
+  getAllSpotlights() {
+    return this.db.list('spotlights');
+  }
+
+  getActiveSpotlights(): Observable<any[]> {
+    return this.db.list('spotlights', {
+      query: {
+        orderByChild: 'activeFlag',
+        equalTo: true
+      }
+    })
+      .filter(res => res && res.length > 0);
+  }
+
+  getSpotlightsByOrg(orgId: string): Observable<any[]> {
+    return this.db.list('spotlights', {
+      query: {
+        orderByChild: 'orgId',
+        equalTo: orgId
+      }
+    })
+      .filter(res => res && res.length > 0);
+  }
+
+  getSpotlightImages(spotlight: any) {
+    this.db.list(`spotlightImageUrls/${spotlight.$key}`)
+      .subscribe(images => {
+        spotlight.bodyImageUrls = images;
+      });
+  }
+
   createNewSpotlight(orgId: string, spotlight: any, coverImage: any, bodyImages?: any[]): Observable<any> {
     let timestamp = firebase.database.ServerValue.TIMESTAMP;
     let spotlightToSave = Object.assign({}, spotlight, { orgId }, { activeFlag: true }, { timestamp });
@@ -53,6 +84,10 @@ export class SpotlightService {
 
     return this.firebaseUpdate(dataToSave);
 
+  }
+
+  toggleActivation(spotlightKey: string, newActiveFlag: boolean) {
+    this.db.object(`spotlights/${spotlightKey}`).update({ activeFlag: newActiveFlag });
   }
 
   storeTempImage(image: any) {
