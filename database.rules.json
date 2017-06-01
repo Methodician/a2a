@@ -37,6 +37,12 @@
       },
       ".read": "true"
     },
+    "spotlightsPerOrg": {
+      "$uid": {
+        ".write": "$uid === auth.uid || root.child('userInfo/isAdmin/' + auth.uid).val() == true"
+      },
+      ".read": "true"
+    },
     "spotlights": {
       ".read": "true",
       ".write": "root.child('userInfo/isAdmin/' + auth.uid).val() == true"
@@ -48,6 +54,10 @@
     "needImageUrls": {
       ".write": "auth != null",
       ".read": "true"
+    },
+    "spotlightImageUrls": {
+      ".read": "true",
+      ".write": "root.child('userInfo/isAdmin/' + auth.uid).val() == true"
     },
     "imagePaths": {
       ".write": "auth != null",

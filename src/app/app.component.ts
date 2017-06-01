@@ -22,4 +22,9 @@ export class AppComponent {
     );
   }
 
+
+  scrollTop() {
+    window.scrollTo(0, 0);
+  }
+
 }

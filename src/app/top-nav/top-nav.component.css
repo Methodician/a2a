@@ -38,7 +38,8 @@
 }
 
 .navbar-brand {
-    font-size: 2em;
+    /*font-size: 2em;*/
+    padding: 0;
 }
 
 .container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse {
