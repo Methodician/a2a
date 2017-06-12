@@ -41,12 +41,23 @@ import { SpotlightFormComponent } from './spotlight-form/spotlight-form.componen
 import { PostSpotlightComponent } from './post-spotlight/post-spotlight.component';
 import { SpotlightDetailComponent } from './spotlight-detail/spotlight-detail.component';
 
-export const firebaseConfig = {
+/*DEV FIREBASE CONFIG*/
+/*export const firebaseConfig = {
   apiKey: "AIzaSyBymDlc5x-NzBC-xL5RZ1GtroML8KeV56g",
   authDomain: "aid2assist-dev.firebaseapp.com",
   databaseURL: "https://aid2assist-dev.firebaseio.com",
   storageBucket: "aid2assist-dev.appspot.com",
   messagingSenderId: "732112620096"
+};*/
+
+/*PROD FIREBASE CONFIG*/
+export const firebaseConfig = {
+  apiKey: "AIzaSyCYQ4na3qZbvDKPE2cjLt74RHhrqcCMlqo",
+  authDomain: "aid2assist.firebaseapp.com",
+  databaseURL: "https://aid2assist.firebaseio.com",
+  projectId: "aid2assist",
+  storageBucket: "aid2assist.appspot.com",
+  messagingSenderId: "517026194479"
 };
 
 export const firebaseAuthConfig = {

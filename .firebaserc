@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "aid2assist-dev"
+    "default": "aid2assist-dev",
+    "production": "aid2assist"
   }
 }
