@@ -1,7 +1,8 @@
 import { AuthInfo } from './auth-info';
 import { Injectable, Inject } from '@angular/core';
 import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
-import { FirebaseAuthState, FirebaseAuth, FirebaseRef } from 'angularfire2';
+//import { FirebaseAuthState, FirebaseAuth, FirebaseRef } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 
 
@@ -14,27 +15,27 @@ export class AuthService {
   fbRef: any;
 
   constructor(
-    private auth: FirebaseAuth,
-    @Inject(FirebaseRef) fbRef
+    private auth: AngularFireAuth,
+    //@Inject(FirebaseRef) fbRef
   ) {
-    this.auth.subscribe(info => {
+    this.auth.authState.subscribe(info => {
       if (info) {
-        const authInfo = new AuthInfo(info.uid, info.auth.emailVerified);
+        const authInfo = new AuthInfo(info.uid, info.emailVerified);
         this.authInfo$.next(authInfo);
       }
     });
-    this.fbRef = fbRef;
+    //this.fbRef = fbRef;
   }
 
-  login(email, password): Observable<FirebaseAuthState> {
-    return this.fromFirebaseAuthPromise(this.auth.login({ email, password }));
+  login(email, password){
+    return this.fromFirebaseAuthPromise(this.auth.auth.signInWithEmailAndPassword( email, password ));
   }
   logout() {
-    this.auth.logout();
+    this.auth.auth.signOut();
     this.authInfo$.next(AuthService.UNKNOWN_USER);
   }
-  signUp(email, password): Observable<FirebaseAuthState> {
-    return this.fromFirebaseAuthPromise(this.auth.createUser({ email, password }));
+  signUp(email, password){
+    return this.fromFirebaseAuthPromise(this.auth.auth.createUserWithEmailAndPassword( email, password ));
   }
 
   fromFirebaseAuthPromise(promise): Observable<any> {
@@ -42,7 +43,7 @@ export class AuthService {
 
     promise
       .then(res => {
-        const authInfo = new AuthInfo(this.auth.getAuth().uid, res.auth.emailVerified);
+        const authInfo = new AuthInfo(this.auth.auth.currentUser.uid, res.emailVerified);
         this.authInfo$.next(authInfo);
         subject.next(res);
         subject.complete();

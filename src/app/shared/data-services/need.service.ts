@@ -1,6 +1,7 @@
 import { Need } from './../models/need';
 import { Subject, Observable } from 'rxjs/Rx';
-import { AngularFireDatabase, FirebaseRef, FirebaseApp } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { FirebaseApp } from 'angularfire2';
 import { AuthService } from './../security/auth.service';
 import { Injectable, Inject } from '@angular/core';
 
@@ -13,10 +14,10 @@ export class NeedService {
   constructor(
     private authSvc: AuthService,
     private db: AngularFireDatabase,
-    @Inject(FirebaseRef) fb,
+    // @Inject(FirebaseRef) fb,
     @Inject(FirebaseApp) app,
   ) {
-    this.dbRef = fb.database().ref();
+    // this.dbRef = fb.database().ref();
     this.fsRef = app.storage().ref();
   }
 

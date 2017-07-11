@@ -2,7 +2,8 @@
 //import { AuthService } from './../security/auth.service';
 import { Injectable, Inject } from '@angular/core';
 import * as firebase from 'firebase';
-import { AngularFireDatabase, FirebaseRef, AngularFire } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
+
 import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
 
 
@@ -12,9 +13,9 @@ export class FinancialService {
   dbRef: any;
   constructor(
     private db: AngularFireDatabase,
-    @Inject(FirebaseRef) fb,
+    //@Inject(FirebaseRef) fb,
   ) {
-    this.dbRef = fb.database().ref();
+    //this.dbRef = fb.database().ref();
   }
 
   getContributionTotal(id: string) {

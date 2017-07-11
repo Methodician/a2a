@@ -1,7 +1,7 @@
 import { UserInfo, UserInfoClosed, UserInfoOpen } from './../models/user-info';
 import { AuthService } from './../security/auth.service';
 import { Injectable, Inject } from '@angular/core';
-import { AngularFireDatabase, FirebaseRef } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
 
 @Injectable()
@@ -17,9 +17,9 @@ export class UserService {
   constructor(
     private authSvc: AuthService,
     private db: AngularFireDatabase,
-    @Inject(FirebaseRef) fb
+    //@Inject(FirebaseRef) fb
   ) {
-    this.dbRef = fb.database().ref();
+    //this.dbRef = fb.database().ref();
     //  after ridiculous time and effort and no legable errors, I found that
     //  this subscribe must be in the constructor, not ngOnInit()...
     this.authSvc.authInfo$.subscribe(info => {

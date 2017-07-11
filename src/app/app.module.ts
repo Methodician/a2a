@@ -14,8 +14,9 @@ import { CollapseModule } from 'ng2-bootstrap/collapse';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
-
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NeedsComponent } from './needs/needs.component';
@@ -60,10 +61,10 @@ export const firebaseConfig = {
   messagingSenderId: "517026194479"
 };
 
-export const firebaseAuthConfig = {
-  provider: AuthProviders.Password,
-  method: AuthMethods.Password
-};
+// export const firebaseAuthConfig = {
+//   provider: AuthProviders.Password,
+//   method: AuthMethods.Password
+// };
 
 @NgModule({
   declarations: [
@@ -98,7 +99,8 @@ export const firebaseAuthConfig = {
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
     CollapseModule.forRoot()
   ],
   providers: [
@@ -111,7 +113,8 @@ export const firebaseAuthConfig = {
     EmailVerifiedGuard,
     OrgApprovedGuard,
     IsAdminGuard,
-    DatePipe
+    DatePipe,
+    AngularFireDatabase
   ],
   bootstrap: [AppComponent]
 })

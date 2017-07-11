@@ -1,5 +1,6 @@
 import { Observable } from 'rxjs/Observable';
-import { AngularFireDatabase, FirebaseRef, FirebaseApp } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { FirebaseApp } from 'angularfire2';
 import { Injectable, Inject } from '@angular/core';
 import { Subject } from "rxjs/Subject";
 import * as firebase from 'firebase';
@@ -11,10 +12,10 @@ export class SpotlightService {
 
   constructor(
     private db: AngularFireDatabase,
-    @Inject(FirebaseRef) fb,
+    // @Inject(FirebaseRef) fb,
     @Inject(FirebaseApp) app
   ) {
-    this.dbRef = fb.database().ref();
+    // this.dbRef = fb.database().ref();
     this.fsRef = app.storage().ref();
   }
 
