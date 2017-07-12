@@ -15,6 +15,7 @@ export class SpotlightService {
     // @Inject(FirebaseRef) fb,
     @Inject(FirebaseApp) app
   ) {
+    this.dbRef = firebase.database().ref();
     // this.dbRef = fb.database().ref();
     this.fsRef = app.storage().ref();
   }

@@ -4,6 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { FirebaseApp } from 'angularfire2';
 import { AuthService } from './../security/auth.service';
 import { Injectable, Inject } from '@angular/core';
+import * as firebase from 'firebase';
 
 
 @Injectable()
@@ -18,6 +19,7 @@ export class NeedService {
     @Inject(FirebaseApp) app,
   ) {
     // this.dbRef = fb.database().ref();
+    this.dbRef = firebase.database().ref();
     this.fsRef = app.storage().ref();
   }
 

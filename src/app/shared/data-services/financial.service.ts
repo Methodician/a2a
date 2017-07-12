@@ -10,12 +10,9 @@ import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
 @Injectable()
 export class FinancialService {
 
-  dbRef: any;
   constructor(
     private db: AngularFireDatabase,
-    //@Inject(FirebaseRef) fb,
   ) {
-    //this.dbRef = fb.database().ref();
   }
 
   getContributionTotal(id: string) {
