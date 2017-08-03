@@ -39,7 +39,9 @@
 
 .navbar-brand {
     /*font-size: 2em;*/
-    padding: 0;
+    padding: 2px;
+    box-shadow: none;
+    height: 60px;
 }
 
 .container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse {
