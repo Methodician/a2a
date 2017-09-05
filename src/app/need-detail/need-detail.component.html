@@ -1,89 +1,89 @@
 <section *ngIf="need" id="need-detail">
-    <div id="imgwrapper">
-        <img id="cover-image" [src]="preview ? previewImageUrl : need.coverImageUrl" alt="Cover Image">
-    </div>
-    <div id="body">
-        <div id="info">
-            <div>
-                <div id="donated">
-                    ${{ donated }}
-                </div>
-                <p>donated</p>
-            </div>
-            <div id="days-remaining" *ngIf="!need.ongoing">
-                <div id="days">{{ daysLeft() }}</div>
-                <p>days remaining</p>
-            </div>
-            <div *ngIf="!need.ongoing" id="pending">
-                {{ pendingPercent() }}%
-                <p>pending</p>
-            </div>
-            <div *ngIf="need.ongoing" id="pending">
-                <i class="fa fa-heart"></i>
-                <p>anything helps</p>
-            </div>
+  <div id="imgwrapper">
+    <img id="cover-image" [src]="preview ? previewImageUrl : need.coverImageUrl" alt="Cover Image">
+  </div>
+  <div id="body">
+    <div id="info">
+      <div>
+        <div id="donated">
+          ${{ donated }}
         </div>
+        <p>donated</p>
+      </div>
+      <div id="days-remaining" *ngIf="!need.ongoing">
+        <div id="days">{{ daysLeft() }}</div>
+        <p>days remaining</p>
+      </div>
+      <div *ngIf="!need.ongoing" id="pending">
+        {{ pendingPercent() }}%
+        <p>pending</p>
+      </div>
+      <div *ngIf="need.ongoing" id="pending">
+        <i class="fa fa-heart"></i>
+        <p>anything helps</p>
+      </div>
+    </div>
 
-        <div id="buttons">
-            <div id="littlebtns" *ngIf="!approving">
-                <button (click)="formShown == 'donate' ? formShown = 'none' : formShown = 'donate'">Donate</button>
-                <button (click)="formShown == 'subscribe' ? formShown = 'none' : formShown = 'subscribe'">Subscribe</button>
-            </div>
-            <section class="container">
-                <form *ngIf="formShown == 'donate'" #form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                    <input type="hidden" name="cmd" value="_s-xclick">
-                    <input type="hidden" name="custom" value="{&#34;contributionId&#34;:&#34;{{contributionId}}&#34;,&#34;orgId&#34;:&#34;{{need.orgId}}&#34;,&#34;needId&#34;:&#34;{{need.$key}}&#34;,&#34;donorId&#34;:&#34;{{donorId}}&#34;}">
-                    <input #btnId type="hidden" name="hosted_button_id" value="SN5RTZU6EGU8A">
-                    <input (click)="form.submit()" type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0"
-                        name="submit" alt="PayPal - The safer, easier way to pay online!">
-                    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                </form>
-                <!--TEST BTN-->
-                <!--<form *ngIf="formShown == 'donate'" #form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <div id="buttons">
+      <div id="littlebtns" *ngIf="!approving">
+        <button (click)="formShown == 'donate' ? formShown = 'none' : formShown = 'donate'">Donate</button>
+        <button (click)="formShown == 'subscribe' ? formShown = 'none' : formShown = 'subscribe'">Subscribe</button>
+      </div>
+      <section class="container">
+        <form *ngIf="formShown == 'donate'" #form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+          <input type="hidden" name="cmd" value="_s-xclick">
+          <input type="hidden" name="custom" value="{&#34;contributionId&#34;:&#34;{{contributionId}}&#34;,&#34;orgId&#34;:&#34;{{need.orgId}}&#34;,&#34;needId&#34;:&#34;{{need.$key}}&#34;,&#34;donorId&#34;:&#34;{{donorId}}&#34;}">
+          <input #btnId type="hidden" name="hosted_button_id" value="SN5RTZU6EGU8A">
+          <input (click)="form.submit()" type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0"
+            name="submit" alt="PayPal - The safer, easier way to pay online!">
+          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+        <!--TEST BTN-->
+        <!--<form *ngIf="formShown == 'donate'" #form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                     <input type="hidden" name="cmd" value="_s-xclick">
                     <input type="hidden" name="custom" value="{&#34;contributionId&#34;:&#34;{{contributionId}}&#34;,&#34;orgId&#34;:&#34;{{need.orgId}}&#34;,&#34;needId&#34;:&#34;{{need.$key}}&#34;,&#34;donorId&#34;:&#34;{{donorId}}&#34;}">
                     <input #btnId type="hidden" name="hosted_button_id" value="C3HSEYXMSHQHN">
                     <input (click)="form.submit()" type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0"
                         name="submit" alt="PayPal - The safer, easier way to pay online!">
                 </form>-->
-                <!--SANDBOX BTN-->
-                <!--<form *ngIf="formShown == 'donate'" #form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+        <!--SANDBOX BTN-->
+        <!--<form *ngIf="formShown == 'donate'" #form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                     <input type="hidden" name="cmd" value="_s-xclick">
                     <input type="hidden" name="hosted_button_id" value="PBTNCVWQFCNVJ">
                     <input type="hidden" name="custom" value="{&#34;contributionId&#34;:&#34;{{contributionId}}&#34;,&#34;orgId&#34;:&#34;{{need.orgId}}&#34;,&#34;needId&#34;:&#34;{{need.$key}}&#34;,&#34;donorId&#34;:&#34;{{donorId}}&#34;}">
                     <input (click)="form.submit()" type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0"
                         name="submit" alt="PayPal - The safer, easier way to pay online!">
                 </form>-->
-                <form *ngIf="formShown == 'subscribe'" #form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                    <input type="hidden" name="cmd" value="_s-xclick">
-                    <input type="hidden" name="hosted_button_id" value="ZVDPSANJ7X2S2">
-                    <input type="hidden" name="custom" value="{&#34;contributionId&#34;:&#34;{{contributionId}}&#34;,&#34;orgId&#34;:&#34;{{need.orgId}}&#34;,&#34;needId&#34;:&#34;{{need.$key}}&#34;,&#34;donorId&#34;:&#34;{{donorId}}&#34;}">
-                    <table>
-                        <tr>
-                            <td>
-                                <input type="hidden" name="on0" value="Subscription Options">Subscription Options
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select name="os0">
+        <form *ngIf="formShown == 'subscribe'" #form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+          <input type="hidden" name="cmd" value="_s-xclick">
+          <input type="hidden" name="hosted_button_id" value="ZVDPSANJ7X2S2">
+          <input type="hidden" name="custom" value="{&#34;contributionId&#34;:&#34;{{contributionId}}&#34;,&#34;orgId&#34;:&#34;{{need.orgId}}&#34;,&#34;needId&#34;:&#34;{{need.$key}}&#34;,&#34;donorId&#34;:&#34;{{donorId}}&#34;}">
+          <table>
+            <tr>
+              <td>
+                <input type="hidden" name="on0" value="Subscription Options">Subscription Options
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <select name="os0">
                                     <option value="Option 1">Option 1 : $5.00 USD - monthly</option>
                                     <option value="Option 2">Option 2 : $10.00 USD - monthly</option>
                                     <option value="Option 3">Option 3 : $20.00 USD - monthly</option>
                                     <option value="Option 4">Option 4 : $100.00 USD - monthly</option>
                                     <option value="Option 5">Option 5 : $500.00 USD - monthly</option>
                                 </select>
-                            </td>
-                        </tr>
-                    </table>
-                    <input type="hidden" name="currency_code" value="USD">
-                    <input (click)="form.submit()" type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0"
-                        name="submit" alt="PayPal - The safer, easier way to pay online!">
-                    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                </form>
+              </td>
+            </tr>
+          </table>
+          <input type="hidden" name="currency_code" value="USD">
+          <input (click)="form.submit()" type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0"
+            name="submit" alt="PayPal - The safer, easier way to pay online!">
+          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
 
-                <!--SANDBOX SUBSCRIPTION-->
-                <!-- <form *ngIf="formShown == 'subscribe'" #form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+        <!--SANDBOX SUBSCRIPTION-->
+        <!-- <form *ngIf="formShown == 'subscribe'" #form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                     <input type="hidden" name="cmd" value="_s-xclick">
                     <input type="hidden" name="hosted_button_id" value="SNE6F7ESTPN96">
                     <input type="hidden" name="custom" value="{&#34;contributionId&#34;:&#34;{{contributionId}}&#34;,&#34;orgId&#34;:&#34;{{need.orgId}}&#34;,&#34;needId&#34;:&#34;{{need.$key}}&#34;,&#34;donorId&#34;:&#34;{{donorId}}&#34;}">
@@ -106,37 +106,38 @@
                     <input (click)="form.submit()" type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribe_SM.gif" border="0"
                         name="submit" alt="PayPal - The safer, easier way to pay online!">
                 </form>-->
-                <br>
-            </section>
-            <div id="littlebtns" *ngIf="approving">
-                <button class="sharebtn" (click)="toggleApproval()">{{ need.approved ? 'Unapprove' : 'Approve' }}</button>
-                <p>
-                    Currently: {{ need.approved ? 'approved' : 'not approved' }}
-                </p>
-            </div>
-            <div id="bigbtn">
-                <button routerLink="../">BACK TO NEEDS</button>
-            </div>
-        </div>
-        <!-- You Tube Imbed -->
-        <div class="youtube-vid" *ngIf="need.videoIframe" width="100%" height="100%" [innerHTML]="need.videoIframe | adjustIframe | safeHtml">
-        </div>
-
-        <div id="details">
-            <b>{{ orgInfo?.fName }} {{ orgInfo?.lName }}</b>
-            <b>{{ orgInfo?.orgCity }} {{ orgInfo?.orgState }}</b>
-            <h3>{{ need.title }}</h3>
-
-            <p>Started: {{ need.startDate | date }}</p>
-            <p class="line-break">{{ need.body }}</p>
-            <div id="body-images">
-                <div *ngIf="!preview" class="flexed">
-                    <img *ngFor="let url of need.bodyImageUrls" [src]="url.$value" alt="Other Images" class="body-img">
-                </div>
-                <div *ngIf="preview && previewBodyImageUrls && previewBodyImageUrls.length > 0" class="flexed">
-                    <img *ngFor="let url of previewBodyImageUrls" [src]="url" alt="Other Images" class="body-img">
-                </div>
-            </div>
-        </div>
+        <br>
+      </section>
+      <div id="littlebtns" *ngIf="approving">
+        <button class="sharebtn" (click)="toggleApproval()">{{ need.approved ? 'Unapprove' : 'Approve' }}</button>
+        <p>
+          Currently: {{ need.approved ? 'approved' : 'not approved' }}
+        </p>
+      </div>
+      <div id="bigbtn">
+        <button routerLink="../">BACK TO NEEDS</button>
+      </div>
     </div>
+    <!-- You Tube Imbed -->
+    <div class="youtube-vid" *ngIf="need.videoIframe" width="100%" height="100%" [innerHTML]="need.videoIframe | adjustIframe | safeHtml">
+    </div>
+
+    <div id="details">
+      <!-- <b>{{ orgInfo?.fName }} {{ orgInfo?.lName }}</b>
+            <b>{{ orgInfo?.orgCity }} {{ orgInfo?.orgState }}</b> -->
+      <br>
+      <h3>{{ need.title }}</h3>
+
+      <p>Started: {{ need.startDate | date }}</p>
+      <p class="line-break">{{ need.body }}</p>
+      <div id="body-images">
+        <div *ngIf="!preview" class="flexed">
+          <img *ngFor="let url of need.bodyImageUrls" [src]="url.$value" alt="Other Images" class="body-img">
+        </div>
+        <div *ngIf="preview && previewBodyImageUrls && previewBodyImageUrls.length > 0" class="flexed">
+          <img *ngFor="let url of previewBodyImageUrls" [src]="url" alt="Other Images" class="body-img">
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
