@@ -19,10 +19,13 @@
         <input name="videoIframe" formControlName="videoIframe" id="videoIframe" class="form-control">
       </div>
     </div>
-    <div *ngIf="!form.value.ongoing" class="form-field">
+    <div class="form-field">
+      <label>Contribution Highlight</label>
+      <input name="contributionHighlight" formControlName="contributionHighlight" type="text" class="form-control">
+    </div>
+    <!-- <div *ngIf="!form.value.ongoing" class="form-field">
       <label>Monthly Commitment</label>
       <input name="monthlyCommitment" formControlName="monthlyCommitment" type="number" class="form-control">
-      <!--<div class="field-error-message" *ngIf="!isTotalOk()">Please enter a goal for this need greater than $0.</div>-->
-    </div>
+    </div> -->
   </fieldset>
 </form>

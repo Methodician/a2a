@@ -18,7 +18,8 @@ export class SpotlightFormComponent implements OnInit {
       title: ['', Validators.required],
       body: ['', Validators.required],
       videoIframe: '',
-      monthlyCommitment: 0
+      contributionHighlight: '',
+      //      monthlyCommitment: 0
     });
   }
 
